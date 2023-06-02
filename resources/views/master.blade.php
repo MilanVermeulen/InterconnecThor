@@ -61,7 +61,7 @@
     <div class="container-fluid">
         <div class="row justify-content-center">
             <div class="col-md-10">
-              <p>© {{ date('Y') }} Incognito's</p>
+              <p class="text-center">© {{ date('Y') }} Incognito's</p>
             </div>
         </div>
     </div>
