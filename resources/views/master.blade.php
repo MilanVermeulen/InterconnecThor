@@ -11,6 +11,7 @@
 	<link rel="stylesheet" href="{{ asset('custom.css') }}">
 </head>
 <body class="bg-dark">
+
 	{{-- navbar --}}
 	<nav class="navbar navbar-expand-lg bg-body-tertiary" style="min-height: 10vh">
 		<div class="container-fluid">
@@ -34,13 +35,15 @@
 							</ul>
 						</li>
 					@endauth
-					{{-- Search field (not functional yet) --}}
+
+					{{-- Search field --}}
 					<form class="d-flex mb-1" action="/search" method="GET">
 						@csrf
 						<input class="form-control me-2" type="search" name="search" placeholder="Search" required minlength="3">
 						<button class="btn btn-outline-primary me-2 mb-1" type="submit">Search</button>
 					</form>
 				</ul>
+
 				{{-- registration,login and logout --}}
 				@auth('student')
 					<form action="{{ route('logout') }}" method="POST">
@@ -51,13 +54,16 @@
 					<a class="nav-link" href="/login"><button class="btn btn-outline-primary me-2 mb-1">Log in</button></a>
 					<a class="nav-link" href="/register"><button class="btn btn-outline-primary me-2 mb-1">Sign up</button></a>
 				@endauth
+
 			</div>
 		</div>
 	</nav>
+
 	{{-- content --}}
 	<div class="container-fluid" style="min-height: 90vh">
 		@yield('content')
 	</div>
+  
 	{{-- footer --}}
 	<div class="container-fluid bg-light">
 		<div class="row justify-content-center">
