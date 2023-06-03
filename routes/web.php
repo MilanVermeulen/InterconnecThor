@@ -1,7 +1,7 @@
 <?php
 
 use Illuminate\Support\Facades\Route;
-use App\Http\Controllers\RegistrationController;
+use App\Http\Controllers\StudentController;
 
 /*
 |--------------------------------------------------------------------------
@@ -25,5 +25,5 @@ Route::group(['prefix' => 'admin'], function () {
 });
 
 // register students
-Route::get('/register', [RegistrationController::class, 'create'])->name('register');
-Route::post('/register', [RegistrationController::class, 'store']);
+Route::get('/register', [StudentController::class, 'create'])->name('register');
+Route::post('/register', [StudentController::class, 'store']);
