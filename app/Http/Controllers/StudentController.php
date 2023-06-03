@@ -59,7 +59,7 @@ class StudentController extends Controller
         return view('login');
     }
 
-    // Handle the login request
+   // Handle the login request
     public function login(Request $request)
     {
         // Validate the login form data
@@ -69,7 +69,10 @@ class StudentController extends Controller
         ]);
 
         // Perform authentication logic here (e.g., check credentials against the database)
-        if (Auth::attempt($request->only('email', 'password'))) {
+        $credentials = $request->only('email', 'password');
+        $credentials['approved'] = 1; // Add 'approved' field with a value of 1
+
+        if (Auth::attempt($credentials)) {
             // Authentication successful
             return redirect()->route('home')->with('success', 'Login successful!');
         } else {

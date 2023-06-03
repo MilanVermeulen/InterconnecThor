@@ -3,14 +3,8 @@
 @section('content')
 
     <div class="row justify-content-center mt-5 mb-5">
-        <div class="col-md-4 bg-light p-5 rounded">
-            <h2 class="text-center mb-5">Student Registration</h2>
-
-            @if (session('success'))
-                <div class="alert alert-success">
-                    {{ session('success') }}
-                </div>
-            @endif
+        <div class="col-md-5 bg-light p-5 rounded">
+            <h2 class="text-center mb-5">Sign Up</h2>
 
             @if ($errors->any())
                 <div class="alert alert-danger">
