@@ -21,16 +21,12 @@
           </button>
           <div class="collapse navbar-collapse" id="navbarSupportedContent">
             <ul class="navbar-nav mx-auto">
+              
                 <li class="nav-item"><a class="{{Request::path() === '/' ? 'nav-link active active' : 'nav-link' }}" href="/">Home</a></li>
-              <li class="nav-item">
-                <a class="nav-link" href="#">Route</a>
-              </li>
-              <li class="nav-item">
-                <a class="nav-link" href="#">Route</a>
-              </li>
-              <li class="nav-item">
-                <a class="nav-link" href="#">Route</a>
-              </li>
+                <li class="nav-item"><a class="{{Request::path() === 'about' ? 'nav-link active active' : 'nav-link' }}" href="/about">About us</a></li>
+                <li class="nav-item"><a class="{{Request::path() === 'faq' ? 'nav-link active active' : 'nav-link' }}" href="/faq">FAQ</a></li>
+                <li class="nav-item"><a class="{{Request::path() === 'contact' ? 'nav-link active active' : 'nav-link' }}" href="/contact">Contact us</a></li>
+
               <li class="nav-item dropdown">
                 <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">
                   Dropdown
@@ -42,17 +38,24 @@
                   <li><a class="dropdown-item" href="#">Something else here</a></li>
                 </ul>
               </li>
+
+              {{-- Search field (not functional yet) --}}
+              <form class="d-flex">
+                <input class="form-control me-2" type="search" placeholder="Search">
+                <button class="btn btn-outline-primary" type="submit">Search</button>
+              </form>
+
             </ul>
 
             {{-- registration,login and logout --}}
             @auth
                 <form action="{{ route('logout') }}" method="POST">
                     @csrf
-                    <button type="submit" class="btn btn-outline-primary me-2">Logout</button>
+                    <button type="submit" class="btn btn-outline-primary me-2 mb-1">Logout</button>
                 </form>
             @else
-                <a class="nav-link" href="/login"><button class="btn btn-outline-primary me-2">Log in</button></a>
-                <a class="nav-link" href="/register"><button class="btn btn-outline-primary me-2">Sign up</button></a>
+                <a class="nav-link" href="/login"><button class="btn btn-outline-primary me-2 mb-1">Log in</button></a>
+                <a class="nav-link" href="/register"><button class="btn btn-outline-primary me-2 mb-1">Sign up</button></a>
             @endauth
 
           </div>

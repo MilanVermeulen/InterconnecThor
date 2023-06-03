@@ -34,3 +34,16 @@ Route::post('/login', [StudentController::class, 'login']);
 
 // logout students
 Route::post('/logout', [StudentController::class, 'logout'])->name('logout');
+
+// basic routes
+Route::get('/about', function () {
+    return view('about');
+})->name('about');
+
+Route::get('/faq', function () {
+    return view('faq');
+})->name('faq');
+
+Route::get('/contact', function () {
+    return view('contact');
+})->name('contact');
