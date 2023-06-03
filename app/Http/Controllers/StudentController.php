@@ -98,10 +98,12 @@ class StudentController extends Controller
         $request->validate([
             'search' => 'required|min:3',
         ]);
-        
+    
         $searchName = $request->input('search');
-
+        $currentUserId = Auth::guard('student')->id();  // Get the currently logged in student's ID
+    
         $students = Student::query()
+            ->where('id', '!=', $currentUserId)  // Exclude the currently logged in student
             ->where(function ($query) use ($searchName) {
                 $query->where('first_name', 'like', '%' . $searchName . '%')
                     ->orWhere('last_name', 'like', '%' . $searchName . '%')
@@ -109,8 +111,8 @@ class StudentController extends Controller
             })
             ->where('approved', 1)
             ->get();
-
+    
         return view('searchresults', compact('students'));
     }
-    
+        
 }

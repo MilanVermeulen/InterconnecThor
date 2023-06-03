@@ -28,9 +28,12 @@ Route::group(['prefix' => 'admin'], function () {
 Route::get('/register', [StudentController::class, 'create'])->name('register');
 Route::post('/register', [StudentController::class, 'store']);
 
-// login students
-Route::get('/login', [StudentController::class, 'showLoginForm'])->name('login');
-Route::post('/login', [StudentController::class, 'login']);
+// restrict logged in students with middleware
+Route::group(['middleware' => 'guest:student'], function () {
+    // login students
+    Route::get('/login', [StudentController::class, 'showLoginForm'])->name('login');
+    Route::post('/login', [StudentController::class, 'login']);
+});
 
 // logout students
 Route::post('/logout', [StudentController::class, 'logout'])->name('logout');

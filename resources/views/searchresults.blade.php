@@ -42,28 +42,30 @@
             <div class="row justify-content-center">
                 <div class="col-md-10">
 
-                    @forelse ($students as $student)
-                        <div class="col-lg-4 mb-3">
-                            <div class="card">
-                                <div class="card-header bg-primary text-white text-shadow">
-                                    <h4 class="card-title">{{ $student->first_name }} {{ $student->last_name }}</h4>
-                                </div>
-                                <div class="card-body">
-                    
-                                    @if (!empty($student->city))
-                                        <p class="card-text mb-1">{{ $student->city }}</p>
-                                    @else
-                                        <p class="card-text mb-1 text-muted">No city given</p>
-                                    @endif
-                                                        
+                    <div class="row">
+                        @forelse ($students as $student)
+                            <div class="col-lg-4 mb-3">
+                                <div class="card">
+                                    <div class="card-header bg-primary text-white text-shadow">
+                                        <h4 class="card-title">{{ $student->first_name }} {{ $student->last_name }}</h4>
+                                    </div>
+                                    <div class="card-body">
+                        
+                                        @if (!empty($student->city))
+                                            <p class="card-text mb-1">{{ $student->city }}</p>
+                                        @else
+                                            <p class="card-text mb-1 text-muted">No city given</p>
+                                        @endif
+                                                            
+                                    </div>
                                 </div>
                             </div>
-                        </div>
-                    @empty
-                        <div class="col-md-10 text-center">
-                            <h5>No results found.</h5>
-                        </div>
-                    @endforelse
+                        @empty
+                            <div class="col-md-10 text-center">
+                                <h5>No results found.</h5>
+                            </div>
+                        @endforelse
+                    </div>
 
                 </div>
             </div>
