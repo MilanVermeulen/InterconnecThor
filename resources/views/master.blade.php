@@ -13,7 +13,7 @@
 <body class="bg-dark">
 
     {{-- navbar --}}
-    <nav class="navbar navbar-expand-lg bg-body-tertiary">
+    <nav class="navbar navbar-expand-lg bg-body-tertiary" style="min-height: 10vh">
         <div class="container-fluid">
           <a class="navbar-brand" href="/">InterconnectThor</a>
           <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
@@ -23,8 +23,8 @@
             <ul class="navbar-nav mx-auto">
               
                 <li class="nav-item"><a class="{{Request::path() === '/' ? 'nav-link active active' : 'nav-link' }}" href="/">Home</a></li>
-                <li class="nav-item"><a class="{{Request::path() === 'about' ? 'nav-link active active' : 'nav-link' }}" href="/about">About us</a></li>
                 <li class="nav-item"><a class="{{Request::path() === 'faq' ? 'nav-link active active' : 'nav-link' }}" href="/faq">FAQ</a></li>
+                <li class="nav-item"><a class="{{Request::path() === 'about' ? 'nav-link active active' : 'nav-link' }}" href="/about">About us</a></li>
                 <li class="nav-item"><a class="{{Request::path() === 'contact' ? 'nav-link active active' : 'nav-link' }}" href="/contact">Contact us</a></li>
 
               <li class="nav-item dropdown">
@@ -40,9 +40,11 @@
               </li>
 
               {{-- Search field (not functional yet) --}}
-              <form class="d-flex">
+              <form class="d-flex mb-1">
+                @csrf
+
                 <input class="form-control me-2" type="search" placeholder="Search">
-                <button class="btn btn-outline-primary" type="submit">Search</button>
+                <button class="btn btn-outline-primary me-2" type="submit">Search</button>
               </form>
 
             </ul>
@@ -51,6 +53,7 @@
             @auth
                 <form action="{{ route('logout') }}" method="POST">
                     @csrf
+
                     <button type="submit" class="btn btn-outline-primary me-2 mb-1">Logout</button>
                 </form>
             @else
@@ -64,7 +67,7 @@
     {{-- end navbar --}}
     
     {{-- content --}}
-    <div class="container-fluid" style="min-height: 100vh">
+    <div class="container-fluid" style="min-height: 90vh">
         @yield('content')
     </div>
     {{-- end content --}}
@@ -73,7 +76,7 @@
     <div class="container-fluid bg-light">
         <div class="row justify-content-center">
             <div class="col-md-10">
-              <p class="text-center">© {{ date('Y') }} Incognito's</p>
+              <p class="text-center p-5">© {{ date('Y') }} Incognito's</p>
             </div>
         </div>
     </div>

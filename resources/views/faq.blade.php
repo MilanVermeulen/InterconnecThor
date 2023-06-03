@@ -3,14 +3,17 @@
 @section('content')
 
 <div class="row justify-content-center mt-5 mb-5">
-    <div class="col-md-5 bg-light p-5 rounded">
+    <div class="col-md-10 bg-light p-5 rounded">
 
         <div class="row justify-content-center">
-            <div class="col-lg-10">
+            <div class="col-md-10">
                 <h2 class="text-center mb-5">FAQ</h2>
-                <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Sit tempore non velit, eligendi, temporibus est porro accusantium sapiente rem iure illo incidunt illum repudiandae ad veritatis! A esse consectetur obcaecati?</p>
-                <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Sit tempore non velit, eligendi, temporibus est porro accusantium sapiente rem iure illo incidunt illum repudiandae ad veritatis! A esse consectetur obcaecati?</p>
-                <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Sit tempore non velit, eligendi, temporibus est porro accusantium sapiente rem iure illo incidunt illum repudiandae ad veritatis! A esse consectetur obcaecati?</p>
+                <p>Lorem ipsum, dolor sit amet consectetur adipisicing elit. Nesciunt explicabo nihil libero dolor sit architecto quam tenetur temporibus debitis iusto nam assumenda facilis impedit voluptas, dolorum illo quibusdam magnam officia?</p>
+                <p>Lorem ipsum, dolor sit amet consectetur adipisicing elit. Nesciunt explicabo nihil libero dolor sit architecto quam tenetur temporibus debitis iusto nam assumenda facilis impedit voluptas, dolorum illo quibusdam magnam officia?</p>
+                <p>Lorem ipsum, dolor sit amet consectetur adipisicing elit. Nesciunt explicabo nihil libero dolor sit architecto quam tenetur temporibus debitis iusto nam assumenda facilis impedit voluptas, dolorum illo quibusdam magnam officia?</p>        
+                <p>Lorem ipsum, dolor sit amet consectetur adipisicing elit. Nesciunt explicabo nihil libero dolor sit architecto quam tenetur temporibus debitis iusto nam assumenda facilis impedit voluptas, dolorum illo quibusdam magnam officia?</p>
+                <p>Lorem ipsum, dolor sit amet consectetur adipisicing elit. Nesciunt explicabo nihil libero dolor sit architecto quam tenetur temporibus debitis iusto nam assumenda facilis impedit voluptas, dolorum illo quibusdam magnam officia?</p>
+                <p>Lorem ipsum, dolor sit amet consectetur adipisicing elit. Nesciunt explicabo nihil libero dolor sit architecto quam tenetur temporibus debitis iusto nam assumenda facilis impedit voluptas, dolorum illo quibusdam magnam officia?</p>        
             </div>
         </div>
 
