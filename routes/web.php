@@ -1,6 +1,7 @@
 <?php
 
 use Illuminate\Support\Facades\Route;
+use App\Http\Controllers\RegistrationController;
 
 /*
 |--------------------------------------------------------------------------
@@ -13,11 +14,16 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
+// home page
 Route::get('/', function () {
     return view('home');
-});
+})->name('home');
 
-
+// voyager
 Route::group(['prefix' => 'admin'], function () {
     Voyager::routes();
 });
+
+// register students
+Route::get('/register', [RegistrationController::class, 'create'])->name('register');
+Route::post('/register', [RegistrationController::class, 'store']);

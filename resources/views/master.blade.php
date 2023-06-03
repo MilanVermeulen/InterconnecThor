@@ -10,22 +10,26 @@
     {{-- custom css --}}
     <link rel="stylesheet" href="{{ asset('custom.css') }}">
 </head>
-<body>
+<body class="bg-dark">
 
     {{-- navbar --}}
     <nav class="navbar navbar-expand-lg bg-body-tertiary">
         <div class="container-fluid">
-          <a class="navbar-brand" href="#">Navbar</a>
+          <a class="navbar-brand" href="/">InterconnectThor</a>
           <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
             <span class="navbar-toggler-icon"></span>
           </button>
           <div class="collapse navbar-collapse" id="navbarSupportedContent">
-            <ul class="navbar-nav me-auto mb-2 mb-lg-0">
+            <ul class="navbar-nav mx-auto">
+                <li class="nav-item"><a class="{{Request::path() === '/' ? 'nav-link active active' : 'nav-link' }}" href="/">Home</a></li>
               <li class="nav-item">
-                <a class="nav-link active" aria-current="page" href="#">Home</a>
+                <a class="nav-link" href="#">Route</a>
               </li>
               <li class="nav-item">
-                <a class="nav-link" href="#">Link</a>
+                <a class="nav-link" href="#">Route</a>
+              </li>
+              <li class="nav-item">
+                <a class="nav-link" href="#">Route</a>
               </li>
               <li class="nav-item dropdown">
                 <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">
@@ -38,14 +42,11 @@
                   <li><a class="dropdown-item" href="#">Something else here</a></li>
                 </ul>
               </li>
-              <li class="nav-item">
-                <a class="nav-link disabled">Disabled</a>
-              </li>
             </ul>
-            <form class="d-flex" role="search">
-              <input class="form-control me-2" type="search" placeholder="Search" aria-label="Search">
-              <button class="btn btn-outline-success" type="submit">Search</button>
-            </form>
+
+            {{-- registration and login --}}
+            {{-- <a class="nav-link" href="/login"><button class="btn btn-outline-primary me-2">Log in</button></a> --}}
+            <a class="nav-link" href="/register"><button class="btn btn-outline-primary me-2">Sign up</button></a>
           </div>
         </div>
     </nav>
@@ -58,7 +59,7 @@
     {{-- end content --}}
 
     {{-- footer --}}
-    <div class="container-fluid">
+    <div class="container-fluid bg-light">
         <div class="row justify-content-center">
             <div class="col-md-10">
               <p class="text-center">© {{ date('Y') }} Incognito's</p>
