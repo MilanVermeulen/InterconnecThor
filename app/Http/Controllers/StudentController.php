@@ -92,4 +92,25 @@ class StudentController extends Controller
         return redirect()->route('home')->with('success', 'Logged out successfully!');
     }
 
+    // Search
+    public function search(Request $request)
+    {
+        $request->validate([
+            'search' => 'required|min:3',
+        ]);
+        
+        $searchName = $request->input('search');
+
+        $students = Student::query()
+            ->where(function ($query) use ($searchName) {
+                $query->where('first_name', 'like', '%' . $searchName . '%')
+                    ->orWhere('last_name', 'like', '%' . $searchName . '%')
+                    ->orWhere('city', 'like', '%' . $searchName . '%');
+            })
+            ->where('approved', 1)
+            ->get();
+
+        return view('searchresults', compact('students'));
+    }
+    
 }

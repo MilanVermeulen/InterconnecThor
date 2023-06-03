@@ -35,6 +35,9 @@ Route::post('/login', [StudentController::class, 'login']);
 // logout students
 Route::post('/logout', [StudentController::class, 'logout'])->name('logout');
 
+// search students
+Route::get('/search', [StudentController::class, 'search'])->name('search');
+
 // basic routes
 Route::get('/about', function () {
     return view('about');

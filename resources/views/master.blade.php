@@ -40,11 +40,11 @@
               </li>
 
               {{-- Search field (not functional yet) --}}
-              <form class="d-flex mb-1">
+              <form class="d-flex mb-1" action="/search" method="GET">
                 @csrf
 
-                <input class="form-control me-2" type="search" placeholder="Search">
-                <button class="btn btn-outline-primary me-2" type="submit">Search</button>
+                <input class="form-control me-2" type="search" name="search" placeholder="Search" required minlength="3">
+                <button class="btn btn-outline-primary me-2 mb-1" type="submit">Search</button>
               </form>
 
             </ul>
