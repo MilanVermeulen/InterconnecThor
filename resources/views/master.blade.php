@@ -44,9 +44,17 @@
               </li>
             </ul>
 
-            {{-- registration and login --}}
-            {{-- <a class="nav-link" href="/login"><button class="btn btn-outline-primary me-2">Log in</button></a> --}}
-            <a class="nav-link" href="/register"><button class="btn btn-outline-primary me-2">Sign up</button></a>
+            {{-- registration,login and logout --}}
+            @auth
+                <form action="{{ route('logout') }}" method="POST">
+                    @csrf
+                    <button type="submit" class="btn btn-outline-primary me-2">Logout</button>
+                </form>
+            @else
+                <a class="nav-link" href="/login"><button class="btn btn-outline-primary me-2">Log in</button></a>
+                <a class="nav-link" href="/register"><button class="btn btn-outline-primary me-2">Sign up</button></a>
+            @endauth
+
           </div>
         </div>
     </nav>

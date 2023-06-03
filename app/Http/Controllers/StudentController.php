@@ -4,11 +4,12 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use App\Models\Student;
+use Illuminate\Support\Facades\Auth;
 
 class StudentController extends Controller
 {
      /**
-     * Show the form for creating a new resource.
+     * Show the form for creating a new student.
      *
      * @return \Illuminate\Http\Response
      */
@@ -18,7 +19,7 @@ class StudentController extends Controller
     }
 
     /**
-     * Store a newly created resource in storage.
+     * Store a newly student in storage.
      *
      * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\Response
@@ -52,5 +53,40 @@ class StudentController extends Controller
         return redirect()->route('home')->with('success', 'Registration successful');
     }
 
+    // Show the login form
+    public function showLoginForm()
+    {
+        return view('login');
+    }
+
+    // Handle the login request
+    public function login(Request $request)
+    {
+        // Validate the login form data
+        $request->validate([
+            'email' => 'required|email',
+            'password' => 'required',
+        ]);
+
+        // Perform authentication logic here (e.g., check credentials against the database)
+        if (Auth::attempt($request->only('email', 'password'))) {
+            // Authentication successful
+            return redirect()->route('home')->with('success', 'Login successful!');
+        } else {
+            // Authentication failed
+            return redirect()->back()->withErrors(['email' => 'Invalid credentials.']);
+        }
+    }
+
+    // Handle the logout request
+    public function logout(Request $request)
+    {
+        Auth::logout();
+
+        $request->session()->invalidate();
+        $request->session()->regenerateToken();
+
+        return redirect()->route('home')->with('success', 'Logged out successfully!');
+    }
 
 }

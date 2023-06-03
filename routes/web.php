@@ -27,3 +27,10 @@ Route::group(['prefix' => 'admin'], function () {
 // register students
 Route::get('/register', [StudentController::class, 'create'])->name('register');
 Route::post('/register', [StudentController::class, 'store']);
+
+// login students
+Route::get('/login', [StudentController::class, 'showLoginForm'])->name('login');
+Route::post('/login', [StudentController::class, 'login']);
+
+// logout students
+Route::post('/logout', [StudentController::class, 'logout'])->name('logout');
