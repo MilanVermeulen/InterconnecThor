@@ -12,7 +12,7 @@
                 </div>
             </div>
 
-            {{-- validation errors --}}
+            {{-- validation errors (IMPORTANT:ONLY APPROVED USERS CAN LOG IN) --}}
             @if ($errors->any())
                 <div class="row justify-content-center mb-5">
                     <div class="col-md-10">
