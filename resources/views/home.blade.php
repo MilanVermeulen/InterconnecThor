@@ -9,7 +9,7 @@
             <div class="row justify-content-center mb-5">
                 <div class="col-md-10">
                     @if (Auth::guard('student')->check())
-                        <h2 class="text-center">Hello {{ Auth::guard('student')->user()->first_name }}, you are the most talented, most interesting, and most extraordinary person in the universe.</h2>
+                        <h2 class="text-center">{{ Auth::guard('student')->user()->first_name }} {{ Auth::guard('student')->user()->last_name }}, you are the most talented, most interesting, and most extraordinary person in the universe.</h2>
                     @else
                         <h2 class="text-center">Welcome!</h2>
                     @endif
