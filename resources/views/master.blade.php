@@ -50,7 +50,7 @@
             </ul>
 
             {{-- registration,login and logout --}}
-            @auth
+            @auth('student')
                 <form action="{{ route('logout') }}" method="POST">
                     @csrf
 

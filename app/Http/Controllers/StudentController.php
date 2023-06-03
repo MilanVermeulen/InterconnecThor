@@ -72,7 +72,7 @@ class StudentController extends Controller
         $credentials = $request->only('email', 'password');
         $credentials['approved'] = 1; // Add 'approved' field with a value of 1
 
-        if (Auth::attempt($credentials)) {
+        if (Auth::guard('student')->attempt($credentials)) {
             // Authentication successful
             return redirect()->route('home')->with('success', 'Login successful!');
         } else {
@@ -84,7 +84,7 @@ class StudentController extends Controller
     // Handle the logout request
     public function logout(Request $request)
     {
-        Auth::logout();
+        Auth::guard('student')->logout();
 
         $request->session()->invalidate();
         $request->session()->regenerateToken();
