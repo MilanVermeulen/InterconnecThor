@@ -53,3 +53,6 @@ Route::get('/faq', function () {
 Route::get('/contact', function () {
     return view('contact');
 })->name('contact');
+
+// profile routes (only for logged in students)
+// profile routes here
