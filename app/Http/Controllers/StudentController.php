@@ -8,23 +8,14 @@ use Illuminate\Support\Facades\Auth;
 
 class StudentController extends Controller
 {
-     /**
-     * Show the form for creating a new student.
-     *
-     * @return \Illuminate\Http\Response
-     */
-    public function create()
+    // Show the registration form
+    public function showRegisterForm()
     {
         return view('register');
     }
 
-    /**
-     * Store a newly student in storage.
-     *
-     * @param  \Illuminate\Http\Request  $request
-     * @return \Illuminate\Http\Response
-     */
-    public function store(Request $request)
+  // Handle the registration request
+    public function register(Request $request)
     {
         $request->validate([
             'first_name' => 'required|max:255',
@@ -50,7 +41,7 @@ class StudentController extends Controller
         $student->password = bcrypt($request->password);
         $student->save();
     
-        return redirect()->route('home')->with('success', 'Registration successful');
+        return redirect()->route('home')->with('success', 'Registration successful, please wait for approval!');
     }
 
     // Show the login form
@@ -112,7 +103,7 @@ class StudentController extends Controller
             ->where('approved', 1)
             ->get();
     
-        return view('searchresults', compact('students'));
+        return view('search', compact('students'));
     }
         
 }

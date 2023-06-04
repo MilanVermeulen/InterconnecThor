@@ -1,0 +1,39 @@
+/* Set the scrollbar width and color for Google Chrome and Safari */
+::-webkit-scrollbar {
+    width: 10px;
+}
+  
+::-webkit-scrollbar-track {
+    background-color: #212529;
+}
+  
+::-webkit-scrollbar-thumb {
+    background-color: white;
+    border: 1px solid #212529;
+    border-radius: 5px;
+}
+
+/* Set the scrollbar width and color for Mozilla Firefox */
+/* Note: Firefox only supports color customization */
+/* You can use -moz-appearance:none; to remove the default scrollbar appearance and apply your own styles */
+* {
+    scrollbar-color: white #212529;
+    scrollbar-width: thin;
+}
+
+/* Set the scrollbar width and color for Microsoft Edge and IE */
+/* Note: Edge and IE only support width customization */
+/* You can use -ms-overflow-style:none; to remove the default scrollbar appearance and apply your own styles */
+* {
+    -ms-overflow-style: none;
+    scrollbar-width: thin;
+    scrollbar-color: white #212529;
+}
+
+/* Set the scrollbar width and color for Opera */
+/* Note: Opera only supports width customization */
+/* You can use -o-scrollbar-width:none; to remove the default scrollbar appearance and apply your own styles */
+* {
+    -o-scrollbar-width: thin;
+    scrollbar-color: white #212529;
+}

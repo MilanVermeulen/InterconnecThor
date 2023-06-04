@@ -25,8 +25,8 @@ Route::group(['prefix' => 'admin'], function () {
 });
 
 // register students
-Route::get('/register', [StudentController::class, 'create'])->name('register');
-Route::post('/register', [StudentController::class, 'store']);
+Route::get('/register', [StudentController::class, 'showRegisterForm'])->name('register');
+Route::post('/register', [StudentController::class, 'register']);
 
 // restrict logged in students with middleware
 Route::group(['middleware' => 'guest:student'], function () {

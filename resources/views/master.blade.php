@@ -8,7 +8,7 @@
 	{{-- bootstrap css --}}
 	<link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-KK94CHFLLe+nY2dmCWGMq91rCGa5gtU4mk92HdvYe+M/SXH301p5ILy+dN9+nJOZ" crossorigin="anonymous">
 	{{-- custom css --}}
-	<link rel="stylesheet" href="{{ asset('custom.css') }}">
+  <link href="{{ asset('css/custom.css') }}" rel="stylesheet">
 </head>
 <body class="bg-dark">
 
@@ -21,11 +21,14 @@
 			</button>
 			<div class="collapse navbar-collapse" id="navbarSupportedContent">
 				<ul class="navbar-nav mx-auto">
+          {{-- routes --}}
 					<li class="nav-item"><a class="{{Request::path() === '/' ? 'nav-link active active' : 'nav-link' }}" href="/">Home</a></li>
 					<li class="nav-item"><a class="{{Request::path() === 'faq' ? 'nav-link active active' : 'nav-link' }}" href="/faq">FAQ</a></li>
 					<li class="nav-item"><a class="{{Request::path() === 'about' ? 'nav-link active active' : 'nav-link' }}" href="/about">About us</a></li>
 					<li class="nav-item"><a class="{{Request::path() === 'contact' ? 'nav-link active active' : 'nav-link' }}" href="/contact">Contact us</a></li>
-					@auth('student')
+					
+          {{-- dropdown men when logged in --}}
+          @auth('student')
 						<li class="nav-item dropdown">
 							<a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">Profile</a>
 							<ul class="dropdown-menu">
@@ -36,7 +39,7 @@
 						</li>
 					@endauth
 
-					{{-- Search field --}}
+					{{-- search field --}}
 					<form class="d-flex mb-1" action="/search" method="GET">
 						@csrf
 						<input class="form-control me-2" type="search" name="search" placeholder="Search" required minlength="3">
@@ -72,6 +75,7 @@
 			</div>
 		</div>
 	</div>
+  
 </body>
 	{{-- bootstrap js --}}
 	<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha3/dist/js/bootstrap.bundle.min.js" integrity="sha384-ENjdO4Dr2bkBIFxQpeoTz1HIcje39Wm4jDKdf19U8gI4ddQ3GYNS7NTKfAdVQSZe" crossorigin="anonymous"></script>

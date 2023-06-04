@@ -11,7 +11,7 @@
                     @if (Auth::guard('student')->check())
                         <h2 class="text-center">{{ Auth::guard('student')->user()->first_name }} {{ Auth::guard('student')->user()->last_name }}, you are the most talented, most interesting, and most extraordinary person in the universe.</h2>
                     @else
-                        <h2 class="text-center">Welcome!</h2>
+                        <h2 class="text-center">Welcome, log in or sign up!</h2>
                     @endif
                 </div>
             </div>
