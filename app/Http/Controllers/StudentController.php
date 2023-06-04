@@ -14,7 +14,7 @@ class StudentController extends Controller
         return view('register');
     }
 
-  // Handle the registration request
+    // Handle the registration request
     public function register(Request $request)
     {
         $request->validate([
@@ -61,7 +61,7 @@ class StudentController extends Controller
 
         // Perform authentication logic here (e.g., check credentials against the database)
         $credentials = $request->only('email', 'password');
-        $credentials['approved'] = 1; // Add 'approved' field with a value of 1
+        $credentials['approved'] = 1; // Check if the student is approved
 
         if (Auth::guard('student')->attempt($credentials)) {
             // Authentication successful
@@ -93,13 +93,15 @@ class StudentController extends Controller
         $searchName = $request->input('search');
         $currentUserId = Auth::guard('student')->id();  // Get the currently logged in student's ID
     
+        // Search for students name or city
         $students = Student::query()
-            ->where('id', '!=', $currentUserId)  // Exclude the currently logged in student
+            ->where('id', '!=', $currentUserId)  // Exclude the currently logged in student from the search results
             ->where(function ($query) use ($searchName) {
                 $query->where('first_name', 'like', '%' . $searchName . '%')
                     ->orWhere('last_name', 'like', '%' . $searchName . '%')
                     ->orWhere('city', 'like', '%' . $searchName . '%');
             })
+            // Only show approved students
             ->where('approved', 1)
             ->get();
     
