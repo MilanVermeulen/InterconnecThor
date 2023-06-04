@@ -31,7 +31,7 @@
 					<li class="nav-item"><a class="{{Request::path() === 'about' ? 'nav-link active active' : 'nav-link' }}" href="/about">About us</a></li>
 					<li class="nav-item"><a class="{{Request::path() === 'contact' ? 'nav-link active active' : 'nav-link' }}" href="/contact">Contact us</a></li>
 					
-          {{-- dropdown men when logged in --}}
+          {{-- dropdown menu when logged in --}}
           @auth('student')
 						<li class="nav-item dropdown">
 							<a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">Profile</a>
@@ -43,7 +43,7 @@
 						</li>
 					@endauth
 
-					{{-- search field --}}
+					{{-- search name/city --}}
 					<form class="d-flex mb-1" action="/search" method="GET">
 						@csrf
 						<input class="form-control me-2" type="search" name="search" placeholder="Search" required minlength="3">

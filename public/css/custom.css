@@ -41,6 +41,7 @@
 /* Note: Opera only supports width customization */
 /* You can use -o-scrollbar-width:none; to remove the default scrollbar appearance and apply your own styles */
 * {
+    scrollbar-width: thin;
     -o-scrollbar-width: thin;
     scrollbar-color: white #212529;
 }
