@@ -25,8 +25,6 @@ return new class extends Migration
             $table->string('country');
             $table->string('password');
             $table->string('approved')->default('0');
-            // $table->unsignedBigInteger('course_id');
-            // $table->unsignedBigInteger('campus_id');
             $table->timestamps();
         });
     }

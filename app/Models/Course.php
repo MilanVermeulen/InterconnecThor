@@ -16,6 +16,9 @@ class Course extends Model
 
     public function students()
     {
-        return $this->hasMany('App\Models\Student');
+        return $this->belongsToMany('App\Models\Student', 'course_student')
+            ->withPivot('start_year', 'end_year')
+            ->withTimestamps();
     }
+    
 }

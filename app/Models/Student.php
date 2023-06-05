@@ -10,16 +10,18 @@ class Student extends Authenticatable
 {
     use HasFactory;
 
-    public function courses()
+     public function courses()
     {
-        return $this->belongsToMany('App\Models\Course');
+        return $this->belongsToMany(Course::class, 'course_student')
+            ->withPivot('start_year', 'end_year')
+            ->withTimestamps();
     }
 
-    public function campus()
+    public function categories()
     {
-        return $this->belongsTo('App\Models\Campus');
-    }
-
+        return $this->belongsToMany(Category::class, 'category_student')->withTimestamps();
+    }    
+    
     protected $fillable = [
         'first_name', 'last_name', 'email', 'phone', 'streetnr', 'postal_code', 'city', 'country', 'password',
     ];

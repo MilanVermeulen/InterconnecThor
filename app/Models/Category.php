@@ -11,13 +11,13 @@ class Category extends Model
 
     public function courses()
     {
-        return $this->hasMany('App\Models\Course');
+        return $this->hasMany(Course::class);
     }
 
-    public function campus()
+    public function students()
     {
-        return $this->belongsTo('App\Models\Campus');
-    }
+        return $this->belongsToMany(Student::class, 'category_student')->withTimestamps();
+    }    
 
     public function posts()
     {
