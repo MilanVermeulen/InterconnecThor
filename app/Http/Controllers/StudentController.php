@@ -40,8 +40,8 @@ class StudentController extends Controller
             'end_years.*' => 'required|integer|min:1900|max:'.(date('Y') + 4).'|gte:start_years.*', // validates that every end year is an integer and is required and within the specified range and at least the corresponding start year            
             'profile_picture' => [
                 'required',
-                File::types(['png', 'jpg', 'jpeg', 'gif'])->max(5 * 1024),
-            ],
+                File::types(['png', 'jpg', 'jpeg', 'gif'])->max(5120), // validates that the file is a png, jpg, jpeg, or gif and is smaller than 5120 kilobytes (5 megabytes)
+            ],            
         ]);
 
         // Handle the profile picture upload
