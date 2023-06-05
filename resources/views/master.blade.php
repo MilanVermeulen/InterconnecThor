@@ -72,7 +72,7 @@
 	</div>
   
 	{{-- footer --}}
-	<div class="container-fluid bg-light">
+	<div class="container-fluid bg-light mt-5">
 		<div class="row justify-content-center">
 			<div class="col-md-10">
 				<p class="text-center p-5">© {{ date('Y') }} Incognito's</p>
