@@ -2,6 +2,10 @@
 
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\StudentController;
+use App\Http\Controllers\vendor\Chatify\MessagesController;
+use App\Http\Middleware\CustomAuthMiddleware;
+use Illuminate\Support\Facades\Auth;
+
 
 /*
 |--------------------------------------------------------------------------
@@ -60,3 +64,9 @@ Route::get('/contact', function () {
 
 // profile routes (only for logged in students)
 // profile routes here
+
+Route::prefix('messenger')->group(function () {
+    Route::get('/', [MessagesController::class, 'index'])
+        ->name(config('chatify.routes.prefix'))
+        ->middleware(CustomAuthMiddleware::class);
+});

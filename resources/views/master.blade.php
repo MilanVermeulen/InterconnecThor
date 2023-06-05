@@ -30,6 +30,7 @@
 					<li class="nav-item"><a class="{{Request::path() === 'faq' ? 'nav-link active active' : 'nav-link' }}" href="/faq">FAQ</a></li>
 					<li class="nav-item"><a class="{{Request::path() === 'about' ? 'nav-link active active' : 'nav-link' }}" href="/about">About us</a></li>
 					<li class="nav-item"><a class="{{Request::path() === 'contact' ? 'nav-link active active' : 'nav-link' }}" href="/contact">Contact us</a></li>
+					<li class="nav-item"><a class="{{Request::path() === 'chatify' ? 'nav-link active active' : 'nav-link' }}" href="/chatify">Messenger</a></li>
 					
           {{-- dropdown menu when logged in --}}
           @auth('student')
