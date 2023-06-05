@@ -8,7 +8,7 @@
             {{-- Title --}}
             <div class="row justify-content-center mb-5">
                 <div class="col-md-10">
-                   <h2>Search Results</h2>
+                   <h2 class="text-center">Search Results</h2>
                 </div>
             </div>
 
@@ -39,9 +39,9 @@
             @endif
             
             {{-- student cards --}}
-            <div class="row">
+            <div class="row justify-content-center">
                 @forelse ($students as $student)
-                    <div class="col-lg-4 mb-3">
+                    <div class="col-md-4 mb-3">
                         <div class="card">
                             {{-- card title --}}
                             <div class="card-header bg-primary text-white text-shadow">
