@@ -46,7 +46,7 @@
                             {{-- card title --}}
                             <div class="card-header bg-primary text-white text-shadow">
                                 <div class="profile-picture">
-                                    <img src="{{ asset($student->profile_picture ?: 'profile-pictures/default.jpg') }}" alt="Profile Picture" class="img-fluid rounded mb-2 border border-light border-2" style="max-height: 10vh; width: auto;">
+                                    <img src="{{ asset('storage/' . ($student->profile_picture ?: 'profile-pictures/default.jpg')) }}" alt="Profile Picture" class="img-fluid rounded mb-2 border border-light border-2" style="max-height: 10vh; width: auto;">
                                 </div>
                                 <h4 class="card-title">{{ $student->first_name }} {{ $student->last_name }}</h4>
                                 @if (!empty($student->city))

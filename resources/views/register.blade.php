@@ -31,7 +31,7 @@
             {{-- form --}}
             <div class="row justify-content-center">
                 <div class="col-md-10">
-                    <form action="{{ route('register') }}" method="POST">
+                    <form action="{{ route('register') }}" method="POST" enctype="multipart/form-data">
                         @csrf
         
                         <div class="form-group">
@@ -97,14 +97,14 @@
                                 </div>
                             </div>
 
-                            <button type="button" class="btn btn-secondary mt-2 addMoreCourses">Add course</button>
+                            <button type="button" class="btn btn-secondary mt-2 addMoreCourses">Add another course</button>
                         </div>
 
                         {{-- profile picture --}}
-                        {{-- <div class="form-group">
+                        <div class="form-group">
                             <label class="mb-1" for="profile_picture">Profile Picture</label><br>
-                            <input type="file" class="form-control-file mb-3" id="profile_picture" name="profile_picture" accept=".jpg, .jpeg, .png, .gif">
-                        </div> --}}
+                            <input class="form-control mb-3" type="file" name="profile_picture" id="profile_picture">
+                        </div>
                                                         
                         {{-- password --}}
                         <div class="form-group">

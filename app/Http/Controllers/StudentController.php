@@ -8,6 +8,7 @@ use App\Models\Course;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Storage;
 use Illuminate\Support\Str;
+use Illuminate\Validation\Rules\File;
 
 class StudentController extends Controller
 {
@@ -37,7 +38,10 @@ class StudentController extends Controller
             'start_years.*' => 'required|integer|min:1900|max:'.(date('Y') + 2), // validates that every start year is an integer and is required and within the specified range
             'end_years' => 'required|array|min:1', // validates that at least 1 end year is provided
             'end_years.*' => 'required|integer|min:1900|max:'.(date('Y') + 4).'|gte:start_years.*', // validates that every end year is an integer and is required and within the specified range and at least the corresponding start year            
-            'profile_picture' => 'image|mimes:jpeg,png,gif|max:2048', // Adjust the maximum file size and allowed file types as needed
+            'profile_picture' => [
+                'required',
+                File::types(['png', 'jpg', 'jpeg', 'gif'])->max(5 * 1024),
+            ],
         ]);
 
         // Handle the profile picture upload
