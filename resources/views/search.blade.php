@@ -43,15 +43,18 @@
                 @forelse ($students as $student)
                     <div class="col-lg-4 mb-3">
                         <div class="card">
+                            {{-- card title --}}
                             <div class="card-header bg-primary text-white text-shadow">
+                                <div class="profile-picture">
+                                    <img src="{{ asset($student->profile_picture ?: 'profile-pictures/default.jpg') }}" alt="Profile Picture" class="img-fluid rounded mb-2 border border-light border-2" style="max-height: 10vh; width: auto;">
+                                </div>
                                 <h4 class="card-title">{{ $student->first_name }} {{ $student->last_name }}</h4>
                                 @if (!empty($student->city))
                                     <h5 class="card-title mb-1">{{ $student->city }}</h5>
                                 @endif
-
                             </div>
+                            {{-- card body --}}
                             <div class="card-body">
-            
                                 <p class="card-text mb-1">Categories:</p>
                                 <ul class="card-text">
                                     @forelse ($student->categories->unique() as $category)
@@ -60,7 +63,6 @@
                                         <li>No categories found</li>
                                     @endforelse
                                 </ul>
-            
                                 <p class="card-text mb-1">Courses:</p>
                                 <ul class="card-text">
                                     @forelse ($student->courses as $course)

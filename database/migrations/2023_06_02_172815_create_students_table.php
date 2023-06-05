@@ -24,6 +24,7 @@ return new class extends Migration
             $table->string('postal_code');
             $table->string('country');
             $table->string('password');
+            $table->string('profile_picture')->nullable();
             $table->string('approved')->default('0');
             $table->timestamps();
         });

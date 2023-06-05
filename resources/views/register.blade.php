@@ -79,7 +79,7 @@
                             </select>
                         </div>
 
-                       {{-- course(s) --}}
+                        {{-- course(s) --}}
                         <div class="form-group mb-3">
                             <label class="mb-1">Courses</label>
 
@@ -97,11 +97,14 @@
                                 </div>
                             </div>
 
-                            <hr> {{-- Add HR break line --}}
+                            <button type="button" class="btn btn-secondary mt-2 addMoreCourses">Add course</button>
+                        </div>
 
-                            <button type="button" class="btn btn-secondary mt-2 addMoreCourses">Add more courses</button>
-                        </div> 
-
+                        {{-- profile picture --}}
+                        {{-- <div class="form-group">
+                            <label class="mb-1" for="profile_picture">Profile Picture</label><br>
+                            <input type="file" class="form-control-file mb-3" id="profile_picture" name="profile_picture" accept=".jpg, .jpeg, .png, .gif">
+                        </div> --}}
                                                         
                         {{-- password --}}
                         <div class="form-group">
@@ -137,13 +140,13 @@
 
 @push('scripts')
     <script>
+        // Add Course
         document.getElementsByClassName('addMoreCourses')[0].addEventListener('click', function() {
             var courseInputsContainer = document.querySelector('.course-inputs-container');
             if (courseInputsContainer.childElementCount / 2 < 16) {
                 var courseInputs = document.querySelector('.course-inputs');
-                var hrElement = document.createElement('hr'); // Create HR element
                 var newCourseInputs = courseInputs.cloneNode(true);
-                courseInputsContainer.appendChild(hrElement); // Append HR element
+                courseInputsContainer.appendChild(document.createElement('hr'));
                 courseInputsContainer.appendChild(newCourseInputs);
             } else {
                 alert('You can add up to 16 courses.');

@@ -6,6 +6,8 @@ use Illuminate\Http\Request;
 use App\Models\Student;
 use App\Models\Course;
 use Illuminate\Support\Facades\Auth;
+use Illuminate\Support\Facades\Storage;
+use Illuminate\Support\Str;
 
 class StudentController extends Controller
 {
@@ -35,8 +37,25 @@ class StudentController extends Controller
             'start_years.*' => 'required|integer|min:1900|max:'.(date('Y') + 2), // validates that every start year is an integer and is required and within the specified range
             'end_years' => 'required|array|min:1', // validates that at least 1 end year is provided
             'end_years.*' => 'required|integer|min:1900|max:'.(date('Y') + 4).'|gte:start_years.*', // validates that every end year is an integer and is required and within the specified range and at least the corresponding start year            
+            'profile_picture' => 'image|mimes:jpeg,png,gif|max:2048', // Adjust the maximum file size and allowed file types as needed
         ]);
 
+        // Handle the profile picture upload
+        if ($request->hasFile('profile_picture')) {
+            $file = $request->file('profile_picture');
+
+            if ($file->isValid()) {
+                $filename = time() . '_' . Str::random(10) . '.' . $file->getClientOriginalExtension();
+                $path = $file->storeAs('profile-pictures', $filename, 'public');
+
+                // Save the file path or filename to the "profile_picture" column in the "students" table
+                $profilePicturePath = $path;
+            } else {
+                return redirect()->back()->withErrors(['profile_picture' => 'The profile picture upload failed.']);
+            }
+        }
+
+        // Save the registration details to the "students" table
         $student = new Student;
         $student->first_name = $request->input('first_name');
         $student->last_name = $request->input('last_name');
@@ -47,8 +66,14 @@ class StudentController extends Controller
         $student->city = $request->input('city');
         $student->country = $request->input('country');
         $student->password = bcrypt($request->input('password'));
+
+        if (isset($profilePicturePath)) {
+            $student->profile_picture = $profilePicturePath;
+        }
+
         $student->save();
 
+        // Save the courses and their details to the pivot table
         foreach ($request->courses as $key => $course_id) {
             $start_year = $request->start_years[$key];
             $end_year = $request->end_years[$key];
@@ -63,7 +88,6 @@ class StudentController extends Controller
         return redirect()->route('home')->with('success', 'Registration successful, please wait for approval!');
     }
 
-    
     // Show the login form
     public function showLoginForm()
     {

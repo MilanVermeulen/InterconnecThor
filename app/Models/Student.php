@@ -23,7 +23,7 @@ class Student extends Authenticatable
     }    
     
     protected $fillable = [
-        'first_name', 'last_name', 'email', 'phone', 'streetnr', 'postal_code', 'city', 'country', 'password',
+        'first_name', 'last_name', 'email', 'phone', 'streetnr', 'postal_code', 'city', 'country', 'password', "profile_picture"
     ];
 
     protected $hidden = [
