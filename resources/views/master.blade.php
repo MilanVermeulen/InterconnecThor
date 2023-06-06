@@ -20,7 +20,7 @@
 	<nav class="navbar navbar-expand-lg bg-dark" data-bs-theme="dark" style="min-height: 10vh">
 		<div class="container-fluid">
 			<a class="navbar-brand" href="/">
-				<img src="{{ asset('storage/assets/logo.png') }}" alt="logo" class="img-fluid" style="max-height: 6vh"><span class="text-custom fw-bold ms-2">i</span>nterconnec<span class="text-custom fw-bold">T</span>hor
+				<img src="{{ asset('storage/assets/logo.png') }}" alt="logo" class="img-fluid" style="max-height: 6vh"><span class="text-primary fw-bold ms-2">i</span>nterconnec<span class="text-primary fw-bold">T</span>hor
 			</a>						
 			<button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
 				<span class="navbar-toggler-icon"></span>

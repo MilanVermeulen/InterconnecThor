@@ -7,9 +7,9 @@
 
 /* custom color scheme: #2BA2C5 */
 
-/* custom primary edit */
-.text-custom {
-    color: #2BA2C5;
+/* primary edit */
+.text-primary {
+    color: #2BA2C5 !important;
 }
 
 .btn-outline-primary {
