@@ -97,7 +97,7 @@
                                 </div>
                             </div>
 
-                            <button type="button" class="btn btn-secondary mt-2 addMoreCourses">Add another course</button>
+                            <button type="button" class="btn btn-primary mt-2 addMoreCourses">Add another course</button>
                         </div>
 
                         {{-- profile picture --}}

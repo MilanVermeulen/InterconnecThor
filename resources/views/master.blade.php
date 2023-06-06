@@ -17,9 +17,11 @@
 <body class="bg-dark">
 
 	{{-- navbar --}}
-	<nav class="navbar navbar-expand-lg bg-body-tertiary" style="min-height: 10vh">
+	<nav class="navbar navbar-expand-lg bg-dark" data-bs-theme="dark" style="min-height: 10vh">
 		<div class="container-fluid">
-			<a class="navbar-brand text-primary" href="/">iThor</a>
+			<a class="navbar-brand" href="/">
+				<img src="{{ asset('storage/assets/logo.png') }}" alt="logo" class="img-fluid rounded" style="max-height: 10vh"><span class="text-custom">i</span>nterconnec<span class="text-custom">T</span>or
+			</a>						
 			<button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
 				<span class="navbar-toggler-icon"></span>
 			</button>
@@ -55,10 +57,10 @@
 				@auth('student')
 					<form action="{{ route('logout') }}" method="POST">
 						@csrf
-						<button type="submit" class="btn btn-outline-primary me-2 mb-1">Logout</button>
+						<button type="submit" class="btn btn-primary me-2 mb-1">Logout</button>
 					</form>
 				@else
-					<a class="nav-link" href="/login"><button class="btn btn-outline-primary me-2 mb-1">Log in</button></a>
+					<a class="nav-link" href="/login"><button class="btn btn-primary me-2 mb-1">Log in</button></a>
 					<a class="nav-link" href="/register"><button class="btn btn-outline-primary me-2 mb-1">Sign up</button></a>
 				@endauth
 
@@ -72,7 +74,7 @@
 	</div>
   
 	{{-- footer --}}
-	<div class="container-fluid bg-light mt-5">
+	<div class="container-fluid text-light mt-5">
 		<div class="row justify-content-center">
 			<div class="col-md-10">
 				<p class="text-center p-5">© {{ date('Y') }} Incognito's</p>
