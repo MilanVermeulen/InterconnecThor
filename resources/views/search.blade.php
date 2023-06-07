@@ -45,13 +45,17 @@
                         <div class="card">
                             {{-- card title --}}
                             <div class="card-header bg-primary text-white text-shadow">
-                                <div class="profile-picture">
-                                    <img src="{{ asset('storage/' . ($user->profile_picture ?: 'profile-pictures/default.jpg')) }}" alt="Profile Picture" class="img-fluid rounded mb-2 border border-light border-2" style="max-height: 10vh; width: auto;">
+                                <div class="row">
+                                    <div class="col">
+                                        <h4 class="card-title">{{ $user->first_name }} {{ $user->last_name }}</h4>
+                                        @if (!empty($user->city))
+                                            <h5 class="card-title mb-1">{{ $user->city }}</h5>
+                                        @endif
+                                    </div>
+                                    <div class="col text-end">
+                                        <img src="{{ asset('storage/' . ($user->profile_picture ?: 'profile-pictures/default.jpg')) }}" alt="Profile Picture" class="img-fluid rounded-pill mb-2 border border-light border-2" style="max-height: 10vh; width: auto;">
+                                    </div>
                                 </div>
-                                <h4 class="card-title">{{ $user->first_name }} {{ $user->last_name }}</h4>
-                                @if (!empty($user->city))
-                                    <h5 class="card-title mb-1">{{ $user->city }}</h5>
-                                @endif
                             </div>
                             {{-- card body --}}
                             <div class="card-body">
