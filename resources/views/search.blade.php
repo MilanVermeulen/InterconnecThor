@@ -42,8 +42,7 @@
             <div class="row justify-content-center">
                 @forelse ($users as $user)
                     <div class="col-md-4 mb-3">
-                        <div class="card">
-                            {{-- card title --}}
+                        <div class="card h-100 d-flex flex-column">
                             <div class="card-header bg-primary text-white text-shadow">
                                 <div class="row">
                                     <div class="col">
@@ -57,8 +56,7 @@
                                     </div>
                                 </div>
                             </div>
-                            {{-- card body --}}
-                            <div class="card-body">
+                            <div class="card-body flex-grow-1">
                                 <p class="card-text mb-1">Categories:</p>
                                 <ul class="card-text">
                                     @forelse ($user->categories->unique() as $category)
@@ -84,8 +82,8 @@
                         <h5>No results found.</h5>
                     </div>
                 @endforelse
-            </div>            
-        
+            </div>        
+                        
         </div>
     </div>
 
