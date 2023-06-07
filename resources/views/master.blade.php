@@ -57,13 +57,16 @@
 				@auth('student')
 					<form action="{{ route('logout') }}" method="POST">
 						@csrf
-						<button type="submit" class="btn btn-primary me-2 mb-1">Logout</button>
+						@if (Auth::guard('student')->check())
+							<img src="{{ asset('storage/' . (Auth::guard('student')->user()->profile_picture ?: 'profile-pictures/default.jpg')) }}" alt="Profile Picture" class="img-fluid rounded-pill mb-2 border border-light border-2 me-2 mt-1" style="max-height: 5vh; width: auto;">
+							<button type="submit" class="btn btn-primary me-2 mb-1 mt-1">Logout</button>
+						@endif
 					</form>
 				@else
 					<a class="nav-link" href="/login"><button class="btn btn-primary me-2 mb-1">Log in</button></a>
 					<a class="nav-link" href="/register"><button class="btn btn-outline-primary me-2 mb-1">Sign up</button></a>
 				@endauth
-
+			
 			</div>
 		</div>
 	</nav>
