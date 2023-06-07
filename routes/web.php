@@ -29,11 +29,11 @@ Route::get('/register', [UserController::class, 'showRegisterForm'])->name('regi
 Route::post('/register', [UserController::class, 'register']);
 
 // restrict logged in users with middleware
-// Route::group(['middleware' => 'guest'], function () {
+Route::group(['middleware' => 'guest'], function () {
     // login users
     Route::get('/login', [UserController::class, 'showLoginForm'])->name('login');
     Route::post('/login', [UserController::class, 'login']);
-// });
+});
 
 // logout students
 Route::post('/logout', [UserController::class, 'logout'])->name('logout');
