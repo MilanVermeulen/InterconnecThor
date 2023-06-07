@@ -14,10 +14,10 @@ class Category extends Model
         return $this->hasMany(Course::class);
     }
 
-    public function students()
+    public function users()
     {
-        return $this->belongsToMany(Student::class, 'category_student')->withTimestamps();
-    }    
+        return $this->belongsToMany(User::class, 'category_user')->withTimestamps();
+    }
 
     public function posts()
     {

@@ -8,8 +8,8 @@
             {{-- welcome message --}}
             <div class="row justify-content-center mb-5">
                 <div class="col-md-10">
-                    @if (Auth::guard('student')->check())
-                        <h2 class="text-center"><span class="text-primary fw-bold">{{ Auth::guard('student')->user()->first_name }} {{ Auth::guard('student')->user()->last_name }}</span>, you are the most <span class="text-primary fw-bold">talented</span>, most <span class="text-primary fw-bold">interesting</span>, and most <span class="text-primary fw-bold">extraordinary</span> person in the universe.</h2>
+                    @if (Auth::check())
+                        <h2 class="text-center"><span class="text-primary fw-bold">{{ Auth::user()->first_name }} {{ Auth::user()->last_name }}</span>, you are the most <span class="text-primary fw-bold">talented</span>, most <span class="text-primary fw-bold">interesting</span>, and most <span class="text-primary fw-bold">extraordinary</span> person in the universe.</h2>
                     @else
                         <h2 class="text-center">Welcome, log in or sign up!</h2>
                     @endif

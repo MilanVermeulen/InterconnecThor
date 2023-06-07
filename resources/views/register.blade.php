@@ -55,8 +55,8 @@
                         </div>
         
                         <div class="form-group">
-                            <label class="mb-1" for="streetnr">Street + Number</label>
-                            <input type="text" class="form-control mb-3" id="streetnr" name="streetnr" placeholder="Enter your street and number" value="{{ old('streetnr') }}" required>
+                            <label class="mb-1" for="street_nr">Street + Number</label>
+                            <input type="text" class="form-control mb-3" id="street_nr" name="street_nr" placeholder="Enter your street and number" value="{{ old('street_nr') }}" required>
                         </div>
                         
                         <div class="form-group">

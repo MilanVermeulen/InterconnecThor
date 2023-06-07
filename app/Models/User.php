@@ -21,6 +21,14 @@ class User extends \TCG\Voyager\Models\User
         'name',
         'email',
         'password',
+        'first_name', 
+        'last_name', 
+        'phone', 
+        'streetnr', 
+        'postal_code', 
+        'city', 
+        'country', 
+        "profile_picture"
     ];
 
     /**
@@ -41,4 +49,16 @@ class User extends \TCG\Voyager\Models\User
     protected $casts = [
         'email_verified_at' => 'datetime',
     ];
+
+    public function courses()
+    {
+        return $this->belongsToMany(Course::class, 'course_user')
+            ->withPivot('start_year', 'end_year')
+            ->withTimestamps();
+    }
+
+    public function categories()
+    {
+        return $this->belongsToMany(Category::class, 'category_user')->withTimestamps();
+    }   
 }

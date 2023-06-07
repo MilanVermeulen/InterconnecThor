@@ -3,14 +3,14 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
-use App\Models\Student;
+use App\Models\User;
 use App\Models\Course;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Storage;
 use Illuminate\Support\Str;
 use Illuminate\Validation\Rules\File;
 
-class StudentController extends Controller
+class UserController extends Controller
 {
     // Show the registration form
     public function showRegisterForm()
@@ -25,9 +25,9 @@ class StudentController extends Controller
         $request->validate([
             'first_name' => 'required|max:255',
             'last_name' => 'required|max:255',
-            'email' => 'required|email|unique:students',
+            'email' => 'required|email|unique:users',
             'phone' => 'required',
-            'streetnr' => 'required',
+            'street_nr' => 'required',
             'postal_code' => 'required',
             'city' => 'required',
             'country' => 'required',
@@ -60,23 +60,25 @@ class StudentController extends Controller
             }
         }
 
-        // Save the registration details to the "students" table
-        $student = new Student;
-        $student->first_name = $request->input('first_name');
-        $student->last_name = $request->input('last_name');
-        $student->email = $request->input('email');
-        $student->phone = $request->input('phone');
-        $student->streetnr = $request->input('streetnr');
-        $student->postal_code = $request->input('postal_code');
-        $student->city = $request->input('city');
-        $student->country = $request->input('country');
-        $student->password = bcrypt($request->input('password'));
+        // Save the registration details to the users table with the role_id column set to 2 (student)
+        $user = new User;
+        $user->first_name = $request->input('first_name');
+        $user->last_name = $request->input('last_name');
+        $user->email = $request->input('email');
+        $user->phone = $request->input('phone');
+        $user->street_nr = $request->input('street_nr');
+        $user->postal_code = $request->input('postal_code');
+        $user->city = $request->input('city');
+        $user->country = $request->input('country');
+        $user->password = bcrypt($request->input('password'));
+        // set role_id column to 2 (student)
+        $user->role_id = 2;
 
         if (isset($profilePicturePath)) {
-            $student->profile_picture = $profilePicturePath;
+            $user->profile_picture = $profilePicturePath;
         }
 
-        $student->save();
+        $user->save();
 
         // Save the courses and their details to the pivot table
         foreach ($request->courses as $key => $course_id) {
@@ -86,8 +88,8 @@ class StudentController extends Controller
             $course = Course::findOrFail($course_id);
             $categories = $course->category()->pluck('id')->toArray();
 
-            $student->categories()->attach($categories);
-            $student->courses()->attach($course_id, ['start_year' => $start_year, 'end_year' => $end_year]);
+            $user->categories()->attach($categories);
+            $user->courses()->attach($course_id, ['start_year' => $start_year, 'end_year' => $end_year]);
         }
 
         return redirect()->route('home')->with('success', 'Registration successful, please wait for approval!');
@@ -100,7 +102,7 @@ class StudentController extends Controller
     }
 
    // Handle the login request
-    public function login(Request $request)
+   public function login(Request $request)
     {
         // Validate the login form data
         $request->validate([
@@ -112,9 +114,16 @@ class StudentController extends Controller
         $credentials = $request->only('email', 'password');
         $credentials['approved'] = 1; // Check if the student is approved
 
-        if (Auth::guard('student')->attempt($credentials)) {
+        if (Auth::attempt($credentials)) {
             // Authentication successful
-            return redirect()->route('home')->with('success', 'Login successful!');
+            $user = Auth::user();
+            if($user->role_id == 2) {  // Check if the role_id of the user is 2
+                return redirect()->route('home')->with('success', 'Login successful!');
+            } else {
+                // If user role_id is not 2, logout the user and redirect back with an error message
+                Auth::logout();
+                return redirect()->back()->withErrors(['email' => 'Invalid user role.']);
+            }
         } else {
             // Authentication failed
             return redirect()->back()->withErrors(['email' => 'Invalid credentials.']);
@@ -124,15 +133,15 @@ class StudentController extends Controller
     // Handle the logout request
     public function logout(Request $request)
     {
-        Auth::guard('student')->logout();
-
+        Auth::logout();
+    
         $request->session()->invalidate();
         $request->session()->regenerateToken();
-
+    
         return redirect()->route('home')->with('success', 'Logged out successfully!');
-    }
+    }    
 
-    // Search
+   // Search
     public function search(Request $request)
     {
         $request->validate([
@@ -140,11 +149,11 @@ class StudentController extends Controller
         ]);
 
         $search = $request->input('search');
-        $currentUserId = Auth::guard('student')->id();  // Get the currently logged in student's ID
+        $currentUserId = Auth::id();  // Get the currently logged in user's ID
 
-        // Search for students name or city
-        $students = Student::query()
-            ->where('id', '!=', $currentUserId)  // Exclude the currently logged in student from the search results
+        // Search for user's name, city, postal code, courses, and categories
+        $users = User::query()
+            ->where('id', '!=', $currentUserId)  // Exclude the currently logged in user from the search results
             ->where(function ($query) use ($search) {
                 $query->where('first_name', 'like', '%' . $search . '%')
                     ->orWhere('last_name', 'like', '%' . $search . '%')
@@ -157,11 +166,12 @@ class StudentController extends Controller
                         $query->where('name', 'like', '%' . $search . '%');
                     });
             })
-            // Only show approved students
+            // Only show approved users with role_id 2
             ->where('approved', 1)
+            ->where('role_id', 2)
             ->get();
 
-        return view('search', compact('students'));
+        return view('search', compact('users'));
     }
-        
+
 }

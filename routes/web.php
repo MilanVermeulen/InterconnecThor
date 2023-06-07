@@ -1,7 +1,7 @@
 <?php
 
 use Illuminate\Support\Facades\Route;
-use App\Http\Controllers\StudentController;
+use App\Http\Controllers\UserController;
 
 /*
 |--------------------------------------------------------------------------
@@ -25,21 +25,21 @@ Route::group(['prefix' => 'admin'], function () {
 });
 
 // register students
-Route::get('/register', [StudentController::class, 'showRegisterForm'])->name('register');
-Route::post('/register', [StudentController::class, 'register']);
+Route::get('/register', [UserController::class, 'showRegisterForm'])->name('register');
+Route::post('/register', [UserController::class, 'register']);
 
-// restrict logged in students with middleware
-Route::group(['middleware' => 'guest:student'], function () {
-    // login students
-    Route::get('/login', [StudentController::class, 'showLoginForm'])->name('login');
-    Route::post('/login', [StudentController::class, 'login']);
-});
+// restrict logged in users with middleware
+// Route::group(['middleware' => 'guest'], function () {
+    // login users
+    Route::get('/login', [UserController::class, 'showLoginForm'])->name('login');
+    Route::post('/login', [UserController::class, 'login']);
+// });
 
 // logout students
-Route::post('/logout', [StudentController::class, 'logout'])->name('logout');
+Route::post('/logout', [UserController::class, 'logout'])->name('logout');
 
 // search students
-Route::get('/search', [StudentController::class, 'search'])->name('search');
+Route::get('/search', [UserController::class, 'search'])->name('search');
 
 // basic routes
 Route::get('/about', function () {

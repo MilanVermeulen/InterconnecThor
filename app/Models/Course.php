@@ -14,11 +14,10 @@ class Course extends Model
         return $this->belongsTo('App\Models\Category');
     }
 
-    public function students()
+    public function users()
     {
-        return $this->belongsToMany('App\Models\Student', 'course_student')
+        return $this->belongsToMany('App\Models\User', 'course_user')
             ->withPivot('start_year', 'end_year')
             ->withTimestamps();
     }
-    
 }

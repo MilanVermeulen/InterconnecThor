@@ -40,24 +40,24 @@
             
             {{-- student cards --}}
             <div class="row justify-content-center">
-                @forelse ($students as $student)
+                @forelse ($users as $user)
                     <div class="col-md-4 mb-3">
                         <div class="card">
                             {{-- card title --}}
                             <div class="card-header bg-primary text-white text-shadow">
                                 <div class="profile-picture">
-                                    <img src="{{ asset('storage/' . ($student->profile_picture ?: 'profile-pictures/default.jpg')) }}" alt="Profile Picture" class="img-fluid rounded mb-2 border border-light border-2" style="max-height: 10vh; width: auto;">
+                                    <img src="{{ asset('storage/' . ($user->profile_picture ?: 'profile-pictures/default.jpg')) }}" alt="Profile Picture" class="img-fluid rounded mb-2 border border-light border-2" style="max-height: 10vh; width: auto;">
                                 </div>
-                                <h4 class="card-title">{{ $student->first_name }} {{ $student->last_name }}</h4>
-                                @if (!empty($student->city))
-                                    <h5 class="card-title mb-1">{{ $student->city }}</h5>
+                                <h4 class="card-title">{{ $user->first_name }} {{ $user->last_name }}</h4>
+                                @if (!empty($user->city))
+                                    <h5 class="card-title mb-1">{{ $user->city }}</h5>
                                 @endif
                             </div>
                             {{-- card body --}}
                             <div class="card-body">
                                 <p class="card-text mb-1">Categories:</p>
                                 <ul class="card-text">
-                                    @forelse ($student->categories->unique() as $category)
+                                    @forelse ($user->categories->unique() as $category)
                                         <li>{{ $category->name }}</li>
                                     @empty
                                         <li>No categories found</li>
@@ -65,7 +65,7 @@
                                 </ul>
                                 <p class="card-text mb-1">Courses:</p>
                                 <ul class="card-text">
-                                    @forelse ($student->courses as $course)
+                                    @forelse ($user->courses as $course)
                                         <li>{{ $course->name }}<br>
                                             <span class="small">({{ $course->pivot->start_year }} - {{ $course->pivot->end_year }})</span></li>
                                     @empty

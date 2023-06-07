@@ -27,14 +27,14 @@
 			</button>
 			<div class="collapse navbar-collapse" id="navbarSupportedContent">
 				<ul class="navbar-nav mx-auto">
-          {{-- routes --}}
+					{{-- routes --}}
 					<li class="nav-item"><a class="{{Request::path() === '/' ? 'nav-link active active' : 'nav-link' }}" href="/">Home</a></li>
 					<li class="nav-item"><a class="{{Request::path() === 'faq' ? 'nav-link active active' : 'nav-link' }}" href="/faq">FAQ</a></li>
 					<li class="nav-item"><a class="{{Request::path() === 'about' ? 'nav-link active active' : 'nav-link' }}" href="/about">About us</a></li>
 					<li class="nav-item"><a class="{{Request::path() === 'contact' ? 'nav-link active active' : 'nav-link' }}" href="/contact">Contact us</a></li>
 					
-          {{-- dropdown menu when logged in --}}
-          @auth('student')
+					{{-- dropdown menu when logged in --}}
+					@auth
 						<li class="nav-item dropdown">
 							<a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">Profile</a>
 							<ul class="dropdown-menu">
@@ -53,12 +53,12 @@
 					</form>
 				</ul>
 
-				{{-- registration,login and logout --}}
-				@auth('student')
+				{{-- registration, login, and logout --}}
+				@auth
 					<form action="{{ route('logout') }}" method="POST">
 						@csrf
-						@if (Auth::guard('student')->check())
-							<img src="{{ asset('storage/' . (Auth::guard('student')->user()->profile_picture ?: 'profile-pictures/default.jpg')) }}" alt="Profile Picture" class="img-fluid rounded-pill mb-2 border border-light border-2 me-2 mt-1" style="max-height: 5vh; width: auto;">
+						@if (Auth::check())
+							<img src="{{ asset('storage/' . (Auth::user()->profile_picture ?: 'profile-pictures/default.jpg')) }}" alt="Profile Picture" class="img-fluid rounded-pill mb-2 border border-light border-2 me-2 mt-1" style="max-height: 5vh; width: auto;">
 							<button type="submit" class="btn btn-primary me-2 mb-1 mt-1">Logout</button>
 						@endif
 					</form>
@@ -66,7 +66,7 @@
 					<a class="nav-link" href="/login"><button class="btn btn-primary me-2 mb-1">Log in</button></a>
 					<a class="nav-link" href="/register"><button class="btn btn-outline-primary me-2 mb-1">Sign up</button></a>
 				@endauth
-			
+
 			</div>
 		</div>
 	</nav>
@@ -86,7 +86,9 @@
 	</div>
   
 </body>
+
 	{{-- bootstrap js --}}
 	<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha3/dist/js/bootstrap.bundle.min.js" integrity="sha384-ENjdO4Dr2bkBIFxQpeoTz1HIcje39Wm4jDKdf19U8gI4ddQ3GYNS7NTKfAdVQSZe" crossorigin="anonymous"></script>
-  @stack('scripts')
- </html>
+	@stack('scripts')
+
+</html>

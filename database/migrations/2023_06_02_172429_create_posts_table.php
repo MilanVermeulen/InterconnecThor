@@ -17,7 +17,7 @@ return new class extends Migration
             $table->id();
             $table->string('title');
             $table->string('description');
-            $table->unsignedBigInteger('student_id');
+            $table->unsignedBigInteger('user_id');
             $table->timestamps();
         });
     }
@@ -30,7 +30,7 @@ return new class extends Migration
     public function down()
     {
         // Schema::table('posts', function (Blueprint $table) {
-        //     $table->dropForeign(['student_id']);
+        //     $table->dropForeign(['user_id']);
         // });
         Schema::dropIfExists('posts');
     }
