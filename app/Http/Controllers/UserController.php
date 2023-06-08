@@ -101,8 +101,8 @@ class UserController extends Controller
         return view('login');
     }
 
-   // Handle the login request
-   public function login(Request $request)
+    // Handle the login request
+    public function login(Request $request)
     {
         // Validate the login form data
         $request->validate([
@@ -112,21 +112,15 @@ class UserController extends Controller
 
         // Perform authentication logic here (e.g., check credentials against the database)
         $credentials = $request->only('email', 'password');
-        $credentials['approved'] = 1; // Check if the student is approved
+        $credentials['approved'] = 1; // Check if the user is approved
+        $credentials['role_id'] = 2; // Check if the role_id of the user is 2
 
         if (Auth::attempt($credentials)) {
             // Authentication successful
-            $user = Auth::user();
-            if($user->role_id == 2) {  // Check if the role_id of the user is 2
-                return redirect()->route('home')->with('success', 'Login successful!');
-            } else {
-                // If user role_id is not 2, logout the user and redirect back with an error message
-                Auth::logout();
-                return redirect()->back()->withErrors(['email' => 'Invalid user role.']);
-            }
+            return redirect()->route('home')->with('success', 'Logged in successfully!');
         } else {
             // Authentication failed
-            return redirect()->back()->withErrors(['email' => 'Invalid credentials.']);
+            return redirect()->back()->withErrors(['email' => 'Invalid email or password.']);
         }
     }
 
