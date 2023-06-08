@@ -48,7 +48,21 @@
             
             <div class="row justify-content-center text-center">
                 <div class="col-md-10">
-                    <img src="{{ asset('/assets/logo.png') }}" alt="logo" class="img-fluid" style="max-height: 50vh">
+                    
+                    <div class="row justify-content-center text-center">
+                        <div class="col-md-4 text-start mb-5">
+                            <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Laborum repellat sint similique debitis eos ducimus inventore quia nihil quam quo harum, sit voluptas earum, nobis obcaecati dignissimos repudiandae possimus. Accusamus?</p>
+                            <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Laborum repellat sint similique debitis eos ducimus inventore quia nihil quam quo harum, sit voluptas earum, nobis obcaecati dignissimos repudiandae possimus. Accusamus?</p>
+                        </div>
+                        <div class="col-md-4 mb-5">
+                            <img src="{{ asset('/assets/logo.png') }}" alt="logo" class="img-fluid" style="max-height: 50vh">
+                        </div>
+                        <div class="col-md-4 text-end mb-5">
+                            <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Laborum repellat sint similique debitis eos ducimus inventore quia nihil quam quo harum, sit voluptas earum, nobis obcaecati dignissimos repudiandae possimus. Accusamus?</p>
+                            <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Laborum repellat sint similique debitis eos ducimus inventore quia nihil quam quo harum, sit voluptas earum, nobis obcaecati dignissimos repudiandae possimus. Accusamus?</p>
+                        </div>
+                    </div>
+
                 </div>
             </div>
         
