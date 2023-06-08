@@ -2,6 +2,7 @@
 
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\UserController;
+use App\Http\Controllers\EmailController;
 
 /*
 |--------------------------------------------------------------------------
@@ -53,6 +54,9 @@ Route::get('/faq', function () {
 Route::get('/contact', function () {
     return view('contact');
 })->name('contact');
+
+// send contact mail
+Route::post('/contactemail', [EmailController::class, 'contactEmail'])->name('contactemail');
 
 // profile routes (only for logged in students)
 // profile routes here

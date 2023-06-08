@@ -31,7 +31,7 @@
             {{-- form --}}
             <div class="row justify-content-center">
                 <div class="col-md-10">
-                    <form action="" method="">
+                    <form action="/contactemail" method="post">
                         @csrf
         
                         <div class="form-group">
