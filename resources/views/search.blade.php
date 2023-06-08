@@ -8,7 +8,7 @@
             {{-- Title --}}
             <div class="row justify-content-center mb-5">
                 <div class="col-md-10">
-                   <h2 class="text-center">Search Results</h2>
+                   <h2 class="text-center text-primary fw-bold">Search Results</h2>
                 </div>
             </div>
 

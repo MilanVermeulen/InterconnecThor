@@ -7,7 +7,7 @@
 
         <div class="row justify-content-center">
             <div class="col-md-10">
-                <h2 class="text-center mb-5">FAQ</h2>
+                <h2 class="text-center mb-5 text-primary fw-bold">FAQ</h2>
                 <p><span class="text-primary fw-bold">Q: Who can use interconnecThor?</span><br>A: interconnecThor is exclusively designed for the students of SyntraPXL.</p>
                 <p><span class="text-primary fw-bold">Q: How do I register on interconnecThor?</span><br>A: You can register using your email address. After registration, a school admin will need to approve your account before you can start using the platform.</p>
                 <p><span class="text-primary fw-bold">Q: Can I share my ideas or projects on interconnecThor?</span><br>A: Yes, interconnecThor is designed as a hub where students can share ideas, collaborate on projects, and discover job opportunities.</p>

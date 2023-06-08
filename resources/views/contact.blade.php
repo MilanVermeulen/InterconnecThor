@@ -8,7 +8,7 @@
             {{-- title --}}
             <div class="row justify-content-center mb-5">
                 <div class="col-md-10">
-                    <h2 class="text-center">Contact Us</h2>
+                    <h2 class="text-center text-primary fw-bold">Contact Us</h2>
                 </div>
             </div>
 
