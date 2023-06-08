@@ -35,9 +35,9 @@
     <div class="row justify-content-center mt-5 mb-5">
       <div class="col-md-10 bg-light p-5 rounded">
 
-        <div class="card mt-3">
+        <div class="card">
           <div class="card-header bg-primary text-white">
-            <h4 class="mb-0">{{ $firstName }} {{ $lastName }}</h4>
+            <h4>{{ $firstName }} {{ $lastName }}</h4>
             <p>{{ $email }}</p>
           </div>
           <div class="card-body">
