@@ -33,6 +33,7 @@
 					<li class="nav-item"><a class="{{Request::path() === '/' ? 'nav-link active active' : 'nav-link' }}" href="/"><i class="fa-solid fa-house"></i></a></li>
 					<li class="nav-item"><a class="{{Request::path() === 'faq' ? 'nav-link active active' : 'nav-link' }}" href="/faq">FAQ</a></li>
 					<li class="nav-item"><a class="{{Request::path() === 'about' ? 'nav-link active active' : 'nav-link' }}" href="/about">About Us</a></li>
+					<li class="nav-item"><a class="{{Request::path() === 'chat' ? 'nav-link active active' : 'nav-link' }}" href="/chat">Chat</a></li>
 					<li class="nav-item"><a class="{{Request::path() === 'meet' ? 'nav-link active active' : 'nav-link' }}" href="/meet">Meet</a></li>
 					<li class="nav-item"><a class="{{Request::path() === 'contact' ? 'nav-link active active' : 'nav-link' }}" href="/contact">Contact Us</a></li>
 					
