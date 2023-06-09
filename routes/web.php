@@ -63,9 +63,9 @@ Route::post('/contactemail', [EmailController::class, 'contactEmail'])->name('co
 // profile routes here
 
 // meeting routes
-Route::get('/welcome', function () {
-    return view('welcome');
-})->name('welcome');
+Route::get('/meet', function () {
+    return view('meet');
+})->name('meet');
 
 
 Route::post("/createMeeting", [MeetingController::class, 'createMeeting'])->name("createMeeting");
