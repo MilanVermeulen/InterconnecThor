@@ -2,6 +2,7 @@
 
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\UserController;
+use App\Http\Controllers\MeetingController;
 
 /*
 |--------------------------------------------------------------------------
@@ -56,3 +57,22 @@ Route::get('/contact', function () {
 
 // profile routes (only for logged in students)
 // profile routes here
+
+// meeting routes
+Route::get('/welcome', function () {
+    return view('welcome');
+})->name('welcome');
+
+
+Route::post("/createMeeting", [MeetingController::class, 'createMeeting'])->name("createMeeting");
+
+Route::post("/validateMeeting", [MeetingController::class, 'validateMeeting'])->name("validateMeeting");
+
+Route::get("/meeting/{meetingId}", function($meetingId) {
+
+    $METERED_DOMAIN = env('METERED_DOMAIN');
+    return view('meeting', [
+        'METERED_DOMAIN' => $METERED_DOMAIN,
+        'MEETING_ID' => $meetingId
+    ]);
+});
