@@ -80,3 +80,9 @@ Route::get("/meeting/{meetingId}", function($meetingId) {
         'MEETING_ID' => $meetingId
     ]);
 });
+
+Route::get('profile', [UserController::class, 'showProfile'])->name('profile');
+
+
+//route for creating posts
+

@@ -18,7 +18,7 @@ class UserController extends Controller
         $courses = Course::all(); // fetch all courses from the database
         return view('register', compact('courses')); // pass the courses to the register view
     }
-    
+
     // Handle the registration request
     public function register(Request $request)
     {
@@ -38,12 +38,12 @@ class UserController extends Controller
             'start_years' => 'required|array|min:1', // validates that at least 1 start year is provided
             'start_years.*' => 'required|integer|min:1900|max:'.(date('Y') + 2), // validates that every start year is an integer and is required and within the specified range
             'end_years' => 'required|array|min:1', // validates that at least 1 end year is provided
-            'end_years.*' => 'required|integer|min:1900|max:'.(date('Y') + 4).'|gte:start_years.*', // validates that every end year is an integer and is required and within the specified range and at least the corresponding start year            
+            'end_years.*' => 'required|integer|min:1900|max:'.(date('Y') + 4).'|gte:start_years.*', // validates that every end year is an integer and is required and within the specified range and at least the corresponding start year
             // 'profile_picture' => [
             //     File::types(['png', 'jpg', 'jpeg', 'gif'])->max(5120), // validates that the file is a png, jpg, jpeg, or gif and is smaller than 5120 kilobytes (5 megabytes)
-            // ],    
+            // ],
             'profile_picture' => 'image|mimes:jpeg,png,jpg,gif,svg|max:5120', // validates that the file is an image and is smaller than 5120 kilobytes (5 megabytes)
-            
+
         ]);
 
         // Handle the profile picture upload
@@ -130,12 +130,12 @@ class UserController extends Controller
     public function logout(Request $request)
     {
         Auth::logout();
-    
+
         $request->session()->invalidate();
         $request->session()->regenerateToken();
-    
+
         return redirect()->route('home')->with('success', 'Logged out successfully!');
-    }    
+    }
 
    // Search
     public function search(Request $request)
@@ -170,4 +170,12 @@ class UserController extends Controller
         return view('search', compact('users'));
     }
 
+    public function showProfile()
+    {
+        // Retrieve the currently authenticated user
+        $user = auth()->user();
+
+        // Pass the user data to the view
+        return view('profile', compact('user'));
+    }
 }
