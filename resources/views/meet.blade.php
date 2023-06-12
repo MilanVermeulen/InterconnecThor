@@ -19,6 +19,9 @@
             body {
                 font-family: 'Nunito', sans-serif;
             }
+            .bg-custom {
+              background-color: #2BA2C5;
+            }
         </style>
 
         @vite(['resources/css/app.css', 'resources/js/app.js'])
@@ -61,11 +64,20 @@
                       <div class="md:col-span-2">
                         <form method="post" action="{{ route('createMeeting') }}">
                             {{ csrf_field() }}
-                            <button type="submit" class="mt-1 inline-flex items-center px-4 py-2 border border-transparent text-sm font-medium rounded-md shadow-sm text-white bg-indigo-600 hover:bg-indigo-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-indigo-500">Create New Meeting</button>
+                            <button type="submit" style="background-color: #2BA2C5;"  onmouseover="this.style.backgroundColor='#4338ca';" onmouseout="this.style.backgroundColor='#2BA2C5';" class="mt-1 inline-flex items-center px-4 py-2 border border-transparent text-sm font-medium rounded-md shadow-sm text-white bg-indigo-600 hover:bg-indigo-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-indigo-500">Create New Meeting</button>
                         </form>
                     </div>
                 </div>
 
+            </div>
+            <div class="flex justify-center items-center h-screen">
+                <a href="{{ url('/') }}">
+                    <button class="inline-flex items-center px-4 py-2 border border-transparent text-sm rounded-md shadow-sm text-white bg-custom hover:bg-indigo-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-indigo-500">
+                        <span class="">
+                            Home
+                        </span>
+                    </button>
+                </a>
             </div>
   
         </div> 

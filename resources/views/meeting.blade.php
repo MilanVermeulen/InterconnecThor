@@ -19,6 +19,9 @@
             body {
                 font-family: 'Nunito', sans-serif;
             }
+            .bg-custom {
+              background-color: #2BA2C5;
+            }
         </style>
 
         <script src="https://cdn.metered.ca/sdk/video/1.4.5/sdk.min.js"></script>
@@ -81,7 +84,7 @@
                         </div>
 
                         <div>
-                            <button id='joinMeetingBtn' class="inline-flex items-center px-4 py-2 border border-transparent text-sm rounded-md shadow-sm text-white bg-indigo-600 hover:bg-indigo-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-indigo-500">
+                            <button id='joinMeetingBtn' style="background-color: #2BA2C5;"  onmouseover="this.style.backgroundColor='#4338ca';" onmouseout="this.style.backgroundColor='#2BA2C5';" class="inline-flex items-center px-4 py-2 border border-transparent text-sm rounded-md shadow-sm text-white bg-indigo-600 hover:bg-indigo-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-indigo-500">
                                 Join Meeting
                             </button>
                         </div>
@@ -129,21 +132,21 @@
                 
             </div>
         </div>
-
         <div id="leaveMeetingView" class="hidden">
             <h1 class="text-center text-3xl mt-10 font-bold">
                 You have left the meeting 
             </h1>
-            <div class="flex justify-center items-center h-screen">
+        </div>
+        
+            <div class="flex justify-center pt-5">
                 <a href="{{ url('/') }}">
-                    <button class="relative inline-flex items-center justify-center p-0.5 mb-2 mr-2 overflow-hidden text-sm font-medium text-gray-900 rounded-lg group bg-gradient-to-br from-purple-600 to-blue-500 group-hover:from-purple-600 group-hover:to-blue-500 hover:text-white dark:text-white focus:ring-4 focus:outline-none focus:ring-blue-300 dark:focus:ring-blue-800">
-                        <span class="relative px-5 py-2.5 transition-all ease-in duration-75 bg-white dark:bg-gray-900 rounded-md group-hover:bg-opacity-0">
+                    <button class="inline-flex items-center px-4 py-2 border border-transparent text-sm rounded-md shadow-sm text-white bg-custom hover:bg-indigo-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-indigo-500">
+                        <span class="">
                             Home
                         </span>
                     </button>
                 </a>
             </div>
-        </div>
-        
+
     </body>
 </html>
