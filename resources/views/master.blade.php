@@ -33,18 +33,16 @@
 					<li class="nav-item"><a class="{{Request::path() === '/' ? 'nav-link active active' : 'nav-link' }}" href="/"><i class="fa-solid fa-house"></i></a></li>
 					<li class="nav-item"><a class="{{Request::path() === 'faq' ? 'nav-link active active' : 'nav-link' }}" href="/faq">FAQ</a></li>
 					<li class="nav-item"><a class="{{Request::path() === 'about' ? 'nav-link active active' : 'nav-link' }}" href="/about">About Us</a></li>
-					<li class="nav-item"><a class="{{Request::path() === 'chat' ? 'nav-link active active' : 'nav-link' }}" href="/chat">Chat</a></li>
-					<li class="nav-item"><a class="{{Request::path() === 'meet' ? 'nav-link active active' : 'nav-link' }}" href="/meet">Meet</a></li>
-					<li class="nav-item"><a class="{{Request::path() === 'contact' ? 'nav-link active active' : 'nav-link' }}" href="/contact">Contact Us</a></li>
-					
+					<li class="nav-item"><a class="{{Request::path() === 'contact' ? 'nav-link active active' : 'nav-link' }}" href="/contact">Contact Us</a></li>					
 					{{-- dropdown menu when logged in --}}
 					@auth
 						<li class="nav-item dropdown">
-							<a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">Profile</a>
+							<a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">{{ Auth::user()->first_name }}</a>
 							<ul class="dropdown-menu">
 								<li><a class="dropdown-item" href="#">Your profile</a></li>
-								<li><a class="dropdown-item" href="#">Settings</a></li>
-								<li><a class="dropdown-item" href="#">Privacy</a></li>
+								<li><a class="dropdown-item" href="/chat">Chat</a></li>
+								<li><a class="dropdown-item" href="/meet">Meet</a></li>
+								<li><a class="dropdown-item" href="#">Settings & Privacy</a></li>
 							</ul>
 						</li>
 					@endauth
