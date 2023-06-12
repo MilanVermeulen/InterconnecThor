@@ -35,6 +35,10 @@ Route::group(['middleware' => 'guest'], function () {
     // login users
     Route::get('/login', [UserController::class, 'showLoginForm'])->name('login');
     Route::post('/login', [UserController::class, 'login']);
+    // forgot password
+    Route::get('/forgot-password', [UserController::class, 'showForgotPasswordForm'])->name('forgot-password');
+    // Forgot password email
+    Route::post('/forgot-password', [EmailController::class, 'forgotPasswordEmail'])->name('forgot-password-email');
 });
 
 // logout students
@@ -82,7 +86,6 @@ Route::get("/meeting/{meetingId}", function($meetingId) {
 });
 
 Route::get('profile', [UserController::class, 'showProfile'])->name('profile');
-
 
 //route for creating posts
 

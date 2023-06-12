@@ -137,6 +137,12 @@ class UserController extends Controller
         return redirect()->route('home')->with('success', 'Logged out successfully!');
     }
 
+    // Forgot password
+    public function showForgotPasswordForm()
+    {
+        return view('forgot-password');
+    }
+
    // Search
     public function search(Request $request)
     {

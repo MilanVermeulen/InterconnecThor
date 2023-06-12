@@ -8,7 +8,7 @@
             {{-- title --}}
             <div class="row justify-content-center mb-5">
                 <div class="col-md-10">
-                    <h2 class="text-center text-primary fw-bold">Log In</h2>
+                    <h2 class="text-center text-primary fw-bold">Forgot Password</h2>
                 </div>
             </div>
 
@@ -31,24 +31,16 @@
             {{-- form --}}
             <div class="row justify-content-center">
                 <div class="col-md-10">
-                    <form action="{{ route('login') }}" method="POST" class="mb-1">
+                    <form action="" method="POST" class="mb-1">
                         @csrf
         
                         <div class="form-group mb-3">
                             <label for="email" class="mb-1">Email address</label>
                             <input type="email" name="email" class="form-control" id="email" placeholder="Enter your email" required>
                         </div>
-        
-                        <div class="form-group mb-3">
-                            <label for="password" class="mb-1">Password</label>
-                            <input type="password" name="password" class="form-control" id="password" placeholder="Enter a password" required>
-                        </div>
                         
                         <button type="submit" class="btn btn-outline-primary">Submit</button>
                     </form>
-
-                    <a href="/forgot-password" class="text-decoration-none">Forgot password?</a>
-
                 </div>
             </div>
                                 
