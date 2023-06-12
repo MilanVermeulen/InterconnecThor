@@ -25,6 +25,7 @@ class UserController extends Controller
         $request->validate([
             'first_name' => 'required|max:255',
             'last_name' => 'required|max:255',
+            'name' => 'required|max:255|unique:users', // validates that the name is required, is a string, is unique in the users table, and has a maximum length of 255 characters
             'email' => 'required|email|unique:users',
             'phone' => 'required',
             'street_nr' => 'required',
@@ -64,6 +65,7 @@ class UserController extends Controller
         $user = new User;
         $user->first_name = $request->input('first_name');
         $user->last_name = $request->input('last_name');
+        $user->name = $request->input('name');
         $user->email = $request->input('email');
         $user->phone = $request->input('phone');
         $user->street_nr = $request->input('street_nr');

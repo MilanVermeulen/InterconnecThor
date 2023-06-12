@@ -43,6 +43,10 @@
                             <label class="mb-1" for="last_name">Last Name</label>
                             <input type="text" class="form-control mb-3" id="last_name" name="last_name" placeholder="Enter your last name" value="{{ old('last_name') }}" required>
                         </div>
+
+                        <div class="form-group">
+                            <label class="mb-1" for="name">Username</label>
+                            <input type="text" class="form-control mb-3" id="name" name="name" placeholder="Enter your username" value="{{ old('name') }}" required>
         
                         <div class="form-group">
                             <label class="mb-1" for="email">Email address</label>
