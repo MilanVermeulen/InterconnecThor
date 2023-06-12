@@ -9,8 +9,8 @@ class Post extends Model
 {
     use HasFactory;
 
-    public function category()
+    public function users()
     {
-        return $this->belongsTo('App\Models\Category');
+        return $this->belongsTo('App\Models\User');
     }
 }

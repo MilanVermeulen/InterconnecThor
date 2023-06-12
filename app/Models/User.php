@@ -21,13 +21,13 @@ class User extends \TCG\Voyager\Models\User
         'name',
         'email',
         'password',
-        'first_name', 
-        'last_name', 
-        'phone', 
-        'streetnr', 
-        'postal_code', 
-        'city', 
-        'country', 
+        'first_name',
+        'last_name',
+        'phone',
+        'streetnr',
+        'postal_code',
+        'city',
+        'country',
         "profile_picture"
     ];
 
@@ -60,5 +60,10 @@ class User extends \TCG\Voyager\Models\User
     public function categories()
     {
         return $this->belongsToMany(Category::class, 'category_user')->withTimestamps();
-    }   
+    }
+
+    public function posts()
+    {
+        return $this->hasMany(Post::class);
+    }
 }
