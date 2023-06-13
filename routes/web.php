@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\PostController;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\UserController;
 use App\Http\Controllers\MeetingController;
@@ -17,9 +18,7 @@ use App\Http\Controllers\EmailController;
 */
 
 // home page
-Route::get('/', function () {
-    return view('home');
-})->name('home');
+Route::get('/', [PostController::class, 'home'])->name('home');
 
 // voyager
 Route::group(['prefix' => 'admin'], function () {
@@ -83,6 +82,5 @@ Route::get("/meeting/{meetingId}", function($meetingId) {
 
 Route::get('profile', [UserController::class, 'showProfile'])->name('profile');
 
-
-//route for creating posts
+Route::post('post',[PostController::class, 'create'])->name('post');
 

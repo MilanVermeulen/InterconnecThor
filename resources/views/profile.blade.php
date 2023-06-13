@@ -1,5 +1,4 @@
 @extends('master')
-
 @section('content')
     <div class="row justify-content-center mb-5">
         <div class="col-md-10 p-5 bg-light rounded">
@@ -30,10 +29,28 @@
                     </p>
                 </div>
                 <div class="col-md-8 bg-light">
-                    lorem ipsum
+                    <div class="row">
+                        <div class="col-md-12">
+                            <div class="form-control mb-3">
+                                @include('postForm')
+                            </div>
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="col-md-12">
+                            @foreach($posts as $post)
+                                <div class="post">
+                                    <h3>{{ $post->title }}</h3>
+                                    <p>{{ $post->description }}</p>
+                                    <p>Posted by: {{ $post->user->name }}</p>
+                                </div>
+                                <hr>
+                            @endforeach
+                        </div>
+                    </div>
                 </div>
+
+
             </div>
-
-        </div>
+    </div>
 @endsection
-

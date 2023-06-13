@@ -178,4 +178,5 @@ class UserController extends Controller
         // Pass the user data to the view
         return view('profile', compact('user'));
     }
+
 }
