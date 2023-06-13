@@ -52,30 +52,28 @@
                         <div class="row justify-content-center text-center">
                             <div class="col-md-10">
                                 <div class="row justify-content-center text-center">
-                                    <div class="col-md-4 text-start mb-5">
+                                    <div class="col-md-5 text-start mb-5">
                                         <row class="form-control">
                                             @include('postForm')
                                         </row>
                                     </div>
-                                    <div class="col-md-4 mb-5">
-                                        <img src="{{ asset('/assets/logo.png') }}" alt="logo" class="img-fluid"
-                                             style="max-height: 50vh">
-                                    </div>
-                                    <div class="col-md-4 text-end mb-5">
+                                    <div class="col-md-7 text-start mb-5">
                                         @isset($posts)
                                             @foreach ($posts as $post)
-                                                <div class="card-header bg-primary rounded">
-                                                    <h3>
-                                                        @if ($post->users->name)
-                                                        {{ $post->users->name }}
+                                                <div class="card mb-3">
+                                                    <div class="card-header bg-primary rounded">
+                                                        <h3>
+                                                            @if ($post->users->first_name)
+                                                                {{ $post->users->first_name }} {{ $post->users->last_name }}
                                                             @else
-                                                        No user set
+                                                                No user set
                                                             @endif
-                                                    </h3>
-                                                </div>
-                                                <div class="card-body btn-outline-dark">
-                                                    <h3>{{ $post->title }}</h3>
-                                                    <p>{{ $post->description }}</p>
+                                                        </h3>
+                                                    </div>
+                                                    <div class="card-body">
+                                                        <h3>{{ $post->title }}</h3>
+                                                        <p>{{ $post->description }}</p>
+                                                    </div>
                                                 </div>
                                             @endforeach
                                         @endisset

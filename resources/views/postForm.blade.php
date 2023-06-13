@@ -1,4 +1,4 @@
-<form method="post" action="{{ route('post') }}">
+<form method="post" action="{{ route('postform') }}">
     @csrf <!-- Include CSRF token for form protection -->
 
     @if(Request::is('profile/*'))

@@ -26,20 +26,18 @@ class PostController extends Controller
 
         $post->save();
 
-        return view('home')->with('success', 'Successfully created post!');
+
+        return redirect(route('home'))->with('success', 'Successfully created post!');
     }
 
 
     //show all posts
     public function home()
     {
-        // Retrieve all posts from the database
-        $posts = Post::with('users')->get();
-        dd($posts);
+        // Retrieve all posts from the database sort decent by id
+        $posts = Post::with('users')->orderBy('id', 'desc')->get();
         // Pass the posts data to the home view
         return view('home', compact('posts'));
     }
-
-
 }
 

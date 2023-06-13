@@ -82,5 +82,5 @@ Route::get("/meeting/{meetingId}", function($meetingId) {
 
 Route::get('profile', [UserController::class, 'showProfile'])->name('profile');
 
-Route::post('post',[PostController::class, 'create'])->name('post');
+Route::post('/postform',[PostController::class, 'create'])->name('postform');
 

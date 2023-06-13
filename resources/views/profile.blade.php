@@ -38,14 +38,7 @@
                     </div>
                     <div class="row">
                         <div class="col-md-12">
-                            @foreach($posts as $post)
-                                <div class="post">
-                                    <h3>{{ $post->title }}</h3>
-                                    <p>{{ $post->description }}</p>
-                                    <p>Posted by: {{ $post->user->name }}</p>
-                                </div>
-                                <hr>
-                            @endforeach
+
                         </div>
                     </div>
                 </div>
