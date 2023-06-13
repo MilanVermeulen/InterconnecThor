@@ -9,6 +9,8 @@ use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Storage;
 use Illuminate\Support\Str;
 use Illuminate\Validation\Rules\File;
+use Illuminate\Support\Facades\DB;
+use Illuminate\Support\Facades\Hash;
 
 class UserController extends Controller
 {
@@ -137,11 +139,53 @@ class UserController extends Controller
         return redirect()->route('home')->with('success', 'Logged out successfully!');
     }
 
-    // Forgot password
+    // Show the forgot password form
     public function showForgotPasswordForm()
     {
         return view('forgot-password');
     }
+
+    // Show reset password form
+    public function showResetPasswordForm($token)
+    {
+        return view('reset-password', ['token' => $token]);
+    }
+
+    // reset password
+    public function updatePassword(Request $request)
+    {
+        $request->validate([
+            'token' => 'required',
+            'password' => 'required|confirmed|min:8',
+        ]);
+    
+        $passwordReset = DB::table('password_resets')
+            ->where('token', hash('sha256', $request->token))
+            ->first();
+    
+        if (!$passwordReset) {
+            // Token not found
+            return redirect()->back()->withErrors(['email' => 'This password reset token is invalid.']);
+        }
+    
+        $user = User::where('email', $passwordReset->email)->first();
+    
+        if (!$user) {
+            // User not found
+            return redirect()->back()->withErrors(['email' => 'We can\'t find a user with that email address.']);
+        }
+    
+        // Update password
+        $user->password = Hash::make($request->password);
+        $user->save();
+    
+        // Delete the token
+        DB::table('password_resets')->where('email', $user->email)->delete();
+    
+        // Redirect to login with success message
+        return redirect()->route('login')->with(['message' => 'Your password has been changed!']);
+    }
+    
 
    // Search
     public function search(Request $request)

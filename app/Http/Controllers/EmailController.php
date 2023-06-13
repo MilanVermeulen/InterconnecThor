@@ -7,6 +7,10 @@ use App\Mail\ForgotPasswordEmail;
 use App\Models\User;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Mail;
+use Illuminate\Support\Str;
+use Illuminate\Support\Facades\DB;
+use Illuminate\Support\Facades\Hash;
+use Carbon\Carbon;
 
 class EmailController extends Controller
 {
@@ -48,8 +52,16 @@ class EmailController extends Controller
         $user = User::where('email', $emailData['email'])->first();
 
         if ($user) {
+            // Create a new token
+            $token = Str::random(60);
+            DB::table('password_resets')->insert([
+                'email' => $user->email,
+                'token' => hash('sha256', $token),
+                'created_at' => Carbon::now(),
+            ]);
+
             // Send the email
-            Mail::to($user->email)->send(new ForgotPasswordEmail($emailData));
+            Mail::to($user->email)->send(new ForgotPasswordEmail(['email' => $emailData['email'], 'token' => $token]));
         }
 
         return redirect()->route('login')->with('success', 'An email has been sent to you with instructions on how to reset your password.');

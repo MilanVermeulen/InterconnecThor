@@ -40,7 +40,7 @@
                 <h4>{{ $email }}</h4>
             </div>
             <div class="card-body">
-                <a href="">Click this link to reset you password</a>
+              <p>Click <a href="{{ url('reset-password/' . $token) }}">here</a> to reset your password.</p>
             </div>
           </div>
 

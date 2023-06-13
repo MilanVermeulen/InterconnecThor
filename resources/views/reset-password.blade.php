@@ -8,26 +8,14 @@
             {{-- title --}}
             <div class="row justify-content-center mb-5">
                 <div class="col-md-10">
-                    <h2 class="text-center text-primary fw-bold">Log In</h2>
+                    <h2 class="text-center text-primary fw-bold">Reset Password</h2>
                 </div>
             </div>
-
-            {{-- succes message --}}
-            @if (session('success'))
-                <div class="row justify-content-center mb-5">
-                    <div class="col-md-10">
-                        <div class="alert alert-success text-center">
-                            {{ session('success') }}
-                        </div>
-                    </div>
-                </div>
-            @endif
 
             {{-- validation errors (IMPORTANT:ONLY APPROVED USERS CAN LOG IN) --}}
             @if ($errors->any())
                 <div class="row justify-content-center mb-5">
                     <div class="col-md-10">
-    
                         <div class="alert alert-danger">
                             <ul>
                                 @foreach ($errors->all() as $error)
@@ -42,24 +30,26 @@
             {{-- form --}}
             <div class="row justify-content-center">
                 <div class="col-md-10">
-                    <form action="{{ route('login') }}" method="POST" class="mb-1">
+                    <form action="{{ route('password.update') }}" method="POST" class="mb-1">
                         @csrf
-        
-                        <div class="form-group mb-3">
-                            <label for="email" class="mb-1">Email address</label>
-                            <input type="email" name="email" class="form-control" id="email" placeholder="Enter your email" required>
+                        
+                        <!-- Token -->
+                        <input type="hidden" name="token" value="{{ $token }}">
+
+                        <!-- Password -->
+                        <div class="form-group">
+                            <label for="password">Password</label>
+                            <input type="password" name="password" id="password" class="form-control" required>
                         </div>
-        
-                        <div class="form-group mb-3">
-                            <label for="password" class="mb-1">Password</label>
-                            <input type="password" name="password" class="form-control" id="password" placeholder="Enter a password" required>
+
+                        <!-- Confirm Password -->
+                        <div class="form-group">
+                            <label for="password_confirmation">Confirm Password</label>
+                            <input type="password" name="password_confirmation" id="password_confirmation" class="form-control" required>
                         </div>
                         
                         <button type="submit" class="btn btn-outline-primary">Submit</button>
                     </form>
-
-                    <a href="/forgot-password" class="text-decoration-none">Forgot password?</a>
-
                 </div>
             </div>
                                 

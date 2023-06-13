@@ -39,6 +39,10 @@ Route::group(['middleware' => 'guest'], function () {
     Route::get('/forgot-password', [UserController::class, 'showForgotPasswordForm'])->name('forgot-password');
     // Forgot password email
     Route::post('/forgot-password', [EmailController::class, 'forgotPasswordEmail'])->name('forgot-password-email');
+    // Reset password form
+    Route::get('/reset-password/{token}', [UserController::class, 'showResetPasswordForm'])->name('reset-password');
+    // Reset password
+    Route::post('/password/update', [UserController::class, 'updatePassword'])->name('password.update');
 });
 
 // logout students

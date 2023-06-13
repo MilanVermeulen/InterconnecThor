@@ -18,10 +18,10 @@ class ForgotPasswordEmail extends Mailable
     /**
      * Create a new message instance.
      *
-     * @param  string  $data
+     * @param  array  $data
      * @return void
      */
-    public function __construct($data)
+    public function __construct(array $data)
     {
         $this->data = $data;
     }
@@ -70,6 +70,7 @@ class ForgotPasswordEmail extends Mailable
         return $this->view('emails.forgot-password')
                     ->with([
                         'email' => $this->data['email'],
+                        'token' => $this->data['token'],
                     ]);
     }
 }
