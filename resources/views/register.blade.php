@@ -31,50 +31,50 @@
             {{-- form --}}
             <div class="row justify-content-center">
                 <div class="col-md-10">
-                    <form action="{{ route('register') }}" method="POST" enctype="multipart/form-data">
+                    <form action="{{ route('register') }}" method="POST" enctype="multipart/form-data" class="p-3 border rounded">
                         @csrf
         
                         <div class="form-group">
-                            <label class="mb-1" for="first_name">First Name</label>
+                            <label class="mb-1 fw-bold text-primary" for="first_name">First Name</label>
                             <input type="text" class="form-control mb-3" id="first_name" name="first_name" placeholder="Enter your first name" value="{{ old('first_name') }}" required>
                         </div>
         
                         <div class="form-group">
-                            <label class="mb-1" for="last_name">Last Name</label>
+                            <label class="mb-1 fw-bold text-primary" for="last_name">Last Name</label>
                             <input type="text" class="form-control mb-3" id="last_name" name="last_name" placeholder="Enter your last name" value="{{ old('last_name') }}" required>
                         </div>
 
                         <div class="form-group">
-                            <label class="mb-1" for="name">Username</label>
+                            <label class="mb-1 fw-bold text-primary" for="name">Username</label>
                             <input type="text" class="form-control mb-3" id="name" name="name" placeholder="Enter your username" value="{{ old('name') }}" required>
         
                         <div class="form-group">
-                            <label class="mb-1" for="email">Email address</label>
+                            <label class="mb-1 fw-bold text-primary" for="email">Email address</label>
                             <input type="email" class="form-control mb-3" id="email" name="email" placeholder="Enter your email" value="{{ old('email') }}" required>
                         </div>
         
                         <div class="form-group">
-                            <label class="mb-1" for="phone">Phone</label>
+                            <label class="mb-1 fw-bold text-primary" for="phone">Phone</label>
                             <input type="tel" class="form-control mb-3" id="phone" name="phone" placeholder="Enter your phone number" value="{{ old('phone') }}" required>
                         </div>
         
                         <div class="form-group">
-                            <label class="mb-1" for="street_nr">Street + Number</label>
+                            <label class="mb-1 fw-bold text-primary" for="street_nr">Street + Number</label>
                             <input type="text" class="form-control mb-3" id="street_nr" name="street_nr" placeholder="Enter your street and number" value="{{ old('street_nr') }}" required>
                         </div>
                         
                         <div class="form-group">
-                            <label class="mb-1" for="postal_code">Postal Code</label>
+                            <label class="mb-1 fw-bold text-primary" for="postal_code">Postal Code</label>
                             <input type="number" class="form-control mb-3" id="postal_code" name="postal_code" placeholder="Enter your postal code" value="{{ old('postal_code') }}" required>
                         </div>
                         
                         <div class="form-group">
-                            <label class="mb-1" for="city">City</label>
+                            <label class="mb-1 fw-bold text-primary" for="city">City</label>
                             <input type="text" class="form-control mb-3" id="city" name="city" placeholder="Enter your city" value="{{ old('city') }}" required>
                         </div>
         
                         <div class="form-group">
-                            <label class="mb-1" for="country">Country</label>
+                            <label class="mb-1 fw-bold text-primary" for="country">Country</label>
                             <select class="form-control mb-3" id="country" name="country" required>
                                 <option value="Belgium" @if(old('country') == 'Belgium') selected @endif>Belgium</option>
                                 <option value="Netherlands" @if(old('country') == 'Netherlands') selected @endif>Netherlands</option>
@@ -85,7 +85,7 @@
 
                         {{-- course(s) --}}
                         <div class="form-group mb-3">
-                            <label class="mb-1">Courses</label>
+                            <label class="mb-1 fw-bold text-primary">Courses</label>
 
                             <div class="course-inputs-container">
                                 <div class="course-inputs mb-2">
@@ -106,19 +106,19 @@
 
                         {{-- profile picture --}}
                         <div class="form-group">
-                            <label class="mb-1" for="profile_picture">Profile Picture</label><br>
+                            <label class="mb-1 fw-bold text-primary" for="profile_picture">Profile Picture</label><br>
                             <input class="form-control mb-3" type="file" name="profile_picture" id="profile_picture">
                         </div>
                                                         
                         {{-- password --}}
                         <div class="form-group">
-                            <label class="mb-1" for="password">Password</label>
+                            <label class="mb-1 fw-bold text-primary" for="password">Password</label>
                             <input type="password" class="form-control mb-3" id="password" name="password" placeholder="Enter your password" required>
                         </div>
         
                         {{-- password confirmation --}}
                         <div class="form-group">
-                            <label class="mb-1" for="password_confirmation">Confirm Password</label>
+                            <label class="mb-1 fw-bold text-primary" for="password_confirmation">Confirm Password</label>
                             <input type="password" class="form-control mb-3" id="password_confirmation" name="password_confirmation" placeholder="Confirm your password" required>
                         </div>
         

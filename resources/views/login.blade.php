@@ -42,26 +42,26 @@
             {{-- form --}}
             <div class="row justify-content-center">
                 <div class="col-md-10">
-                    <form action="{{ route('login') }}" method="POST" class="mb-1">
+                    <form action="{{ route('login') }}" method="POST" class="p-3 border rounded">
                         @csrf
-        
+            
                         <div class="form-group mb-3">
-                            <label for="email" class="mb-1">Email address</label>
-                            <input type="email" name="email" class="form-control" id="email" placeholder="Enter your email" required>
+                            <label for="identifier" class="mb-1 fw-bold text-primary">Email or Username</label>
+                            <input type="text" name="identifier" class="form-control" id="identifier" placeholder="Enter your email or username" required>
                         </div>
-        
+            
                         <div class="form-group mb-3">
-                            <label for="password" class="mb-1">Password</label>
+                            <label for="password" class="mb-1 fw-bold text-primary">Password</label>
                             <input type="password" name="password" class="form-control" id="password" placeholder="Enter a password" required>
                         </div>
                         
                         <button type="submit" class="btn btn-outline-primary">Submit</button>
+
+                        <a href="/forgot-password" class="text-decoration-none text-primary fp-hover">Forgot password?</a>
                     </form>
-
-                    <a href="/forgot-password" class="text-decoration-none text-primary fp-hover">Forgot password?</a>
-
+            
                 </div>
-            </div>
+            </div>            
                                 
         </div>
     </div>
