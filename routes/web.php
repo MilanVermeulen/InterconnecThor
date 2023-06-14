@@ -66,14 +66,10 @@ Route::get('/contact', function () {
 // send contact mail
 Route::post('/contactemail', [EmailController::class, 'contactEmail'])->name('contactemail');
 
-// profile routes (only for logged in students)
-// profile routes here
-
 // meeting routes
 Route::get('/meet', function () {
     return view('meet');
 })->name('meet');
-
 
 Route::post("/createMeeting", [MeetingController::class, 'createMeeting'])->name("createMeeting");
 
@@ -88,6 +84,7 @@ Route::get("/meeting/{meetingId}", function($meetingId) {
     ]);
 });
 
+// profile routes
 Route::get('profile', [UserController::class, 'showProfile'])->name('profile');
 
 Route::post('/postform',[PostController::class, 'create'])->name('postform');
