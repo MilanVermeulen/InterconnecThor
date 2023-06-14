@@ -55,10 +55,6 @@
 
                             <div class="row">
                                 <div class="col-md-6">
-                                    {{-- post form --}}
-                                    @include('postForm')                            
-                                </div>
-                                <div class="col-md-6">
                                     {{-- posts/feed --}}
                                     <h4 class="mb-3 fw-bold">Feed</h4>
                                     @isset($posts)
@@ -91,10 +87,15 @@
                                         @endforelse
                                     @endisset
                                 </div>
+                                <div class="col-md-6">
+                                    {{-- post form --}}
+                                    @include('postForm')                            
+                                </div>
                             </div>
 
                         </div>
                     </div>
+                    
                 @else
 
                     <div class="row justify-content-center text-center">

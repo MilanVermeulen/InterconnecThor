@@ -30,7 +30,6 @@ class PostController extends Controller
         return redirect(route('home'))->with('success', 'Successfully created post!');
     }
 
-
     //show all posts
     public function home()
     {
@@ -63,4 +62,3 @@ class PostController extends Controller
     }
 
 }
-

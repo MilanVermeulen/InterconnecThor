@@ -69,7 +69,7 @@
                                 <ul class="card-text">
                                     @forelse ($user->courses as $course)
                                         <li>{{ $course->name }}<br>
-                                            <span class="small">({{ $course->pivot->start_year }} - {{ $course->pivot->end_year }})</span></li>
+                                            <span class="small">{{ $course->pivot->start_year }} - {{ $course->pivot->end_year }}</span></li>
                                     @empty
                                         <li>No courses found</li>
                                     @endforelse
