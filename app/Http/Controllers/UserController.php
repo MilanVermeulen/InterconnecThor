@@ -156,7 +156,7 @@ class UserController extends Controller
     {
         $request->validate([
             'token' => 'required',
-            'password' => 'required|confirmed|min:8',
+            'password' => 'required|confirmed|min:6',
         ]);
     
         $passwordReset = DB::table('password_resets')

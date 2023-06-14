@@ -37,14 +37,14 @@
                         <input type="hidden" name="token" value="{{ $token }}">
 
                         <!-- Password -->
-                        <div class="form-group">
-                            <label for="password">Password</label>
+                        <div class="form-group mb-3">
+                            <label for="password" class="mb-1">Password</label>
                             <input type="password" name="password" id="password" class="form-control" required>
                         </div>
 
                         <!-- Confirm Password -->
-                        <div class="form-group">
-                            <label for="password_confirmation">Confirm Password</label>
+                        <div class="form-group mb-3">
+                            <label for="password_confirmation" class="mb-1">Confirm Password</label>
                             <input type="password" name="password_confirmation" id="password_confirmation" class="form-control" required>
                         </div>
                         
