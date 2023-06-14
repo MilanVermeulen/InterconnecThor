@@ -58,7 +58,7 @@
                         <button type="submit" class="btn btn-outline-primary">Submit</button>
                     </form>
 
-                    <a href="/forgot-password" class="text-decoration-none">Forgot password?</a>
+                    <a href="/forgot-password" class="text-decoration-none text-primary fp-hover">Forgot password?</a>
 
                 </div>
             </div>

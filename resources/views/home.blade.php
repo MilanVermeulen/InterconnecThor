@@ -47,42 +47,48 @@
 
             @if (Auth::check())
                 @if (Auth::user()->role_id == 2)
-                    
+
                     {{-- postform + posts/feed --}}
                     <div class="row justify-content-center">
-                        <div class="col-md-6">
+                        <div class="col-md-10">
 
-                            {{-- post form --}}
-                            <h5 class="mb-3 fw-bold">New Post</h5>
-                            @include('postForm')
-
-                            {{-- posts/feed --}}
-                            <h5 class="mb-3 fw-bold">Feed</h5>
-                            @isset($posts)
-                                @foreach ($posts as $post)
-                                    <div class="card mb-3">
-                                        <div class="card-header bg-primary text-light">
-                                            <h4 class="m-0">
-                                                @if ($post->users->first_name)
-                                                    {{ $post->users->first_name }} {{ $post->users->last_name }}
-                                                @else
-                                                    {{ $post->users->name }}
-                                                @endif
-                                            </h4>
-                                        </div>
-                                        <div class="card-body">
-                                            <h5 class="m-0">{{ $post->title }}</h5>
-                                            <p>{{ $post->description }}</p>
-                                        </div>
-                                    </div>
-                                @endforeach
-                            @endisset
+                            <div class="row">
+                                <div class="col-md-6">
+                                    {{-- post form --}}
+                                    <h5 class="mb-3 fw-bold">New Post</h5>
+                                    @include('postForm')                            
+                                </div>
+                                <div class="col-md-6">
+                                    {{-- posts/feed --}}
+                                    <h5 class="mb-3 fw-bold">Feed</h5>
+                                    @isset($posts)
+                                        @foreach ($posts as $post)
+                                            <div class="card mb-3">
+                                                <div class="card-header bg-primary text-light">
+                                                    <h4 class="m-0">
+                                                        @if ($post->users->first_name)
+                                                            {{ $post->users->first_name }} {{ $post->users->last_name }}
+                                                        @else
+                                                            {{ $post->users->name }}
+                                                        @endif
+                                                    </h4>
+                                                </div>
+                                                <div class="card-body">
+                                                    <h5 class="m-0">{{ $post->title }}</h5>
+                                                    <p>{{ $post->description }}</p>
+                                                </div>
+                                            </div>
+                                        @endforeach
+                                    @endisset
+                                </div>
+                            </div>
 
                         </div>
                     </div>
-
+                    
                 @endif
             @else
+
                 <div class="row justify-content-center text-center">
                     <div class="col-md-10">
                         
@@ -102,6 +108,7 @@
 
                     </div>
                 </div>
+                
             @endif
 
         </div>
