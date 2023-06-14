@@ -29,7 +29,7 @@
 
     <div class="form-group mb-3">
         <label for="search" class="mb-1 text-primary fw-bold">Enter Post Keywords</label>
-        <input class="form-control me-2" type="search" name="search" placeholder="Enter keywords or phrases" required minlength="3">
+        <input class="form-control me-2" type="search" name="search" placeholder="Enter keywords or (user)names" required minlength="3">
     </div>
 
     <button class="btn btn-outline-primary me-2 mb-1" type="submit">Search!</button>

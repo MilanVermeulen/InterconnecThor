@@ -62,7 +62,7 @@
                                     {{-- posts/feed --}}
                                     <h4 class="mb-3 fw-bold">Feed</h4>
                                     @isset($posts)
-                                        @foreach ($posts as $post)
+                                        @forelse ($posts as $post)
                                             <div class="card d-flex flex-column mb-3">
                                                 <div class="card-header bg-primary text-light text-shadow">
                                                     <div class="row">
@@ -86,7 +86,9 @@
                                                     <p>{{ $post->description }}</p>
                                                 </div>
                                             </div>
-                                        @endforeach
+                                        @empty
+                                            <p class="text-center">No posts found.</p>
+                                        @endforelse
                                     @endisset
                                 </div>
                             </div>
