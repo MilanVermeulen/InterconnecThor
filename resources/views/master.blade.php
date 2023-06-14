@@ -13,10 +13,22 @@
 	<link href="https://fonts.googleapis.com/css2?family=Nunito&display=swap" rel="stylesheet">
 	<!-- font awesome -->
 	<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.2.1/css/all.min.css" integrity="sha512-MV7K8+y+gLIBoVD59lQIYicR65iaqukzvf/nwasF0nqhPay5w/9lJmVM2hMDcnK1OnMGCdVK+iQrJ7lzPJQd1w==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+	<!-- Tailwindcss styles -->
+	<!-- <script src="https://cdn.tailwindcss.com"></script> -->
+	<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/tailwindcss/2.2.19/tailwind.min.css" referrerpolicy="no-referrer" />
+	<!-- lodash cdn link -->
+	<script src="https://cdnjs.cloudflare.com/ajax/libs/lodash.js/4.17.21/lodash.min.js" integrity="sha512-WFN04846sdKMIP5LKNphMaWzU7YpMyCU245etK3g/2ARYbPK9Ub18eG+ljU96qKRCWh+quCY7yefSmlkQw1ANQ==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+	<style>
+		.bg-custom {
+		background-color: #2BA2C5;
+		}
+	</style>
+	{{-- vite --}}
+	@vite(['resources/css/app.css', 'resources/js/app.js'])
 	{{-- custom css --}}
 	<link href="{{ asset('css/custom.css') }}" rel="stylesheet">
 </head>
-<body class="bg-dark">
+<body class="bg-dark antialiased">
 
 	{{-- navbar --}}
 	<nav class="navbar navbar-expand-lg bg-dark" data-bs-theme="dark" style="min-height: 10vh">
