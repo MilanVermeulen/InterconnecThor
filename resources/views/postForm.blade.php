@@ -1,4 +1,4 @@
-<form method="post" action="{{ route('postform') }}" class="mb-5">
+<form method="post" action="{{ route('postform') }}" class="border rounded p-3 mb-5">
     @csrf <!-- Include CSRF token for form protection -->
 
     @if(Request::is('profile/*'))
@@ -9,8 +9,6 @@
     @else
         <input type="hidden" name="redirect_url" value="{{ url('/') }}">
     @endif
-
-    <h5 class="mb-3 fw-bold">New Post</h5>
 
     <div class="form-group mb-3">
         <label for="title" class="mb-1 text-primary fw-bold">Title</label>
