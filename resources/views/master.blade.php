@@ -34,18 +34,6 @@
 					<li class="nav-item"><a class="{{Request::path() === 'faq' ? 'nav-link active active' : 'nav-link' }}" href="/faq">FAQ</a></li>
 					<li class="nav-item"><a class="{{Request::path() === 'about' ? 'nav-link active active' : 'nav-link' }}" href="/about">About Us</a></li>
 					<li class="nav-item"><a class="{{Request::path() === 'contact' ? 'nav-link active active' : 'nav-link' }}" href="/contact">Contact Us</a></li>
-					{{-- dropdown menu when logged in --}}
-					@auth
-						<li class="nav-item dropdown">
-							<a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">{{ Auth::user()->name }}</a>
-							<ul class="dropdown-menu">
-								<li><a class="dropdown-item" href={{ route('profile') }}>Your profile</a></li>
-								<li><a class="dropdown-item" href="/chat">Chat</a></li>
-								<li><a class="dropdown-item" href="/meet">Meet</a></li>
-								<li><a class="dropdown-item" href="#">Settings & Privacy</a></li>
-							</ul>
-						</li>
-					@endauth
 
 					{{-- search name/city --}}
 					<form class="d-flex mb-1" action="/search" method="GET">
@@ -55,8 +43,18 @@
 					</form>
 				</ul>
 
-				{{-- registration, login, and logout --}}
+				{{-- registration, login, and logout/profile pic/dropdown menu --}}
 				@auth
+					<div class="nav-item dropdown">
+						<a class="nav-link dropdown-toggle text-light me-2" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">{{ Auth::user()->name }}</a>
+						<ul class="dropdown-menu">
+							<li><a class="dropdown-item" href={{ route('profile') }}>Your profile</a></li>
+							<li><a class="dropdown-item" href="/chat">Chat</a></li>
+							<li><a class="dropdown-item" href="/meet">Meet</a></li>
+							<li><a class="dropdown-item" href="#">Settings & Privacy</a></li>
+						</ul>
+					</div>
+
 					<form action="{{ route('logout') }}" method="POST">
 						@csrf
 						@if (Auth::check())
