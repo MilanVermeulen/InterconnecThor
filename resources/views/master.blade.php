@@ -47,7 +47,7 @@
 					{{-- search name/city --}}
 					<form class="d-flex mb-1" action="/search" method="GET">
 						@csrf
-						<input class="form-control me-2" type="search" name="search" placeholder="Search" required minlength="3">
+						<input class="form-control me-2" type="search" name="search" placeholder="Search for students" required minlength="3">
 						<button class="btn btn-outline-primary me-2 mb-1" type="submit">Search</button>
 					</form>
 				</ul>

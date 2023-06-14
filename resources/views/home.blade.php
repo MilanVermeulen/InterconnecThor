@@ -56,7 +56,6 @@
                             <div class="row">
                                 <div class="col-md-6">
                                     {{-- post form --}}
-                                    <h4 class="mb-3 fw-bold">New Post</h4>
                                     @include('postForm')                            
                                 </div>
                                 <div class="col-md-6">
@@ -69,16 +68,16 @@
                                                     <div class="row">
                                                         <div class="col">
                                                             <h4 class="m-0">
-                                                                @if ($post->users->first_name)
-                                                                    <span class="fw-bold">{{ $post->users->first_name }} {{ $post->users->last_name }}<br>
-                                                                    </span> <span class="fs-6">{{ $post->users->name }}</span>
+                                                                @if ($post->user->first_name)
+                                                                    <span class="fw-bold">{{ $post->user->first_name }} {{ $post->user->last_name }}<br>
+                                                                    </span> <span class="fs-6">{{ $post->user->name }}</span>
                                                                 @else
-                                                                    <span class="fs-6">{{ $post->users->name }}</span>
+                                                                    <span class="fs-6">{{ $post->user->name }}</span>
                                                                 @endif
                                                             </h4>                                                            
                                                         </div>
                                                         <div class="col text-end">
-                                                            <img src="{{ asset('storage/' . ($post->users->profile_picture ?: 'profile-pictures/default.jpg')) }}" alt="Profile Picture" class="img-fluid rounded-pill mb-2 border border-light border-2" style="max-height: 7vh; width: auto;">
+                                                            <img src="{{ asset('storage/' . ($post->user->profile_picture ?: 'profile-pictures/default.jpg')) }}" alt="Profile Picture" class="img-fluid rounded-pill mb-2 border border-light border-2" style="max-height: 7vh; width: auto;">
                                                         </div>
                                                     </div>
                                                 </div>

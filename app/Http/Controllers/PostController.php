@@ -35,9 +35,32 @@ class PostController extends Controller
     public function home()
     {
         // Retrieve all posts from the database sort decent by id
-        $posts = Post::with('users')->orderBy('id', 'desc')->get();
+        $posts = Post::with('user')->orderBy('id', 'desc')->get();
         // Pass the posts data to the home view
         return view('home', compact('posts'));
     }
+
+    // search for posts
+    public function search(Request $request)
+    {
+        // Get the search value from the request
+        $search = $request->input('search');
+
+        // Search in the title and description columns from the posts table
+        // Search in the name, first_name and last_name columns from the users table
+        $posts = Post::query()
+            ->where('title', 'LIKE', "%{$search}%")
+            ->orWhere('description', 'LIKE', "%{$search}%")
+            ->orWhereHas('user', function($query) use ($search) {
+                $query->where('name', 'LIKE', "%{$search}%")
+                    ->orWhere('first_name', 'LIKE', "%{$search}%")
+                    ->orWhere('last_name', 'LIKE', "%{$search}%");
+            })
+            ->get();
+
+        // Return the home view with the resuls compacted
+        return view('home', compact('posts'));
+    }
+
 }
 

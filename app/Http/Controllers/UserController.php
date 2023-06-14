@@ -210,6 +210,7 @@ class UserController extends Controller
             ->where(function ($query) use ($search) {
                 $query->where('first_name', 'like', '%' . $search . '%')
                     ->orWhere('last_name', 'like', '%' . $search . '%')
+                    ->orWhere('name', 'like', '%' . $search . '%')
                     ->orWhere('city', 'like', '%' . $search . '%')
                     ->orWhere('postal_code', 'like', '%' . $search . '%')
                     ->orWhereHas('courses', function ($query) use ($search) {

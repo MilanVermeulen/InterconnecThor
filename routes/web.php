@@ -1,10 +1,10 @@
 <?php
 
-use App\Http\Controllers\PostController;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\UserController;
 use App\Http\Controllers\MeetingController;
 use App\Http\Controllers\EmailController;
+use App\Http\Controllers\PostController;
 
 /*
 |--------------------------------------------------------------------------
@@ -71,6 +71,7 @@ Route::get('/meet', function () {
     return view('meet');
 })->name('meet');
 
+// post routes
 Route::post("/createMeeting", [MeetingController::class, 'createMeeting'])->name("createMeeting");
 
 Route::post("/validateMeeting", [MeetingController::class, 'validateMeeting'])->name("validateMeeting");
@@ -84,8 +85,10 @@ Route::get("/meeting/{meetingId}", function($meetingId) {
     ]);
 });
 
+// search posts
+Route::post('/search-posts',[PostController::class, 'search'])->name('search-posts');
+
 // profile routes
 Route::get('profile', [UserController::class, 'showProfile'])->name('profile');
 
 Route::post('/postform',[PostController::class, 'create'])->name('postform');
-
