@@ -65,7 +65,7 @@ The Laravel framework is open-sourced software licensed under the [MIT license](
 
 # interconnecThor
 
-![interconnecThor Logo](logo-link-here)
+![Logo](https://chatter-calcium-c6a.notion.site/image/https%3A%2F%2Fs3-us-west-2.amazonaws.com%2Fsecure.notion-static.com%2F0b50f63a-0354-43ea-815f-be77f1ad2d28%2Flogo.png?id=a84c8cbc-2694-4988-9811-e1fd2135a6b0&table=block&spaceId=50d8163f-6c27-4ed8-94e7-e16b63ae1dae&width=1000&userId=&cache=v2)
 
 **interconnecThor** is a unique social media networking platform exclusively designed for the students of SyntraPXL. Our platform serves as a hub where students can connect, share ideas, and transform their innovative thoughts into meaningful projects.
 
