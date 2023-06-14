@@ -74,7 +74,7 @@
                                                     </h4>
                                                 </div>
                                                 <div class="card-body">
-                                                    <h5 class="m-0">{{ $post->title }}</h5>
+                                                    <h5 class="mb-3 fw-bold">{{ $post->title }}</h5>
                                                     <p>{{ $post->description }}</p>
                                                 </div>
                                             </div>
