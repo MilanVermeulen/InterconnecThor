@@ -1,5 +1,7 @@
 @extends('master')
-@section('content')    
+@section('content')
+<!-- Tailwindcss styles -->
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/tailwindcss/2.2.19/tailwind.min.css" referrerpolicy="no-referrer" />    
 <div class="max-w-7xl mx-auto sm:px-6 lg:px-8 bg-light rounded text-center">
     <div id="waitingArea" class="max-h-screen">
         <div class="py-4">
