@@ -37,7 +37,7 @@
 					{{-- dropdown menu when logged in --}}
 					@auth
 						<li class="nav-item dropdown">
-							<a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">{{ Auth::user()->first_name }}</a>
+							<a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">{{ Auth::user()->name }}</a>
 							<ul class="dropdown-menu">
 								<li><a class="dropdown-item" href={{ route('profile') }}>Your profile</a></li>
 								<li><a class="dropdown-item" href="/chat">Chat</a></li>
