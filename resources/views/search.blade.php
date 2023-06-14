@@ -43,7 +43,7 @@
                 @forelse ($users as $user)
                     <div class="col-md-4 mb-3">
                         <div class="card h-100 d-flex flex-column">
-                            <div class="card-header bg-primary text-white text-shadow">
+                            <div class="card-header bg-primary text-light text-shadow">
                                 <div class="row">
                                     <div class="col">
                                         <h4 class="card-title">{{ $user->first_name }} {{ $user->last_name }}</h4>

@@ -63,15 +63,22 @@
                                     <h5 class="mb-3 fw-bold">Feed</h5>
                                     @isset($posts)
                                         @foreach ($posts as $post)
-                                            <div class="card mb-3">
-                                                <div class="card-header bg-primary text-light">
-                                                    <h4 class="m-0">
-                                                        @if ($post->users->first_name)
-                                                            {{ $post->users->first_name }} {{ $post->users->last_name }} ({{ $post->users->name }})
-                                                        @else
-                                                            {{ $post->users->name }}
-                                                        @endif
-                                                    </h4>
+                                            <div class="card d-flex flex-column mb-3">
+                                                <div class="card-header bg-primary text-light text-shadow">
+                                                    <div class="row">
+                                                        <div class="col">
+                                                            <h4 class="m-0">
+                                                                @if ($post->users->first_name)
+                                                                    <span class="fw-bold">{{ $post->users->first_name }} {{ $post->users->last_name }}</span> ({{ $post->users->name }})
+                                                                @else
+                                                                    {{ $post->users->name }}
+                                                                @endif
+                                                            </h4>
+                                                        </div>
+                                                        <div class="col text-end">
+                                                            <img src="{{ asset('storage/' . ($post->users->profile_picture ?: 'profile-pictures/default.jpg')) }}" alt="Profile Picture" class="img-fluid rounded-pill mb-2 border border-light border-2" style="max-height: 10vh; width: auto;">
+                                                        </div>
+                                                    </div>
                                                 </div>
                                                 <div class="card-body">
                                                     <h5 class="mb-3 fw-bold">{{ $post->title }}</h5>
