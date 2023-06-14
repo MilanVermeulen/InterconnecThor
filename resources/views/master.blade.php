@@ -60,7 +60,7 @@
 							<li><a class="dropdown-item" href={{ route('profile') }}>Your profile</a></li>
 							<li><a class="dropdown-item" href="/chat">Chat</a></li>
 							<li><a class="dropdown-item" href="/meet">Meet</a></li>
-							<li><a class="dropdown-item" href="#">Settings & Privacy</a></li>
+							<li><a class="dropdown-item" href="/settings">Settings & Privacy</a></li>
 						</ul>
 					</div>
 

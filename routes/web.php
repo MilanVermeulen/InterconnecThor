@@ -85,10 +85,16 @@ Route::get("/meeting/{meetingId}", function($meetingId) {
     ]);
 });
 
-// search posts
-Route::post('/search-posts',[PostController::class, 'search'])->name('search-posts');
+// middleware to check if user is logged in
+Route::group(['middleware' => 'auth'], function () {
+    // profile routes
+    Route::get('profile', [UserController::class, 'showProfile'])->name('profile');
 
-// profile routes
-Route::get('profile', [UserController::class, 'showProfile'])->name('profile');
-
-Route::post('/postform',[PostController::class, 'create'])->name('postform');
+    Route::post('/postform',[PostController::class, 'create'])->name('postform');
+    // search posts
+    Route::post('/search-posts',[PostController::class, 'search'])->name('search-posts');
+    // settings & privacy (show settings blade without controller)
+    Route::get('/settings', function () {
+        return view('settings');
+    })->name('settings');
+});
