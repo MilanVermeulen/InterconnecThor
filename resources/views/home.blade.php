@@ -14,7 +14,7 @@
                             <h2 class="text-center"><span class="text-primary fw-bold">{{ Auth::user()->first_name }} {{ Auth::user()->last_name }}</span>, welcome to <span class="text-primary fw-bold">interconnecThor</span>, your hub for <span class="text-primary fw-bold">connection</span>, <span class="text-primary fw-bold">collaboration</span>, and <span class="text-primary fw-bold">creation</span>.</h2>
                         @endif
                     @else
-                        <h2 class="text-center"><a href="/login" class="text-decoration-none"><span class="text-primary fw-bold">Log in</span></a> or <a href="/register" class="text-decoration-none"><span class="text-primary fw-bold">sign up</span></a> to join the <span class="text-primary fw-bold">interconnecThor community</span>!</h2>
+                        <h2 class="text-center"><a href="/login" class="text-decoration-none"><span class="text-primary fw-bold">Log in</span></a> or <a href="/register" class="text-decoration-none"><span class="text-primary fw-bold">sign up</span></a> to join the <span class="text-primary fw-bold">interconnecThor</span> community!</h2>
                     @endif
                 </div>
             </div>

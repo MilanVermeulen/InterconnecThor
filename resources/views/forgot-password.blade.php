@@ -31,11 +31,11 @@
             {{-- form --}}
             <div class="row justify-content-center">
                 <div class="col-md-10">
-                    <form action="" method="POST" class="mb-1">
+                    <form action="" method="POST" class="p-3 rounded border">
                         @csrf
         
                         <div class="form-group mb-3">
-                            <label for="email" class="mb-1">Email address</label>
+                            <label for="email" class="mb-1 fw-bold text-primary">Email address</label>
                             <input type="email" name="email" class="form-control" id="email" placeholder="Enter your email" required>
                         </div>
                         

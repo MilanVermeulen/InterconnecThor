@@ -31,31 +31,31 @@
             {{-- form --}}
             <div class="row justify-content-center">
                 <div class="col-md-10">
-                    <form action="/contactemail" method="post">
+                    <form action="/contactemail" method="post" class="p-3 border rounded">
                         @csrf
         
                         <div class="form-group">
-                            <label class="mb-1" for="first_name">First Name</label>
+                            <label class="mb-1 fw-bold text-primary" for="first_name">First Name</label>
                             <input type="text" class="form-control mb-3" id="first_name" name="first_name" placeholder="Enter your first name" value="{{ old('first_name') }}" required>
                         </div>
         
                         <div class="form-group">
-                            <label class="mb-1" for="last_name">Last Name</label>
+                            <label class="mb-1 fw-bold text-primary" for="last_name">Last Name</label>
                             <input type="text" class="form-control mb-3" id="last_name" name="last_name" placeholder="Enter your last name" value="{{ old('last_name') }}" required>
                         </div>
         
                         <div class="form-group">
-                            <label class="mb-1" for="email">Email address</label>
+                            <label class="mb-1 fw-bold text-primary" for="email">Email address</label>
                             <input type="email" class="form-control mb-3" id="email" name="email" placeholder="Enter your email" value="{{ old('email') }}" required>
                         </div>
 
                         <div class="form-group">
-                            <label class="mb-1" for="subject">Subject</label>
+                            <label class="mb-1 fw-bold text-primary" for="subject">Subject</label>
                             <input type="text" class="form-control mb-3" id="subject" name="subject" placeholder="Enter your subject" value="{{ old('subject') }}" required>
                         </div>
 
                         <div class="form-group">
-                            <label class="mb-1" for="message">Message</label>
+                            <label class="mb-1 fw-bold text-primary" for="message">Message</label>
                             <textarea class="form-control mb-3" id="message" name="message" placeholder="Enter your message" rows="5" required>{{ old('message') }}</textarea>
                         </div>
                 

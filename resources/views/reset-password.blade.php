@@ -30,7 +30,7 @@
             {{-- form --}}
             <div class="row justify-content-center">
                 <div class="col-md-10">
-                    <form action="{{ route('password.update') }}" method="POST" class="mb-1">
+                    <form action="{{ route('password.update') }}" method="POST" class="p-3 border rounded">
                         @csrf
                         
                         <!-- Token -->
@@ -38,13 +38,13 @@
 
                         <!-- Password -->
                         <div class="form-group mb-3">
-                            <label for="password" class="mb-1">Password</label>
+                            <label for="password" class="mb-1 fw-bold text-primary">Password</label>
                             <input type="password" name="password" id="password" class="form-control" required>
                         </div>
 
                         <!-- Confirm Password -->
                         <div class="form-group mb-3">
-                            <label for="password_confirmation" class="mb-1">Confirm Password</label>
+                            <label for="password_confirmation" class="mb-1 fw-bold text-primary">Confirm Password</label>
                             <input type="password" name="password_confirmation" id="password_confirmation" class="form-control" required>
                         </div>
                         
