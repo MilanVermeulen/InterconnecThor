@@ -11,7 +11,8 @@
                         @if (Auth::user()->role_id == 1)
                             <h2 class="text-center"><span class="text-primary fw-bold">{{ Auth::user()->name }}</span>, welcome to <span class="text-primary fw-bold">interconnecThor</span>, your hub for <span class="text-primary fw-bold">connection</span>, <span class="text-primary fw-bold">collaboration</span>, and <span class="text-primary fw-bold">creation</span>.</h2>
                         @else
-                            <h2 class="text-center"><span class="text-primary fw-bold">{{ Auth::user()->first_name }} {{ Auth::user()->last_name }}</span>, welcome to <span class="text-primary fw-bold">interconnecThor</span>, your hub for <span class="text-primary fw-bold">connection</span>, <span class="text-primary fw-bold">collaboration</span>, and <span class="text-primary fw-bold">creation</span>.</h2>
+                            <h2 class="text-center"><span class="text-primary fw-bold">{{ Auth::user()->first_name }} {{ Auth::user()->last_name }}</span>, welcome to <span class="text-primary fw-bold">interconnecThor</span>!<br>
+                                Your hub for <span class="text-primary fw-bold">connection</span>, <span class="text-primary fw-bold">collaboration</span>, and <span class="text-primary fw-bold">creation</span>.</h2>
                         @endif
                     @else
                         <h2 class="text-center"><a href="/login" class="text-decoration-none"><span class="text-primary fw-bold">Log in</span></a> or <a href="/register" class="text-decoration-none"><span class="text-primary fw-bold">sign up</span></a> to join the <span class="text-primary fw-bold">interconnecThor</span> community!</h2>
@@ -55,12 +56,12 @@
                             <div class="row">
                                 <div class="col-md-6">
                                     {{-- post form --}}
-                                    <h5 class="mb-3 fw-bold">New Post</h5>
+                                    <h4 class="mb-3 fw-bold">New Post</h4>
                                     @include('postForm')                            
                                 </div>
                                 <div class="col-md-6">
                                     {{-- posts/feed --}}
-                                    <h5 class="mb-3 fw-bold">Feed</h5>
+                                    <h4 class="mb-3 fw-bold">Feed</h4>
                                     @isset($posts)
                                         @foreach ($posts as $post)
                                             <div class="card d-flex flex-column mb-3">
@@ -69,14 +70,15 @@
                                                         <div class="col">
                                                             <h4 class="m-0">
                                                                 @if ($post->users->first_name)
-                                                                    <span class="fw-bold">{{ $post->users->first_name }} {{ $post->users->last_name }}</span> ({{ $post->users->name }})
+                                                                    <span class="fw-bold">{{ $post->users->first_name }} {{ $post->users->last_name }}<br>
+                                                                    </span> <span class="fs-6">{{ $post->users->name }}</span>
                                                                 @else
-                                                                    {{ $post->users->name }}
+                                                                    <span class="fs-6">{{ $post->users->name }}</span>
                                                                 @endif
-                                                            </h4>
+                                                            </h4>                                                            
                                                         </div>
                                                         <div class="col text-end">
-                                                            <img src="{{ asset('storage/' . ($post->users->profile_picture ?: 'profile-pictures/default.jpg')) }}" alt="Profile Picture" class="img-fluid rounded-pill mb-2 border border-light border-2" style="max-height: 10vh; width: auto;">
+                                                            <img src="{{ asset('storage/' . ($post->users->profile_picture ?: 'profile-pictures/default.jpg')) }}" alt="Profile Picture" class="img-fluid rounded-pill mb-2 border border-light border-2" style="max-height: 7vh; width: auto;">
                                                         </div>
                                                     </div>
                                                 </div>
