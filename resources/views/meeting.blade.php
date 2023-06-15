@@ -2,51 +2,54 @@
 @section('content')
 <!-- Tailwindcss styles -->
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/tailwindcss/2.2.19/tailwind.min.css" referrerpolicy="no-referrer" />    
-<div class="max-w-7xl mx-auto sm:px-6 lg:px-8 bg-light rounded text-center">
-    <div id="waitingArea" class="max-h-screen">
+<div class="max-w-7xl mx-auto sm:px-6 lg:px-8 bg-light rounded text-center mt-5">
+    <div id="waitingArea" class="max-h-screen ">
         <div class="py-4">
-            <h1 class="text-2xl">Meeting Lobby</h1>
+            <h1 class="text-2xl fw-bold text-primary text-center">Meeting Lobby</h1>
             @php
                 $roomName = session('roomName');
             @endphp
-            <p>Room Name: {{ $roomName }}</p>
+            <p>Room name: {{ $roomName }}</p>
         </div>
-        <div class="max-w-2xl  flex flex-col space-y-4 ">     
-            <div class="flex items-center justify-center w-full rounded-3xl bg-gray-900">
-                <video id='waitingAreaLocalVideo' class="h-96" autoplay muted></video>
-            </div>
-            <div class="flex space-x-4 mb-4 justify-center">
-                <button id='waitingAreaToggleMicrophone' class="bg-gray-400 w-10 h-10 rounded-md p-2">
-                    <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M19 11a7 7 0 01-7 7m0 0a7 7 0 01-7-7m7 7v4m0 0H8m4 0h4m-4-8a3 3 0 01-3-3V5a3 3 0 116 0v6a3 3 0 01-3 3z" /></svg>
-                </button>
-                <button id='waitingAreaToggleCamera' class="bg-gray-400 w-10 h-10 rounded-md p-2">
-                    <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M15 10l4.553-2.276A1 1 0 0121 8.618v6.764a1 1 0 01-1.447.894L15 14M5 18h8a2 2 0 002-2V8a2 2 0 00-2-2H5a2 2 0 00-2 2v8a2 2 0 002 2z" /></svg>           
-                </button>
-            </div>
-            <div class="flex flex-col space-y-4 space-x-2 text-sm">
-                <div class="flex space-x-2 items-center">
-                    <label>
-                        Name:
-                        <input class="text-xs" id="username" type="text"  placeholder="Name"/>
-                    </label>
-                    <label>
-                        Camera:
-                        <select class="text-xs" id='cameraSelectBox'>
-                        </select>
-                    </label>
-                    <label>
-                        Microphone:
-                        <select class="text-xs" id='microphoneSelectBox'>
-                        </select>
-                    </label>
+        <div class="flex items-center justify-center">
+            <div class="max-w-2xl  flex flex-col space-y-4">     
+                <div class="flex items-center justify-center w-full rounded-3xl bg-gray-900">
+                    <video id='waitingAreaLocalVideo' class="h-96" autoplay muted></video>
                 </div>
-                <div>
-                    <button id='joinMeetingBtn' style="background-color: #2BA2C5;"  onmouseover="this.style.backgroundColor='#4338ca';" onmouseout="this.style.backgroundColor='#2BA2C5';" class="inline-flex items-center px-4 py-2 border border-transparent text-sm rounded-md shadow-sm text-white bg-indigo-600 hover:bg-indigo-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-indigo-500">
-                        Join Meeting
+                <div class="flex space-x-4 mb-4 justify-center">
+                    <button id='waitingAreaToggleMicrophone' class="bg-gray-400 w-10 h-10 rounded-md p-2">
+                        <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M19 11a7 7 0 01-7 7m0 0a7 7 0 01-7-7m7 7v4m0 0H8m4 0h4m-4-8a3 3 0 01-3-3V5a3 3 0 116 0v6a3 3 0 01-3 3z" /></svg>
+                    </button>
+                    <button id='waitingAreaToggleCamera' class="bg-gray-400 w-10 h-10 rounded-md p-2">
+                        <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M15 10l4.553-2.276A1 1 0 0121 8.618v6.764a1 1 0 01-1.447.894L15 14M5 18h8a2 2 0 002-2V8a2 2 0 00-2-2H5a2 2 0 00-2 2v8a2 2 0 002 2z" /></svg>           
                     </button>
                 </div>
+                <div class="flex flex-col space-y-4 space-x-2 text-sm pb-4">
+                    <div class="flex space-x-2 items-center">
+                        <label>
+                            Name:
+                            <input class="text-xs" id="username" type="text"  placeholder="Name"/>
+                        </label>
+                        <label>
+                            Camera:
+                            <select class="text-xs" id='cameraSelectBox'>
+                            </select>
+                        </label>
+                        <label>
+                            Microphone:
+                            <select class="text-xs" id='microphoneSelectBox'>
+                            </select>
+                        </label>
+                    </div>
+                    <div>
+                        <button id='joinMeetingBtn' style="background-color: #2BA2C5;"  onmouseover="this.style.backgroundColor='#4338ca';" onmouseout="this.style.backgroundColor='#2BA2C5';" class="inline-flex items-center px-4 py-2 mt-4 border border-transparent text-sm rounded-md shadow-sm text-white bg-indigo-600 hover:bg-indigo-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-indigo-500">
+                            Join Meeting
+                        </button>
+                    </div>
+                </div>
             </div>
         </div>
+
     </div>
 </div> 
 <div id='meetingView' class="hidden flex w-screen h-screen space-x-4 p-10 bg-light rounded text-center">
@@ -78,9 +81,9 @@
         </button>       
     </div>
 </div>
-<div id="leaveMeetingView" class="hidden max-w-7xl mx-auto sm:px-6 lg:px-8 bg-light rounded text-center h-screen">
+<div id="leaveMeetingView" class="hidden max-w-7xl mx-auto sm:px-6 lg:px-8 bg-light rounded text-center h-screen flex items-center justify-center">
     <a href="{{ url('/') }}">
-        <h1 class="text-center text-3xl mt-10 font-bold">
+        <h1 class="text-3xl fw-bold text-primary text-center">
             You have left the meeting 
         </h1>
         <h1>
@@ -88,15 +91,7 @@
         </h1>
     </a>
 </div>
-    <!-- <div class="flex justify-center pt-5">
-        <a href="{{ url('/') }}">
-            <button class="inline-flex items-center px-4 py-2 border border-transparent text-sm rounded-md shadow-sm text-white bg-custom hover:bg-indigo-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-indigo-500">
-                <span class="">
-                    Home
-                </span>
-            </button>
-        </a>
-    </div> -->
+
     {{-- metered video --}}
 	<script src="https://cdn.metered.ca/sdk/video/1.4.5/sdk.min.js"></script>
 	<script>
