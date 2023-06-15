@@ -6,6 +6,10 @@
     <div id="waitingArea" class="max-h-screen">
         <div class="py-4">
             <h1 class="text-2xl">Meeting Lobby</h1>
+            @php
+                $roomName = session('roomName');
+            @endphp
+            <p>Room Name: {{ $roomName }}</p>
         </div>
         <div class="max-w-2xl  flex flex-col space-y-4 ">     
             <div class="flex items-center justify-center w-full rounded-3xl bg-gray-900">
@@ -47,13 +51,13 @@
 </div> 
 <div id='meetingView' class="hidden flex w-screen h-screen space-x-4 p-10 bg-light rounded text-center">
     <div id="activeSpeakerContainer" class=" bg-gray-900 rounded-3xl flex-1 flex relative">
-        <video id="activeSpeakerVideo" src="" autoplay class=" object-contain w-full rounded-t-3xl"></video>
+        <video id="activeSpeakerVideo" src="" playsinline autoplay class=" object-contain w-full rounded-t-3xl"></video>
         <div id="activeSpeakerUsername" class="hidden absolute h-8 w-full bg-gray-700 rounded-b-3xl bottom-0 text-white text-center font-bold pt-1">           
         </div>
     </div>  
     <div id="remoteParticipantContainer" class="flex flex-col space-y-4">
         <div id="localParticiapntContainer" class="w-48 h-48 rounded-3xl bg-gray-900 relative">
-            <video id="localVideoTag" src="" autoplay class="object-contain w-full rounded-t-3xl"></video>
+            <video id="localVideoTag" src="" playsinline autoplay class="object-contain w-full rounded-t-3xl"></video>
             <div id="localUsername" class="absolute h-8 w-full bg-gray-700 rounded-b-3xl bottom-0 text-white text-center font-bold pt-1">
                 Me
             </div>
@@ -74,12 +78,17 @@
         </button>       
     </div>
 </div>
-<div id="leaveMeetingView" class="hidden">
-    <h1 class="text-center text-3xl mt-10 font-bold">
-        You have left the meeting 
-    </h1>
+<div id="leaveMeetingView" class="hidden max-w-7xl mx-auto sm:px-6 lg:px-8 bg-light rounded text-center h-screen">
+    <a href="{{ url('/') }}">
+        <h1 class="text-center text-3xl mt-10 font-bold">
+            You have left the meeting 
+        </h1>
+        <h1>
+            Click here to go back to home page
+        </h1>
+    </a>
 </div>
-    <div class="flex justify-center pt-5">
+    <!-- <div class="flex justify-center pt-5">
         <a href="{{ url('/') }}">
             <button class="inline-flex items-center px-4 py-2 border border-transparent text-sm rounded-md shadow-sm text-white bg-custom hover:bg-indigo-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-indigo-500">
                 <span class="">
@@ -87,7 +96,7 @@
                 </span>
             </button>
         </a>
-    </div>
+    </div> -->
     {{-- metered video --}}
 	<script src="https://cdn.metered.ca/sdk/video/1.4.5/sdk.min.js"></script>
 	<script>
