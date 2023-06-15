@@ -25,7 +25,7 @@ class MeetingController extends Controller
 
         $roomName = $response->json("roomName");
         
-        return redirect("/meeting/{$roomName}"); // We will update this soon.
+        return redirect("/meeting/{$roomName}")->with('roomName', $roomName);
     }
 
     public function validateMeeting(Request $request) {
@@ -41,7 +41,7 @@ class MeetingController extends Controller
 
 
         if ($response->status() === 200)  {
-            return redirect("/meeting/{$roomName}"); // We will update this soon
+            return redirect("/meeting/{$roomName}")->with('roomName', $roomName);
         } else {
             return redirect("/?error=Invalid Meeting ID");
         }
