@@ -4,7 +4,7 @@
   <!-- tailwind -->
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/tailwindcss/2.2.19/tailwind.min.css" referrerpolicy="no-referrer" />
 
-  <div class="max-w-7xl mx-auto sm:px-6 lg:px-8 bg-light rounded h-screen">
+  <div class="max-w-7xl mx-auto sm:px-6 lg:px-8 bg-light rounded h-screen pt-4 pb-4 mt-5">
     <div class="py-4">
         <h2 class="text-2xl fw-bold text-primary text-center">Meeting</h2>
     </div>
@@ -40,15 +40,7 @@
               </div>
           </div>
       </div>
-      <!-- <div class="flex justify-center items-center h-screen">
-          <a href="{{ url('/') }}">
-              <button class="inline-flex items-center px-4 py-2 border border-transparent text-sm rounded-md shadow-sm text-white bg-custom hover:bg-indigo-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-indigo-500">
-                  <span class="">
-                      Home
-                  </span>
-              </button>
-          </a>
-      </div> -->
+      
   </div> 
 
 @endsection
