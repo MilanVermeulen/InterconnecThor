@@ -11,6 +11,7 @@
         "laravel/sanctum": "^2.14.1",
         "laravel/tinker": "^2.7",
         "munafio/chatify": "^1.6",
+        "pusher/pusher-php-server": "^7.2",
         "tcg/voyager": "^1.6"
     },
     "require-dev": {
