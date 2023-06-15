@@ -32,7 +32,7 @@
                 <div class="my-2 sm:my-0 flex items-center justify-center">
                   <span class="text-xs uppercase font-bold text-gray-400 px-1">OR</span>
                 </div>
-                <div class="md:col-span-2">
+                <div class="md:col-span-2 flex items-center justify-center">
                   <form method="post" action="{{ route('createMeeting') }}">
                       {{ csrf_field() }}
                       <button type="submit" style="background-color: #2BA2C5;"  onmouseover="this.style.backgroundColor='#4338ca';" onmouseout="this.style.backgroundColor='#2BA2C5';" class="mt-1 inline-flex items-center px-4 py-2 border border-transparent text-sm font-medium rounded-md shadow-sm text-white bg-indigo-600 hover:bg-indigo-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-indigo-500">Create New Meeting</button>
