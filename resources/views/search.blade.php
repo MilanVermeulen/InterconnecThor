@@ -81,14 +81,35 @@
                                     @endforelse
                                 </ul>
                             </div>
-                            <div class="card-footer text-light text-shadow">
-                                <div class="col text-end">
-                                    <a href="{{ route('chat', $user->id) }}" class="btn btn-primary mr-2">Send Message</a>
-                                    <a href="{{ route('viewProfile', ['id' => $user->id]) }}" class="btn btn-outline-primary">View Profile</a>
-
+                            @auth <!-- Check if user is authenticated -->
+                                <div class="card-footer text-light text-shadow">
+                                    <div class="row justify-content-center text-center">
+                                        <div class="col-md-4">
+                                            @if(Auth::user()->id !== $user->id) <!-- Ensure the user cannot follow themselves -->
+                                                @if (Auth::user()->isFollowing($user))
+                                                    <form action="{{ route('unfollow', $user) }}" method="POST">
+                                                        @csrf
+                                                        @method('DELETE')
+                                                        <button type="submit" class="btn btn-outline-danger m-1">Unfollow</button>
+                                                    </form>
+                                                @else
+                                                    <form action="{{ route('follow', $user) }}" method="POST">
+                                                        @csrf
+                                                        <button type="submit" class="btn btn-outline-success m-1">Follow</button>
+                                                    </form>
+                                                @endif
+                                            @endif
+                                        </div>
+                                        <div class="col-md-4">
+                                            <a href="{{ route('chat', $user->id) }}" class="btn btn-outline-primary m-1">Message</a>
+                                        </div>
+                                        <div class="col-md-4">
+                                            <a href="{{ route('viewProfile', ['id' => $user->id]) }}" class="btn btn-primary m-1">Profile</a>
+                                        </div>
+                                    </div>
                                 </div>
-                            </div>
-
+                               
+                            @endauth
                         </div>
                     </div>
                 @empty

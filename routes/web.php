@@ -5,6 +5,7 @@ use App\Http\Controllers\UserController;
 use App\Http\Controllers\MeetingController;
 use App\Http\Controllers\EmailController;
 use App\Http\Controllers\PostController;
+use App\Http\Controllers\FollowController;
 
 /*
 |--------------------------------------------------------------------------
@@ -97,6 +98,10 @@ Route::group(['middleware' => 'auth'], function () {
     Route::get('/settings', function () {
         return view('settings');
     })->name('settings');
+    // follow
+    Route::post('follow/{user}', [FollowController::class, 'follow'])->name('follow');
+    // unfollow
+    Route::delete('unfollow/{user}', [FollowController::class, 'unfollow'])->name('unfollow');
 });
 
 

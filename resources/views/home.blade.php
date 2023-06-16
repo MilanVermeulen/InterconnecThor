@@ -60,7 +60,7 @@
                                     @isset($posts)
                                         @forelse ($posts as $post)
                                             <div class="card d-flex flex-column mb-3">
-                                                <div class="card-header bg-primary text-light text-shadow">
+                                                <div class="card-header bg-primary text-light text-shadow cursor-pointer" onclick="window.location.href='{{ route('viewProfile', ['id' => $post->user->id]) }}'">
                                                     <div class="row">
                                                         <div class="col">
                                                             <h4 class="m-0">
