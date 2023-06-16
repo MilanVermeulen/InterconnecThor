@@ -11,6 +11,7 @@ use Illuminate\Support\Str;
 use Illuminate\Validation\Rules\File;
 use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Hash;
+use Illuminate\Support\Facades\Validator;
 
 class UserController extends Controller
 {
@@ -113,11 +114,10 @@ class UserController extends Controller
             'identifier' => 'required',
             'password' => 'required',
         ]);
-
-        // If the identifier is an email, then we authenticate using the email,
-        // otherwise, we assume it's a username.
-        $field = filter_var($request->input('identifier'), FILTER_VALIDATE_EMAIL) ? 'email' : 'name';
-
+    
+        // Identify the field type
+        $field = $this->identifyFieldType($request->input('identifier'));
+    
         // Perform authentication logic here (e.g., check credentials against the database)
         $credentials = [
             $field => $request->input('identifier'),
@@ -125,7 +125,7 @@ class UserController extends Controller
             'role_id' => 2, // Check if the role_id of the user is 2
             'approved' => 1 // Check if the user is approved
         ];
-
+    
         if (Auth::attempt($credentials)) {
             // Authentication successful
             return redirect()->route('home')->with('success', 'Logged in successfully!');
@@ -134,6 +134,17 @@ class UserController extends Controller
             return redirect()->back()->withErrors([$field => 'Invalid ' . $field . ' or password.']);
         }
     }
+    
+    /**
+     * Identify if the field is an email or a username.
+     *
+     * @param  string  $identifier
+     * @return string
+     */
+    private function identifyFieldType(string $identifier)
+    {
+        return Validator::make(compact('identifier'), ['identifier' => 'email'])->fails() ? 'name' : 'email';
+    }    
 
     // Handle the logout request
     public function logout(Request $request)
