@@ -251,4 +251,45 @@ class UserController extends Controller
         return view('searchProfile', ['user' => $user]);
     }
 
+    public function showUpdateProfile()
+    {
+        $courses = Course::all(); // Assuming you have a Course model
+
+        return view('edit-profile', compact('courses'));
+    }
+
+    public function updateProfile(Request $request)
+    {
+        // Validation rules for the form fields
+        $rules = [
+            'first_name' => 'required|string|max:255',
+            'last_name' => 'required|string|max:255',
+            'name' => 'required|string|max:255',
+            'email' => 'required|email|max:255',
+            'phone' => 'required|string|max:255',
+            'street_nr' => 'required|string|max:255',
+            'postal_code' => 'required|string|max:255',
+            'city' => 'required|string|max:255',
+            'country' => 'required|string|max:255',
+            // Add validation rules for other fields as needed
+        ];
+    
+        // Validate the form data
+        $validatedData = $request->validate($rules);
+    
+        // Update the user's profile data
+        $user = auth()->user();
+        $user->update($validatedData);
+    
+        // Handle profile picture upload if provided
+        if ($request->hasFile('profile_picture')) {
+            $profilePicture = $request->file('profile_picture');
+            $profilePicturePath = $profilePicture->store('profile-pictures', 'public');
+            $user->profile_picture = $profilePicturePath;
+            $user->save();
+        }
+    
+        return redirect()->route('userProfile')->with('success', 'Profile updated successfully.');
+    }    
+
 }
