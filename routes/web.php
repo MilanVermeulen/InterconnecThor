@@ -67,33 +67,14 @@ Route::get('/contact', function () {
 // send contact mail
 Route::post('/contactemail', [EmailController::class, 'contactEmail'])->name('contactemail');
 
-// meeting routes
-Route::get('/meet', function () {
-    return view('meet');
-})->name('meet');
-
-// post routes
-Route::post("/createMeeting", [MeetingController::class, 'createMeeting'])->name("createMeeting");
-
-Route::post("/validateMeeting", [MeetingController::class, 'validateMeeting'])->name("validateMeeting");
-
-Route::get("/meeting/{meetingId}", function($meetingId) {
-
-    $METERED_DOMAIN = env('METERED_DOMAIN');
-    return view('meeting', [
-        'METERED_DOMAIN' => $METERED_DOMAIN,
-        'MEETING_ID' => $meetingId
-    ]);
-});
-
 // middleware to check if user is logged in
 Route::group(['middleware' => 'auth'], function () {
     // profile routes
     Route::get('userProfile', [UserController::class, 'showUserProfile'])->name('userProfile');
 
-    Route::post('/postform',[PostController::class, 'create'])->name('postform');
+    Route::post('/postform', [PostController::class, 'create'])->name('postform');
     // search posts
-    Route::post('/search-posts',[PostController::class, 'search'])->name('search-posts');
+    Route::post('/search-posts', [PostController::class, 'search'])->name('search-posts');
     // settings & privacy (show settings blade without controller)
     Route::get('/settings', function () {
         return view('settings');
@@ -108,6 +89,23 @@ Route::group(['middleware' => 'auth'], function () {
     Route::get('user/{id}/followers', [FollowController::class, 'followers'])->name('user.followers');
     // connections list
     Route::get('user/{id}/connections', [FollowController::class, 'connections'])->name('user.connections');
+    // meeting routes
+    Route::get('/meet', function () {
+        return view('meet');
+    })->name('meet');
+    // create meeting
+    Route::post("/createMeeting", [MeetingController::class, 'createMeeting'])->name("createMeeting");
+    // validate meeting
+    Route::post("/validateMeeting", [MeetingController::class, 'validateMeeting'])->name("validateMeeting");
+    // join meeting
+    Route::get("/meeting/{meetingId}", function ($meetingId) {
+        // get metered domain from .env file
+        $METERED_DOMAIN = env('METERED_DOMAIN');
+        return view('meeting', [
+            'METERED_DOMAIN' => $METERED_DOMAIN,
+            'MEETING_ID' => $meetingId
+        ]);
+    });
 });
 
 
