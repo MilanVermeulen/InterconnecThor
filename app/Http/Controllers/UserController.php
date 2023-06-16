@@ -237,12 +237,18 @@ class UserController extends Controller
         return view('userProfile', compact('user'));
     }
 
-    public function searchProfile($id)
+    public function viewProfile($id)
     {
+        // Retrieve user data based on the provided ID
+        $user = User::find($id);
 
-        $searchProfile = User::findOrFail($id);
+        if (!$user) {
+            // Handle case when user is not found
+            abort(404);
+        }
 
-        // Pass the user data to the view
-        return view('searchProfile', compact('searchProfile'));
+        // Pass the user data to the profile view
+        return view('searchProfile', ['user' => $user]);
     }
+
 }
