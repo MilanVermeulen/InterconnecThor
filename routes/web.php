@@ -69,9 +69,11 @@ Route::post('/contactemail', [EmailController::class, 'contactEmail'])->name('co
 
 // middleware to check if user is logged in
 Route::group(['middleware' => 'auth'], function () {
-    // profile routes
+    // user profile
     Route::get('userProfile', [UserController::class, 'showUserProfile'])->name('userProfile');
-
+    // non-user profile
+    Route::get('/profile/{id}', [UserController::class, 'viewProfile'])->name('viewProfile');
+    // post form
     Route::post('/postform',[PostController::class, 'create'])->name('postform');
     // Show edit profile view
     Route::get('/edit-profile', [UserController::class, 'showUpdateProfile'])->name('user.showUpdateProfile');
@@ -107,6 +109,3 @@ Route::group(['middleware' => 'auth'], function () {
         ]);
     });
 });
-
-
-Route::get('/profile/{id}', [UserController::class, 'viewProfile'])->name('viewProfile');

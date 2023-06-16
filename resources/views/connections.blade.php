@@ -2,7 +2,7 @@
 
 @section('content')
 
-    <div class="row justify-content-center">
+    <div class="row justify-content-center mt-5">
         <div class="col-md-10 p-5 bg-light rounded">
 
             {{-- Title --}}

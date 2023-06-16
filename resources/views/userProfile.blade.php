@@ -2,12 +2,12 @@
 
 @section('content')
 
-    <div class="row justify-content-center">
+    <div class="row justify-content-center mt-5">
         <div class="col-md-10 p-5 bg-light rounded">
             {{-- success message --}}
             @if (session('success'))
                 <div class="row justify-content-center mb-5">
-                    <div class="col-md-10">
+                    <div class="col-md-12">
                         <div class="alert alert-success text-center">
                             {{ session('success') }}
                         </div>
@@ -18,7 +18,7 @@
             {{-- validation errors --}}
             @if ($errors->any())
                 <div class="row justify-content-center mb-5">
-                    <div class="col-md-10">
+                    <div class="col-md-12">
                         <div class="alert alert-danger">
                             <ul>
                                 @foreach ($errors->all() as $error)
