@@ -4,6 +4,31 @@
 
     <div class="row justify-content-center">
         <div class="col-md-10 p-5 bg-light rounded">
+            {{-- success message --}}
+            @if (session('success'))
+                <div class="row justify-content-center mb-5">
+                    <div class="col-md-10">
+                        <div class="alert alert-success text-center">
+                            {{ session('success') }}
+                        </div>
+                    </div>
+                </div>
+            @endif
+
+            {{-- validation errors --}}
+            @if ($errors->any())
+                <div class="row justify-content-center mb-5">
+                    <div class="col-md-10">
+                        <div class="alert alert-danger">
+                            <ul>
+                                @foreach ($errors->all() as $error)
+                                    <li>{{ $error }}</li>
+                                @endforeach
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+            @endif
 
             <div class="row justify-content-center">
                 <div class="col-md-4 p-5 text-center border rounded">
@@ -38,7 +63,7 @@
                                 <li class="list-group-item">No courses found</li>
                             @endforelse
                         </ul>
-                    </p>                    
+                    </p>
                 </div>
                 <div class="col-md-4">
                     @forelse ($user->posts()->latest()->get() as $post)
@@ -52,7 +77,7 @@
                         </div>
                     @empty
                         <p>No posts found.</p>
-                    @endforelse                
+                    @endforelse
                 </div>
                 <div class="col-md-4">
                     @include('postForm')

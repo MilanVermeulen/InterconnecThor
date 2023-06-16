@@ -18,4 +18,9 @@ class Post extends Model
     {
         return $this->belongsTo('App\Models\User', 'user_id');
     }
+
+    public function comments()
+    {
+        return $this->hasMany('App\Models\Comment', 'post_id');
+    }
 }

@@ -8,7 +8,7 @@
             {{-- Title --}}
             <div class="row justify-content-center mb-5">
                 <div class="col-md-10">
-                   <h2 class="text-center text-primary fw-bold">Search Results</h2>
+                    <h2 class="text-center text-primary fw-bold">Search Results</h2>
                 </div>
             </div>
 
@@ -37,7 +37,7 @@
                     </div>
                 </div>
             @endif
-            
+
             {{-- student cards --}}
             <div class="row justify-content-center">
                 @forelse ($users as $user)
@@ -52,7 +52,11 @@
                                         @endif
                                     </div>
                                     <div class="col text-end">
-                                        <img src="{{ asset('storage/' . ($user->profile_picture ?: 'profile-pictures/default.jpg')) }}" alt="Profile Picture" class="img-fluid rounded-pill mb-2 border border-light border-2" style="max-height: 10vh; width: auto;">
+                                        <img
+                                            src="{{ asset('storage/' . ($user->profile_picture ?: 'profile-pictures/default.jpg')) }}"
+                                            alt="Profile Picture"
+                                            class="img-fluid rounded-pill mb-2 border border-light border-2"
+                                            style="max-height: 10vh; width: auto;">
                                     </div>
                                 </div>
                             </div>
@@ -69,12 +73,22 @@
                                 <ul class="card-text">
                                     @forelse ($user->courses as $course)
                                         <li>{{ $course->name }}<br>
-                                            <span class="small">{{ $course->pivot->start_year }} - {{ $course->pivot->end_year }}</span></li>
+                                            <span
+                                                class="small">{{ $course->pivot->start_year }} - {{ $course->pivot->end_year }}</span>
+                                        </li>
                                     @empty
                                         <li>No courses found</li>
                                     @endforelse
                                 </ul>
                             </div>
+                            <div class="card-footer text-light text-shadow">
+                                <div class="col text-end">
+                                    <a href="{{ route('chat', $user->id) }}" class="btn btn-primary mr-2">Send Message</a>
+                                    <a href="{{ route('viewProfile', ['id' => $user->id]) }}" class="btn btn-outline-primary">View Profile</a>
+
+                                </div>
+                            </div>
+
                         </div>
                     </div>
                 @empty
@@ -82,8 +96,8 @@
                         <h5>No results found.</h5>
                     </div>
                 @endforelse
-            </div>        
-                        
+            </div>
+
         </div>
     </div>
 
