@@ -58,19 +58,17 @@
                                     {{-- posts/feed --}}
                                     <h4 class="mb-3 fw-bold">Feed</h4>
                                     @isset($posts)
-                                        @forelse ($posts as $post)
+                                        @forelse ($posts->sortByDesc('created_at') as $post)
                                             <div class="card d-flex flex-column mb-3">
                                                 <div class="card-header bg-primary text-light text-shadow cursor-pointer" onclick="window.location.href='{{ route('viewProfile', ['id' => $post->user->id]) }}'">
                                                     <div class="row">
                                                         <div class="col">
                                                             <h4 class="m-0">
                                                                 @if ($post->user->first_name)
-                                                                    <span class="fw-bold">{{ $post->user->first_name }} {{ $post->user->last_name }}<br>
-                                                                    </span> <span class="fs-6">{{ $post->user->name }}</span>
-                                                                @else
-                                                                    <span class="fs-6">{{ $post->user->name }}</span>
+                                                                    <span class="fw-bold">{{ $post->user->first_name }} {{ $post->user->last_name }}<br></span>
                                                                 @endif
-                                                            </h4>                                                            
+                                                                <span class="fs-6">{{ $post->user->name }}</span>
+                                                            </h4>
                                                         </div>
                                                         <div class="col text-end">
                                                             <img src="{{ asset('storage/' . ($post->user->profile_picture ?: 'profile-pictures/default.jpg')) }}" alt="Profile Picture" class="img-fluid rounded-pill mb-2 border border-light border-2" style="max-height: 7vh; width: auto;">

@@ -102,6 +102,12 @@ Route::group(['middleware' => 'auth'], function () {
     Route::post('follow/{user}', [FollowController::class, 'follow'])->name('follow');
     // unfollow
     Route::delete('unfollow/{user}', [FollowController::class, 'unfollow'])->name('unfollow');
+    // following list
+    Route::get('user/{id}/following', [FollowController::class, 'following'])->name('user.following');
+    // followers list
+    Route::get('user/{id}/followers', [FollowController::class, 'followers'])->name('user.followers');
+    // connections list
+    Route::get('user/{id}/connections', [FollowController::class, 'connections'])->name('user.connections');
 });
 
 

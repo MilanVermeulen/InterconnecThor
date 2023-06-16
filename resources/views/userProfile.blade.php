@@ -45,9 +45,9 @@
                     <h5 class="mb-3">{{ $user->name }}</h5>
                     <h5 class="mb-5">{{ $user->city }}</h5>
 
-                    <p class="mb-0">Following: <span class="text-primary fw-bold">{{ $user->following_count }}</span></p>
-                    <p class="mb-0">Followers: <span class="text-primary fw-bold">{{ $user->followers()->count() }}</span></p>
-                    <p class="mb-5">Connections: <span class="text-primary fw-bold">{{ $user->connections()->count() }}</span></p>
+                    <p class="mb-0 cursor-pointer" onclick="window.location.href='{{ route('user.following', $user->id) }}'">Following: <span class="text-primary fw-bold">{{ $user->following_count }}</span></p>
+                    <p class="mb-0 cursor-pointer" onclick="window.location.href='{{ route('user.followers', $user->id) }}'">Followers: <span class="text-primary fw-bold">{{ $user->followers()->count() }}</span></p>
+                    <p class="mb-5 cursor-pointer" onclick="window.location.href='{{ route('user.connections', $user->id) }}'">Connections: <span class="text-primary fw-bold">{{ $user->connections()->count() }}</span></p>
 
                     <p>
                         <h5 class="fw-bold text-primary mb-1">Categories</h5>

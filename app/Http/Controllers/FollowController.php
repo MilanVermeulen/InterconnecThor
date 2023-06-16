@@ -34,4 +34,31 @@ class FollowController extends Controller
 
         return back()->with('success', 'Successfully unfollowed user.');
     }
+
+    public function following($id)
+    {
+        $user = User::find($id);
+        $following = $user->following;
+        return view('following', compact('following'));
+    }
+
+    public function followers($id)
+    {
+        $user = User::find($id);
+        $followers = $user->followers;
+        return view('followers', compact('followers'));
+    }
+
+    public function connections($id)
+    {
+        $user = User::find($id);
+        
+        if (!$user) {
+            return back()->with('error', 'User not found');
+        }
+        
+        $connections = $user->connections();
+        return view('connections', compact('connections'));
+    }
+
 }

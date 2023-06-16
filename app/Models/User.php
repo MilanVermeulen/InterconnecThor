@@ -114,7 +114,7 @@ class User extends \TCG\Voyager\Models\User
             ->whereHas('follows', function ($query) {
                 $query->where('followable_id', $this->id)
                     ->where('followable_type', User::class);
-            });
+            })->get();
     }
 
     public function getConnectionsCountAttribute()
