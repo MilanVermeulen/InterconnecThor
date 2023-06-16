@@ -165,34 +165,34 @@ class UserController extends Controller
             'token' => 'required',
             'password' => 'required|confirmed|min:6',
         ]);
-    
+
         $passwordReset = DB::table('password_resets')
             ->where('token', hash('sha256', $request->token))
             ->first();
-    
+
         if (!$passwordReset) {
             // Token not found
             return redirect()->back()->withErrors(['email' => 'This password reset token is invalid.']);
         }
-    
+
         $user = User::where('email', $passwordReset->email)->first();
-    
+
         if (!$user) {
             // User not found
             return redirect()->back()->withErrors(['email' => 'We can\'t find a user with that email address.']);
         }
-    
+
         // Update password
         $user->password = Hash::make($request->password);
         $user->save();
-    
+
         // Delete the token
         DB::table('password_resets')->where('email', $user->email)->delete();
-    
+
         // Redirect to login with success message
         return redirect()->route('login')->with(['message' => 'Your password has been changed!']);
     }
-    
+
 
    // Search
     public function search(Request $request)
@@ -228,13 +228,21 @@ class UserController extends Controller
         return view('search', compact('users'));
     }
 
-    public function showProfile()
+    public function showUserProfile()
     {
         // Retrieve the currently authenticated user
         $user = auth()->user();
 
         // Pass the user data to the view
-        return view('profile', compact('user'));
+        return view('userProfile', compact('user'));
     }
 
+    public function searchProfile($id)
+    {
+
+        $searchProfile = User::findOrFail($id);
+
+        // Pass the user data to the view
+        return view('searchProfile', compact('searchProfile'));
+    }
 }

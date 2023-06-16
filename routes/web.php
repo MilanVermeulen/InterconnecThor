@@ -88,7 +88,7 @@ Route::get("/meeting/{meetingId}", function($meetingId) {
 // middleware to check if user is logged in
 Route::group(['middleware' => 'auth'], function () {
     // profile routes
-    Route::get('profile', [UserController::class, 'showProfile'])->name('profile');
+    Route::get('userProfile', [UserController::class, 'showUserProfile'])->name('userProfile');
 
     Route::post('/postform',[PostController::class, 'create'])->name('postform');
     // search posts
@@ -98,3 +98,6 @@ Route::group(['middleware' => 'auth'], function () {
         return view('settings');
     })->name('settings');
 });
+
+//search profile
+Route::get('/searchProfile/{id}', [UserController::class, 'searchProfile'])->name('searchProfile');
