@@ -47,6 +47,11 @@
     cursor: pointer;
 }
 
+.cursor-pointer-icon:hover {
+    cursor: pointer;
+    color: white;
+}
+
 /* Set the scrollbar width and color for Google Chrome and Safari */
 ::-webkit-scrollbar {
     width: 10px;
