@@ -92,12 +92,12 @@ Route::group(['middleware' => 'auth'], function () {
     Route::get('userProfile', [UserController::class, 'showUserProfile'])->name('userProfile');
 
     Route::post('/postform',[PostController::class, 'create'])->name('postform');
+    // Show edit profile view
+    Route::get('/edit-profile', [UserController::class, 'showUpdateProfile'])->name('user.showUpdateProfile');
+    // Update profile
+    Route::post('/update-profile', [UserController::class, 'updateProfile'])->name('user.updateProfile');
     // search posts
     Route::post('/search-posts',[PostController::class, 'search'])->name('search-posts');
-    // settings & privacy (show settings blade without controller)
-    Route::get('/settings', function () {
-        return view('settings');
-    })->name('settings');
     // follow
     Route::post('follow/{user}', [FollowController::class, 'follow'])->name('follow');
     // unfollow
