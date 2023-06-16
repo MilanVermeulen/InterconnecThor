@@ -4,6 +4,7 @@
 
     <div class="row justify-content-center mt-5">
         <div class="col-md-10 p-5 bg-light rounded">
+
             {{-- success message --}}
             @if (session('success'))
                 <div class="row justify-content-center mb-5">
@@ -87,8 +88,9 @@
                 <div class="col-md-4">
                     @include('postForm')
                 </div>
-
             </div>
+
         </div>
+    </div>
 
 @endsection
