@@ -37,7 +37,7 @@
                     </div>
                 </div>
             @endif
-            
+
             {{-- student cards --}}
             <div class="row justify-content-center">
                 @forelse ($users as $user)
@@ -75,6 +75,12 @@
                                     @endforelse
                                 </ul>
                             </div>
+                            <div class="card-footer bg-primary text-light text-shadow">
+                                        <a href="{{ route('userProfile', $user->id) }}" class="btn btn-light text-primary">View Profile</a>
+                                    </div>
+                                    <div class="col text-end">
+                                        <a href="{{ route('chat', $user->id) }}" class="btn btn-light text-primary">Send Message</a>
+                                    </div>
                         </div>
                     </div>
                 @empty
@@ -82,8 +88,8 @@
                         <h5>No results found.</h5>
                     </div>
                 @endforelse
-            </div>        
-                        
+            </div>
+
         </div>
     </div>
 
