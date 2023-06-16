@@ -99,5 +99,5 @@ Route::group(['middleware' => 'auth'], function () {
     })->name('settings');
 });
 
-//search profile
-Route::get('/searchProfile/{id}', [UserController::class, 'searchProfile'])->name('searchProfile');
+
+Route::get('/profile/{id}', [UserController::class, 'viewProfile'])->name('viewProfile');
