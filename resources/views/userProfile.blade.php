@@ -31,7 +31,7 @@
             @endif
 
             <div class="row justify-content-center">
-                <div class="col-md-4 p-5 text-center border rounded">
+                <div class="col-md-4 p-5 text-center border rounded bg-light">
 
                     <div class="row justify-content-center">
                         <div class="col-md-6">
@@ -48,19 +48,19 @@
                         <h5 class="fw-bold text-primary mb-1">Categories</h5>
                         <ul class="list-group list-group-flush mb-3">
                             @forelse ($user->categories->unique() as $category)
-                                <li class="list-group-item">{{ $category->name }}</li>
+                                <li class="list-group-item bg-light">{{ $category->name }}</li>
                             @empty
-                                <li class="list-group-item">No categories found</li>
+                                <li class="list-group-item bg-light">No categories found</li>
                             @endforelse
                         </ul>
 
                         <h5 class="fw-bold text-primary mb-1">Courses</h5>
                         <ul class="list-group list-group-flush mb-3">
                             @forelse ($user->courses as $course)
-                                <li class="list-group-item">{{ $course->name }}<br>
-                                     <span class="small">{{ $course->pivot->start_year }} - {{ $course->pivot->end_year }}</span></li>
+                                <li class="list-group-item bg-light">{{ $course->name }}<br>
+                                     <span class="small ">{{ $course->pivot->start_year }} - {{ $course->pivot->end_year }}</span></li>
                             @empty
-                                <li class="list-group-item">No courses found</li>
+                                <li class="list-group-item bg-light">No courses found</li>
                             @endforelse
                         </ul>
                     </p>
