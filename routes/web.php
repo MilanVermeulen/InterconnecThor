@@ -91,6 +91,8 @@ Route::group(['middleware' => 'auth'], function () {
     Route::get('user/{id}/followers', [FollowController::class, 'followers'])->name('user.followers');
     // connections list
     Route::get('user/{id}/connections', [FollowController::class, 'connections'])->name('user.connections');
+    // followed posts
+    Route::get('/followedPosts', [App\Http\Controllers\PostController::class, 'getFollowedUsersPosts'])->name('followedPosts');
     // meeting routes
     Route::get('/meet', function () {
         return view('meet');

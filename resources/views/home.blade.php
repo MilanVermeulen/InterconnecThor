@@ -57,6 +57,13 @@
                                 <div class="col-md-6">
                                     {{-- posts/feed --}}
                                     <h4 class="mb-3 fw-bold">Feed</h4>
+
+                                   {{-- buttons --}}
+                                   <div class="nav nav-tabs justify-content-start mb-2" id="nav-tab" role="tablist">
+                                    <a class="nav-link {{ Request::route()->getName() == 'home' ? 'active text-primary fw-bold' : 'text-dark' }}" href="{{ route('home') }}">All Posts</a>
+                                    <a class="nav-link {{ Request::route()->getName() == 'followedPosts' ? 'active text-primary fw-bold' : 'text-dark' }}" href="{{ route('followedPosts') }}">Followed Users Posts</a>
+                                </div>
+                                                                
                                     @isset($posts)
                                         @forelse ($posts->sortByDesc('created_at') as $post)
                                             <div class="card d-flex flex-column mb-3">

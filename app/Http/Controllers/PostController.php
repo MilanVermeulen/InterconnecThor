@@ -47,6 +47,24 @@ class PostController extends Controller
         return view('home', compact('posts'));
     }
 
+    // show followed users posts
+    public function getFollowedUsersPosts()
+    {
+        $user = Auth::user();
+
+        // Get the user ids of the users that the logged-in user is following
+        $followingUserIds = $user->following->pluck('id')->toArray();
+
+        // Add the logged-in user's id to the array
+        $followingUserIds[] = $user->id;
+
+        // Retrieve the followed users' posts and the logged-in user's posts
+        $posts = Post::whereIn('user_id', $followingUserIds)->orderBy('created_at', 'desc')->get();
+
+        // Return a view with the posts
+        return view('home', compact('posts'));
+    }
+
     // search for posts
     public function search(Request $request)
     {
