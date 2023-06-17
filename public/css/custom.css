@@ -49,7 +49,7 @@
 
 .cursor-pointer-icon:hover {
     cursor: pointer;
-    color: white;
+    color: white !important;
 }
 
 /* Set the scrollbar width and color for Google Chrome and Safari */

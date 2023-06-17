@@ -81,44 +81,48 @@
 	</div>
 
 	{{-- footer --}}
-	<div class="container-fluid text-light mt-3">
+	<div class="container-fluid text-light mt-5 mb-5">
 		<div class="row justify-content-center">
 			<div class="col-10">
 		
 				<div class="row justify-content-center align-items-center text-center">
-					<div class="col-md-4">
-						<div class="d-flex flex-column justify-content-start align-items-start">
-							<div class="mb-3">
-								<p class="fw-bold mb-0">Alexandros Tsikakis</p>
-								<div class="d-flex">
-									<i class="fa-solid fa-envelope text-primary m-1 cursor-pointer-icon fs-4" onclick="window.open('mailto:Alexandros.Tsikakis@ymail.com')" target="_blank"></i>
-									<i class="fa-brands fa-linkedin text-primary m-1 cursor-pointer-icon fs-4" onclick="window.open('https://www.linkedin.com/in/alexandros-tsikakis-3b525a252/')" target="_blank"></i>
-									<i class="fa-brands fa-github text-primary m-1 cursor-pointer-icon fs-4" onclick="window.open('https://github.com/AlexTsika')" target="_blank"></i>
-								</div>
+					<div class="col-md-6">
+						<div class="row justify-content-center align-items-center">
+							<div class="col-md-12">
+								Alexandros Tsikakis
 							</div>
-							<div class="mb-3">
-								<p class="fw-bold mb-0">Milan Vermeulen</p>
-								<div class="d-flex">
-									<i class="fa-solid fa-envelope text-primary m-1 cursor-pointer-icon fs-4" onclick="window.open('mailto:vermeulen.milan@hotmail.com')" target="_blank"></i>
-									<i class="fa-brands fa-linkedin text-primary m-1 cursor-pointer-icon fs-4" onclick="window.open('https://www.linkedin.com/in/milan-vermeulen-90037b1ab/')" target="_blank"></i>
-									<i class="fa-brands fa-github text-primary m-1 cursor-pointer-icon fs-4" onclick="window.open('https://github.com/MilanVermeulen')" target="_blank"></i>
-								</div>
+							<div class="col-md-12">
+								<i class="fa-solid fa-envelope text-primary cursor-pointer-icon m-1 fs-5" onclick="window.open('mailto:Alexandros.Tsikakis@ymail.com')" target="_blank"></i>
+								<i class="fa-brands fa-linkedin text-primary cursor-pointer-icon m-1 fs-5" onclick="window.open('https://www.linkedin.com/in/alexandros-tsikakis-3b525a252/')" target="_blank"></i>
+								<i class="fa-brands fa-github text-primary cursor-pointer-icon m-1 fs-5" onclick="window.open('https://github.com/AlexTsika')" target="_blank"></i>
 							</div>
-							<div class="mb-3">
-								<p class="fw-bold mb-0">Remco Duckers</p>
-								<div class="d-flex">
-									<i class="fa-solid fa-envelope text-primary m-1 cursor-pointer-icon fs-4" onclick="window.open('mailto:rempel.duckers@telenet.be')" target="_blank"></i>
-									<i class="fa-brands fa-linkedin text-primary m-1 cursor-pointer-icon fs-4" onclick="window.open('https://www.linkedin.com/in/remco-duckers-151172bb/')" target="_blank"></i>
-									<i class="fa-brands fa-github text-primary m-1 cursor-pointer-icon fs-4" onclick="window.open('https://github.com/rem3600')" target="_blank"></i>
-								</div>
+						</div>
+						<div class="row justify-content-center align-items-center">
+							<div class="col-md-12">
+								Milan Vermeulen
+							</div>
+							<div class="col-md-12">
+								<i class="fa-solid fa-envelope text-primary cursor-pointer-icon m-1 fs-5" onclick="window.open('mailto:vermeulen.milan@hotmail.com')" target="_blank"></i>
+								<i class="fa-brands fa-linkedin text-primary cursor-pointer-icon m-1 fs-5" onclick="window.open('https://www.linkedin.com/in/milan-vermeulen-90037b1ab/')" target="_blank"></i>
+								<i class="fa-brands fa-github text-primary cursor-pointer-icon m-1 fs-5" onclick="window.open('https://github.com/MilanVermeulen')" target="_blank"></i>
+							</div>
+						</div>
+						<div class="row justify-content-center align-items-center">
+							<div class="col-md-12">
+								Remco Duckers
+							</div>
+							<div class="col-md-12">
+								<i class="fa-solid fa-envelope text-primary cursor-pointer-icon m-1 fs-5" onclick="window.open('mailto:rempel.duckers@telenet.be')" target="_blank"></i>
+								<i class="fa-brands fa-linkedin text-primary cursor-pointer-icon m-1 fs-5" onclick="window.open('https://www.linkedin.com/in/remco-duckers-151172bb/')" target="_blank"></i>
+								<i class="fa-brands fa-github text-primary cursor-pointer-icon m-1 fs-5" onclick="window.open('https://github.com/rem3600')" target="_blank"></i>
 							</div>
 						</div>
 					</div>
-					<div class="col-md-4">
-						<p class="text-center p-5">© {{ date('Y') }} Incognito's</p>
-					</div>
-					<div class="col-md-4 text-end">
-						<img src="{{ asset('/assets/incognito.png') }}" alt="incognito" class="img-fluid" style="max-height: 30vh">
+					<div class="col-md-6">
+						<div class="d-flex align-items-center justify-content-center p-5">
+							<p class="mb-0">© {{ date('Y') }} Incognito's</p>
+							<img src="{{ asset('/assets/incognito.png') }}" alt="incognito" class="img-fluid ms-2" style="max-height: 4vh">
+						</div>
 					</div>
 				</div>
 			</div>
