@@ -102,6 +102,15 @@
                             <div class="card-body">
                                 <p>{{ $post->description }}</p>
                             </div>
+                            <div class="card-footer">
+                                <div class="row justify-content-center text-center">
+                                    <div class="col text-end">
+                                        <p class="m-0 text-muted">
+                                            {{ $post->created_at->diffForHumans() }} at {{ $post->created_at->format('H:i') }}
+                                        </p>
+                                    </div>
+                                </div>
+                            </div>        
                         </div>
                     @empty
                         <p>No posts found.</p>

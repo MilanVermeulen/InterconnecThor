@@ -60,7 +60,7 @@
                                 </div>
                             </div>
                             <div class="card-body flex-grow-1">
-                                <p class="card-text mb-1">Categories:</p>
+                                <p class="card-text mb-1">Categorie(s):</p>
                                 <ul class="card-text">
                                     @forelse ($user->categories->unique() as $category)
                                         <li>{{ $category->name }}</li>
@@ -68,7 +68,7 @@
                                         <li>No categories found</li>
                                     @endforelse
                                 </ul>
-                                <p class="card-text mb-1">Courses:</p>
+                                <p class="card-text mb-1">Course(s):</p>
                                 <ul class="card-text">
                                     @forelse ($user->courses as $course)
                                         <li>{{ $course->name }}<br>
@@ -80,7 +80,7 @@
                                     @endforelse
                                 </ul>
                             </div>
-                            <div class="card-footer text-light text-shadow">
+                            <div class="card-footer text-light">
                                 <div class="row justify-content-center text-center">
                                     <div class="col-md-4">
                                         @if(Auth::user()->id !== $user->id) <!-- Ensure the user cannot follow themselves -->
