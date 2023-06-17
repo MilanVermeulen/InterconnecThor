@@ -58,11 +58,11 @@
                                     {{-- posts/feed --}}
                                     <h4 class="mb-3 fw-bold">Feed</h4>
 
-                                   {{-- buttons --}}
+                                   {{-- nav tab --}}
                                    <div class="nav nav-tabs justify-content-start mb-2" id="nav-tab" role="tablist">
-                                    <a class="nav-link {{ Request::route()->getName() == 'home' ? 'active text-primary fw-bold' : 'text-dark' }}" href="{{ route('home') }}">All Posts</a>
-                                    <a class="nav-link {{ Request::route()->getName() == 'followedPosts' ? 'active text-primary fw-bold' : 'text-dark' }}" href="{{ route('followedPosts') }}">Followed Users Posts</a>
-                                </div>
+                                        <a class="nav-link {{ Request::route()->getName() == 'home' ? 'active text-primary fw-bold' : 'text-dark' }}" href="{{ route('home') }}">Everyone</a>
+                                        <a class="nav-link {{ Request::route()->getName() == 'followedPosts' ? 'active text-primary fw-bold' : 'text-dark' }}" href="{{ route('followedPosts') }}">Following</a>
+                                    </div>
                                                                 
                                     @isset($posts)
                                         @forelse ($posts->sortByDesc('created_at') as $post)

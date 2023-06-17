@@ -52,8 +52,8 @@
 					<div class="nav-item dropdown">
 						<a class="nav-link dropdown-toggle text-light me-2" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">{{ Auth::user()->name }}</a>
 						<ul class="dropdown-menu">
-							<li><a class="dropdown-item" href="{{ route('userProfile') }}">Your profile</a></li>
-							<li><a class="dropdown-item" href="{{ route('user.showUpdateProfile') }}">Edit profile & data</a></li>
+							<li><a class="dropdown-item" href="{{ route('userProfile') }}">Your Profile</a></li>
+							<li><a class="dropdown-item" href="{{ route('user.showUpdateProfile') }}">Edit Profile & Data</a></li>
 							<li><a class="dropdown-item" href="/chat">Chat</a></li>
 							<li><a class="dropdown-item" href="/meet">Meet</a></li>
 						</ul>
