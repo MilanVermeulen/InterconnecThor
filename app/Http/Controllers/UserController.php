@@ -81,6 +81,8 @@ class UserController extends Controller
 
         if (isset($profilePicturePath)) {
             $user->profile_picture = $profilePicturePath;
+        } else {
+            $user->profile_picture = 'profile-pictures/default.png';
         }
 
         $user->save();
