@@ -45,12 +45,12 @@ class EmailController extends Controller
         $request->validate([
             'email' => 'required|email',
         ]);
-
+    
         $emailData = $request->only('email');
-
+    
         // Get the user with the given email
         $user = User::where('email', $emailData['email'])->first();
-
+    
         if ($user) {
             // Create a new token
             $token = Str::random(60);
@@ -59,12 +59,14 @@ class EmailController extends Controller
                 'token' => hash('sha256', $token),
                 'created_at' => Carbon::now(),
             ]);
-
+    
             // Send the email
             Mail::to($user->email)->send(new ForgotPasswordEmail(['email' => $emailData['email'], 'token' => $token]));
+    
+            return redirect()->route('login')->with('success', 'An email has been sent to you with instructions on how to reset your password.');
         }
-
-        return redirect()->route('login')->with('success', 'An email has been sent to you with instructions on how to reset your password.');
-    }
+    
+        return redirect()->back()->with('error', 'No account found with the provided email.');
+    }    
 
 }

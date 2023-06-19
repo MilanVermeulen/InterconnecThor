@@ -12,7 +12,18 @@
                 </div>
             </div>
 
-            {{-- validation errors (IMPORTANT:ONLY APPROVED USERS CAN LOG IN) --}}
+            {{-- custom error message --}}
+            @if (session('error'))
+                <div class="row justify-content-center mb-5">
+                    <div class="col-md-10">
+                        <div class="alert alert-danger text-center">
+                            {{ session('error') }}
+                        </div>
+                    </div>
+                </div>
+            @endif
+        
+            {{-- validation errors --}}
             @if ($errors->any())
                 <div class="row justify-content-center mb-5">
                     <div class="col-md-10">
