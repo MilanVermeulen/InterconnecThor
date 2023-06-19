@@ -79,6 +79,8 @@ Route::group(['middleware' => 'auth'], function () {
     Route::get('/edit-profile', [UserController::class, 'showUpdateProfile'])->name('user.showUpdateProfile');
     // Update profile
     Route::post('/update-profile', [UserController::class, 'updateProfile'])->name('user.updateProfile');
+    // delete user
+    Route::delete('/user/{user}', [UserController::class, 'deleteUser'])->name('user.deleteUser');
     // search posts
     Route::post('/search-posts',[PostController::class, 'search'])->name('search-posts');
     // follow
@@ -92,7 +94,7 @@ Route::group(['middleware' => 'auth'], function () {
     // connections list
     Route::get('user/{id}/connections', [FollowController::class, 'connections'])->name('user.connections');
     // followed posts
-    Route::get('/followedPosts', [App\Http\Controllers\PostController::class, 'getFollowedUsersPosts'])->name('followedPosts');
+    Route::get('/followed-posts', [App\Http\Controllers\PostController::class, 'getFollowedUsersPosts'])->name('followed-posts');
     // meeting routes
     Route::get('/meet', function () {
         return view('meet');

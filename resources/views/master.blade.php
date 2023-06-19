@@ -63,7 +63,7 @@
 						@csrf
 						@if (Auth::check())
 							<img onclick="window.location.href='{{ route('your-profile') }}'" src="{{ asset('storage/' . (Auth::user()->profile_picture ?: 'profile-pictures/default.jpg')) }}" alt="Profile Picture" class="img-fluid rounded-pill mb-2 border border-light border-2 me-2 mt-1 d-inline cursor-pointer" style="max-height: 5vh; width: auto;">
-							<button type="submit" class="btn btn-primary me-2 mb-1 mt-1">Logout</button>
+							<button type="submit" class="btn btn-primary me-2 mb-1 mt-1">Log out</button>
 						@endif
 					</form>
 				@else

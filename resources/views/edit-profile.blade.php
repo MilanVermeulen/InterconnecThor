@@ -31,6 +31,7 @@
             {{-- form --}}
             <div class="row justify-content-center">
                 <div class="col-md-10">
+                    
                     <form action="{{ route('user.updateProfile') }}" method="POST" enctype="multipart/form-data" class="p-3 border rounded">
                         @csrf
                         <div class="form-group">
@@ -100,6 +101,16 @@
         
                         <button type="submit" class="btn btn-outline-primary">Submit</button>
                     </form>
+
+                    <h4 class="mt-5 mb-3 fw-bold">Delete Account</h4>
+
+                    <!-- Delete button -->
+                    <form action="{{ route('user.deleteUser', $user) }}" method="POST" onsubmit="return confirm('Are you sure?');">
+                        @csrf
+                        @method('DELETE')
+                        <button type="submit" class="btn btn-danger">Delete</button>
+                    </form>                    
+                    
                 </div>
             </div>
 

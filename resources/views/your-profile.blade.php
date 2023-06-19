@@ -91,7 +91,7 @@
                             </div>
                         </div>
                     @empty
-                        <p>No posts found.</p>
+                        <p class="mt-5 text-center">No posts found.</p>
                     @endforelse
                 </div>
                 <div class="col-md-4">

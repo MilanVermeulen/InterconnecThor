@@ -266,11 +266,12 @@ class UserController extends Controller
 
     public function showUpdateProfile()
     {
-        $courses = Course::all(); // Assuming you have a Course model
-
-        return view('edit-profile', compact('courses'));
+        $user = auth()->user();
+    
+        return view('edit-profile', compact('user'));
     }
-
+    
+    // Update profile
     public function updateProfile(Request $request)
     {
         // Validation rules for the form fields
@@ -284,7 +285,6 @@ class UserController extends Controller
             'postal_code' => 'required|string|max:255',
             'city' => 'required|string|max:255',
             'country' => 'required|string|max:255',
-            // Add validation rules for other fields as needed
         ];
     
         // Validate the form data
@@ -305,4 +305,17 @@ class UserController extends Controller
         return redirect()->route('your-profile')->with('success', 'Profile updated successfully.');
     }    
 
+    // delete profile/account
+    public function deleteUser(User $user)
+    {
+        // Check if the logged in user is the same as the user being deleted
+        if (Auth::user()->id != $user->id) {
+            return redirect()->route('home')->with('error', 'Unauthorized action.');
+        }
+            
+        $user->delete();
+    
+        return redirect()->route('home')->with('success', 'User deleted successfully!');
+    }
+    
 }

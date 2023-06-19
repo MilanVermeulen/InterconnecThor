@@ -61,7 +61,7 @@
                                    {{-- nav tab --}}
                                    <div class="nav nav-tabs justify-content-start mb-2" id="nav-tab" role="tablist">
                                         <a class="nav-link {{ Request::route()->getName() == 'home' ? 'active text-primary fw-bold' : 'text-dark' }}" href="{{ route('home') }}">Everyone</a>
-                                        <a class="nav-link {{ Request::route()->getName() == 'followedPosts' ? 'active text-primary fw-bold' : 'text-dark' }}" href="{{ route('followedPosts') }}">Following</a>
+                                        <a class="nav-link {{ Request::route()->getName() == 'followedPosts' ? 'active text-primary fw-bold' : 'text-dark' }}" href="{{ route('followed-posts') }}">Following</a>
                                     </div>
                                                                 
                                     @isset($posts)
@@ -97,7 +97,7 @@
                                                 </div>
                                             </div>
                                         @empty
-                                            <p class="text-center">No posts found.</p>
+                                            <p class="mt-5">No posts found.</p>
                                         @endforelse
                                     @endisset
                                 </div>
