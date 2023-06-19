@@ -70,7 +70,7 @@ Route::post('/contactemail', [EmailController::class, 'contactEmail'])->name('co
 // middleware to check if user is logged in
 Route::group(['middleware' => 'auth'], function () {
     // user profile
-    Route::get('userProfile', [UserController::class, 'showUserProfile'])->name('userProfile');
+    Route::get('your-profile', [UserController::class, 'showYourProfile'])->name('your-profile');
     // non-user profile
     Route::get('/profile/{id}', [UserController::class, 'viewProfile'])->name('viewProfile');
     // post form

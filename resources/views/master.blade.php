@@ -52,7 +52,7 @@
 					<div class="nav-item dropdown">
 						<a class="nav-link dropdown-toggle text-light me-2" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">{{ Auth::user()->name }}</a>
 						<ul class="dropdown-menu">
-							<li><a class="dropdown-item" href="{{ route('userProfile') }}">Your Profile <i class="fa-regular fa-user"></i></a></li>
+							<li><a class="dropdown-item" href="{{ route('your-profile') }}">Your Profile <i class="fa-regular fa-user"></i></a></li>
 							<li><a class="dropdown-item" href="{{ route('user.showUpdateProfile') }}">Edit Profile & Data <i class="fa-regular fa-pen-to-square"></i></a></li>
 							<li><a class="dropdown-item" href="/chat">Chat <i class="fa-regular fa-message"></i></a></li>
 							<li><a class="dropdown-item" href="/meet">Meet <i class="fa-solid fa-display"></i></a></li>
@@ -62,7 +62,7 @@
 					<form action="{{ route('logout') }}" method="POST">
 						@csrf
 						@if (Auth::check())
-							<img onclick="window.location.href='{{ route('userProfile') }}'" src="{{ asset('storage/' . (Auth::user()->profile_picture ?: 'profile-pictures/default.jpg')) }}" alt="Profile Picture" class="img-fluid rounded-pill mb-2 border border-light border-2 me-2 mt-1 d-inline cursor-pointer" style="max-height: 5vh; width: auto;">
+							<img onclick="window.location.href='{{ route('your-profile') }}'" src="{{ asset('storage/' . (Auth::user()->profile_picture ?: 'profile-pictures/default.jpg')) }}" alt="Profile Picture" class="img-fluid rounded-pill mb-2 border border-light border-2 me-2 mt-1 d-inline cursor-pointer" style="max-height: 5vh; width: auto;">
 							<button type="submit" class="btn btn-primary me-2 mb-1 mt-1">Logout</button>
 						@endif
 					</form>

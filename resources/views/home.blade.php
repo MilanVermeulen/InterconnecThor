@@ -103,7 +103,7 @@
                                 </div>
                                 <div class="col-md-6">
                                     {{-- post form --}}
-                                    @include('postForm')                            
+                                    @include('postform')                            
                                 </div>
                             </div>
 

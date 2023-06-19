@@ -241,13 +241,13 @@ class UserController extends Controller
         return view('search', compact('users'));
     }
 
-    public function showUserProfile()
+    public function showYourProfile()
     {
         // Retrieve the currently authenticated user
         $user = auth()->user();
 
         // Pass the user data to the view
-        return view('userProfile', compact('user'));
+        return view('your-profile', compact('user'));
     }
 
     public function viewProfile($id)
@@ -261,7 +261,7 @@ class UserController extends Controller
         }
 
         // Pass the user data to the profile view
-        return view('searchProfile', ['user' => $user]);
+        return view('profile', ['user' => $user]);
     }
 
     public function showUpdateProfile()
@@ -302,7 +302,7 @@ class UserController extends Controller
             $user->save();
         }
     
-        return redirect()->route('userProfile')->with('success', 'Profile updated successfully.');
+        return redirect()->route('your-profile')->with('success', 'Profile updated successfully.');
     }    
 
 }

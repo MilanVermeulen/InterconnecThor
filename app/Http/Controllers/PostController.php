@@ -27,9 +27,9 @@ class PostController extends Controller
         $post->save();
 
         // Check if the previous URL is the user profile page
-        $userProfileUrl = route('userProfile');
-        if (url()->previous() == $userProfileUrl) {
-            return redirect($userProfileUrl)->with('success', 'Successfully created post!');
+        $yourProfileUrl = route('your-profile');
+        if (url()->previous() == $yourProfileUrl) {
+            return redirect($yourProfileUrl)->with('success', 'Successfully created post!');
         }
 
         // Redirect to the homepage
