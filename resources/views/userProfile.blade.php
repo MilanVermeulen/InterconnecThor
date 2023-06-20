@@ -90,12 +90,11 @@
                                 </div>
                             </div>
                             <div class="card-body">
-                                <h5 class="mb-3 fw-bold">{{ $post->title }}</h5>
-                                
-                                <p class="mb-0" >{{ $post->description }}</p>
+                                <h5 class="mb-3 fw-bold cursor-pointer-comment" onclick="window.location.href='{{ route('post.show', $post->id) }}'">{{ $post->title }}</h5>                                
+                                <p class="mb-0">{{ $post->description }}</p>
                                 @if(strlen($post->description) >= 255)
-                                    <a href="{{ route('post.show', $post->id) }}" class="text-decoration-none text-primary font-weight-bold">View more</a>
-                                @endif            
+                                    <a href="{{ route('post.show', $post->id) }}" class="text-decoration-none text-primary font-weight-bold view-more">View more</a>
+                                @endif
                             </div>
                             <div class="card-footer">
                                 <div class="row justify-content-center text-center">
