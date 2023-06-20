@@ -44,7 +44,7 @@
         <div class="px-4 py-12 mx-auto max-w-7xl sm:px-6 md:px-12 lg:px-24 lg:py-24">
           <div class="flex flex-col w-full mb-12 text-center">
             <h1 class="max-w-5xl text-2xl font-bold leading-none tracking-tighter text-neutral-600 md:text-5xl lg:text-6xl lg:max-w-7xl m-3">
-              Empower Your Communication with InterconnectThor Meetings!
+              Empower Your Communication with i<span class="text-primary">nterconnect</span>T<span class="text-primary">hor</span> Meetings!
             </h1>
             <p class="max-w-xl font-bold mx-auto mt-8 text-base leading-relaxed text-center text-gray-500">Unite and Collaborate Seamlessly with InterconnectThor Meetings!</p>
           </div>
