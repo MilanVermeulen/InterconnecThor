@@ -69,6 +69,11 @@
     color: white !important;
 }
 
+.cursor-pointer-comment:hover {
+    cursor: pointer;
+    color: #2BA2C5 !important;
+}
+
 /* Set the scrollbar width and color for Google Chrome and Safari */
 ::-webkit-scrollbar {
     width: 10px;

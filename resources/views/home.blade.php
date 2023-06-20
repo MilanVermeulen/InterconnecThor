@@ -4,6 +4,7 @@
 
     <div class="row justify-content-center mt-5">
         <div class="col-md-10 bg-light p-5 rounded">
+
             {{-- welcome message --}}
             <div class="row justify-content-center mb-5">
                 <div class="col-md-10">
@@ -55,6 +56,7 @@
 
                             <div class="row">
                                 <div class="col-md-6">
+                                    
                                     {{-- posts/feed --}}
                                     <h4 class="mb-3 fw-bold">Feed</h4>
 
@@ -84,11 +86,16 @@
                                                 </div>
                                                 <div class="card-body">
                                                     <h5 class="mb-3 fw-bold">{{ $post->title }}</h5>
-                                                    <p>{{ $post->description }}</p>
+                                                    <p class="mb-0" >{{ $post->description }}</p>
                                                     <a href="{{ route('post.show', $post->id) }}"class="text-decoration-none text-primary font-weight-bold">View more</a>
                                                 </div>
                                                 <div class="card-footer">
                                                     <div class="row justify-content-center text-center">
+                                                        <div class="col text-start">
+                                                            <p class="m-0 text-muted cursor-pointer-comment" onclick="window.location.href='{{ route('post.show', $post->id) }}'">
+                                                                <i class="fa-regular fa-comment"></i> {{ $post->comments->count() }}
+                                                            </p>
+                                                        </div>
                                                         <div class="col text-end">
                                                             <p class="m-0 text-muted">
                                                                 {{ $post->created_at->diffForHumans() }} at {{ $post->created_at->format('H:i') }}
@@ -101,16 +108,20 @@
                                             <p class="mt-5">No posts found.</p>
                                         @endforelse
                                     @endisset
+                                        
+                                    {{-- pagination --}}
+                                    <div class="d-flex justify-content-center">
+                                        {{ $posts->links('pagination::bootstrap-4') }}
+                                    </div>
+
                                 </div>
                                 <div class="col-md-6">
                                     {{-- post form --}}
                                     @include('postForm')
                                 </div>
                             </div>
+                            
                         </div>
-                    </div>
-                    <div class="d-flex justify-content-center">
-                        {{ $posts->links('pagination::bootstrap-4') }}
                     </div>
                 @else
 
