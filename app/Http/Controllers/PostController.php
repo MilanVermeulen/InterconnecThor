@@ -125,4 +125,19 @@ class PostController extends Controller
         return redirect()->back()->with('success', 'Comment added successfully!');
     }
 
+    public function deleteComment($id)
+    {
+        $comment = Comment::findOrFail($id);
+
+        // Check if the authenticated user is authorized to delete the comment
+        if ($comment->user_id !== Auth::id()) {
+            return redirect()->back()->with('error', 'You are not authorized to delete this comment.');
+        }
+
+        $comment->delete();
+
+        return redirect()->back()->with('success', 'Comment deleted successfully!');
+    }
+
+
 }
