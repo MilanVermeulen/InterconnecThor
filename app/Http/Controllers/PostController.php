@@ -6,6 +6,8 @@ use App\Models\Post;
 use App\Models\User;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
+use Illuminate\Support\Str;
+
 
 class PostController extends Controller
 {
@@ -46,10 +48,15 @@ class PostController extends Controller
             ->orderBy('id', 'desc')
             ->paginate(5); // posts per page
 
-        // Pass the posts data to the home view
+        // Truncate the content of each post to a maximum of 255 characters
+        foreach ($posts as $post) {
+            $post->description = Str::limit($post->description, 255);
+            $post->showButton = strlen($post->description) < strlen($post->original_content);
+        }
+
+        // Pass the modified posts data to the home view
         return view('home', compact('posts'));
     }
-
 
     // show followed users posts
     public function getFollowedUsersPosts()
@@ -91,6 +98,13 @@ class PostController extends Controller
 
         // Return the home view with the resuls compacted
         return view('home', compact('posts'));
+    }
+
+    public function show($id)
+    {
+        $post = Post::findOrFail($id);
+
+        return view('postShow', compact('post'));
     }
 
 }

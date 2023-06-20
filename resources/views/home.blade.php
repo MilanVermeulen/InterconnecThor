@@ -85,6 +85,7 @@
                                                 <div class="card-body">
                                                     <h5 class="mb-3 fw-bold">{{ $post->title }}</h5>
                                                     <p>{{ $post->description }}</p>
+                                                    <a href="{{ route('post.show', $post->id) }}"class="text-decoration-none text-primary font-weight-bold">View more</a>
                                                 </div>
                                                 <div class="card-footer">
                                                     <div class="row justify-content-center text-center">
