@@ -63,7 +63,7 @@
                                         <a class="nav-link {{ Request::route()->getName() == 'home' ? 'active text-primary fw-bold' : 'text-dark' }}" href="{{ route('home') }}">Everyone</a>
                                         <a class="nav-link {{ Request::route()->getName() == 'followedPosts' ? 'active text-primary fw-bold' : 'text-dark' }}" href="{{ route('followedPosts') }}">Following</a>
                                     </div>
-                                                                
+
                                     @isset($posts)
                                         @forelse ($posts->sortByDesc('created_at') as $post)
                                             <div class="card d-flex flex-column mb-3">
@@ -103,18 +103,18 @@
                                 </div>
                                 <div class="col-md-6">
                                     {{-- post form --}}
-                                    @include('postform')                            
+                                    @include('postForm')
                                 </div>
                             </div>
 
                         </div>
                     </div>
-                    
+
                 @else
 
                     <div class="row justify-content-center text-center">
                         <div class="col-md-10">
-                            
+
                             <div class="row justify-content-center text-center">
                                 <div class="col-md-4 text-start mb-5">
                                     <p>Welcome to <span class="text-primary fw-bold">interconnecThor</span>, the unique digital platform exclusively designed for the students. From <span class="text-primary fw-bold">connecting</span> with classmates to <span class="text-primary fw-bold">sharing innovative ideas</span>, interconnecThor is your go-to space for collaboration.</p>
@@ -137,7 +137,7 @@
 
                 <div class="row justify-content-center text-center">
                     <div class="col-md-10">
-                        
+
                         <div class="row justify-content-center text-center">
                             <div class="col-md-4 text-start mb-5">
                                 <p>Welcome to <span class="text-primary fw-bold">interconnecThor</span>, the unique digital platform exclusively designed for the students. From <span class="text-primary fw-bold">connecting</span> with classmates to <span class="text-primary fw-bold">sharing innovative ideas</span>, interconnecThor is your go-to space for collaboration.</p>
@@ -154,7 +154,7 @@
 
                     </div>
                 </div>
-                
+
             @endif
 
         </div>
