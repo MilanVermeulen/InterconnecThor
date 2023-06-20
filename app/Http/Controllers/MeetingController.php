@@ -11,13 +11,12 @@ use Illuminate\Support\Facades\Log;
 
 class MeetingController extends Controller
 {
-
+    // create meeting
     public function createMeeting(Request $request) {
         
         $METERED_DOMAIN = env('METERED_DOMAIN');
         $METERED_SECRET_KEY = env('METERED_SECRET_KEY');
     
-
         // Contain the logic to create a new meeting
         $response = Http::post("https://{$METERED_DOMAIN}/api/v1/room?secretKey={$METERED_SECRET_KEY}", [
             'autoJoin' => true
@@ -27,7 +26,7 @@ class MeetingController extends Controller
         
         return redirect("/meeting/{$roomName}")->with('roomName', $roomName);
     }
-
+    // validate meeting
     public function validateMeeting(Request $request) {
         $METERED_DOMAIN = env('METERED_DOMAIN');
         $METERED_SECRET_KEY = env('METERED_SECRET_KEY');
@@ -38,7 +37,6 @@ class MeetingController extends Controller
         $response = Http::get("https://{$METERED_DOMAIN}/api/v1/room/{$meetingId}?secretKey={$METERED_SECRET_KEY}");
 
         $roomName = $response->json("roomName");
-
 
         if ($response->status() === 200)  {
             return redirect("/meeting/{$roomName}")->with('roomName', $roomName);
