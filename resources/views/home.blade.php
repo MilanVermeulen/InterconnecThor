@@ -106,10 +106,11 @@
                                     @include('postForm')
                                 </div>
                             </div>
-
                         </div>
                     </div>
-
+                    <div class="d-flex justify-content-center">
+                        {{ $posts->links('pagination::bootstrap-4') }}
+                    </div>
                 @else
 
                     <div class="row justify-content-center text-center">
