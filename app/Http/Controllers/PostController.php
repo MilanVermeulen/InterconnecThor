@@ -7,6 +7,7 @@ use App\Models\User;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Str;
+use App\Models\Comment;
 
 
 class PostController extends Controller
@@ -105,6 +106,23 @@ class PostController extends Controller
         $post = Post::findOrFail($id);
 
         return view('postShow', compact('post'));
+    }
+
+    public function createComment(Request $request, $id)
+    {
+        $request->validate([
+            'comment' => 'required|string|max:255',
+        ]);
+
+        $post = Post::findOrFail($id);
+
+        $comment = new Comment();
+        $comment->comment = $request->input('comment');
+        $comment->user_id = Auth::id();
+
+        $post->comments()->save($comment);
+
+        return redirect()->back()->with('success', 'Comment added successfully!');
     }
 
 }
