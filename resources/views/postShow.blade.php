@@ -89,7 +89,7 @@
                                     <div class="card-body">
                                         <p>{{ $comment->comment }}</p>
                                         @if($comment->user_id === Auth::id())
-                                            <form action="{{ route('comments.delete', ['id' => $comment->id]) }}" method="POST">
+                                            <form action="{{ route('comments.delete', ['id' => $comment->id]) }}" method="POST" onsubmit="return confirm('Are you sure?');">
                                                 @csrf
                                                 @method('DELETE')
                                                 <button type="submit" class="btn btn-danger">Delete</button>
