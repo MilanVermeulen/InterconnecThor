@@ -95,7 +95,7 @@
                     @endforelse
                 </div>
                 <div class="col-md-4">
-                    @include('postform')
+                    @include('postForm')
                 </div>
             </div>
 

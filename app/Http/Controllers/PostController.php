@@ -41,11 +41,13 @@ class PostController extends Controller
     //show all posts
     public function home()
     {
-        // Retrieve all posts from the database sort decent by id
-        $posts = Post::with('user')->orderBy('id', 'desc')->get();
+        // Retrieve all posts from the database sorted in descending order by id
+        $posts = Post::with('user')->orderBy('id', 'desc')->paginate(5); // Change 10 to the desired number of posts per page
+
         // Pass the posts data to the home view
         return view('home', compact('posts'));
     }
+
 
     // show followed users posts
     public function getFollowedUsersPosts()
