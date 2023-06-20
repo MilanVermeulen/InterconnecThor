@@ -121,7 +121,7 @@ class User extends \TCG\Voyager\Models\User
     {
         return $this->connections()->count();
     }
-    
+
     public function following()
     {
         return $this->belongsToMany(User::class, 'follows', 'user_id', 'followable_id')
@@ -132,5 +132,9 @@ class User extends \TCG\Voyager\Models\User
     {
         return $this->following()->count();
     }
-    
+
+    public function comments()
+    {
+        return $this->hasMany(Comment::class);
+    }
 }

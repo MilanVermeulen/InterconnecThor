@@ -113,3 +113,5 @@ Route::group(['middleware' => 'auth'], function () {
         ]);
     });
 });
+
+Route::get('/post/{id}', [PostController::class, 'show'])->name('post.show');
