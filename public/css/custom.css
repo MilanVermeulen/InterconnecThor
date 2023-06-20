@@ -7,6 +7,23 @@
 
 /* custom color scheme: blue #2BA2C5, dark #212529 */
 
+/* Custom Blue Color */
+:root {
+    --custom-blue: #2BA2C5;
+}
+  
+/* Active page number background and text color */
+.page-item.active .page-link {
+    background-color: var(--custom-blue) !important;
+    border-color: var(--custom-blue) !important;
+    color: white !important;
+}
+
+/* Text color of other page numbers */
+.page-link {
+    color: var(--custom-blue) !important;
+}
+
 /* primary edit */
 .text-primary {
     color: #2BA2C5 !important;
