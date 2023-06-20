@@ -84,6 +84,27 @@
                 <button type="submit" class="btn btn-primary">Submit</button>
             </form>
 
+            <!-- Comments -->
+            <div class="mt-4">
+                <h4>Comments</h4>
+                @forelse($post->comments as $comment)
+                    <div class="card mb-2">
+                        <div class="card-body">
+                            <p>{{ $comment->comment }}</p>
+                            @if($comment->user_id === Auth::id())
+                                <form action="{{ route('comments.delete', ['id' => $comment->id]) }}" method="POST">
+                                    @csrf
+                                    @method('DELETE')
+                                    <button type="submit" class="btn btn-danger">Delete</button>
+                                </form>
+                            @endif
+                        </div>
+                    </div>
+                @empty
+                    <p>No comments yet.</p>
+                @endforelse
+            </div>
+
         </div>
     </div>
 @endsection
