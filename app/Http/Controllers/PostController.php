@@ -42,7 +42,9 @@ class PostController extends Controller
     public function home()
     {
         // Retrieve all posts from the database sorted in descending order by id
-        $posts = Post::with('user')->orderBy('id', 'desc')->paginate(5); // Change 10 to the desired number of posts per page
+        $posts = Post::with('user')
+            ->orderBy('id', 'desc')
+            ->paginate(5); // posts per page
 
         // Pass the posts data to the home view
         return view('home', compact('posts'));
@@ -60,10 +62,12 @@ class PostController extends Controller
         // Add the logged-in user's id to the array
         $followingUserIds[] = $user->id;
 
-        // Retrieve the followed users' posts and the logged-in user's posts
-        $posts = Post::whereIn('user_id', $followingUserIds)->orderBy('created_at', 'desc')->get();
+        // Retrieve the followed users' posts and the logged-in user's posts with pagination
+        $posts = Post::whereIn('user_id', $followingUserIds)
+            ->orderBy('created_at', 'desc')
+            ->paginate(5); // Adjust the number of posts per page as desired
 
-        // Return a view with the posts
+        // Return a view with the paginated posts
         return view('home', compact('posts'));
     }
 
