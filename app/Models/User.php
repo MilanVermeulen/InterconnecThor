@@ -29,7 +29,7 @@ class User extends \TCG\Voyager\Models\User
         'postal_code',
         'city',
         'country',
-        "profile_picture"
+        'profile_picture',
     ];
 
     /**
