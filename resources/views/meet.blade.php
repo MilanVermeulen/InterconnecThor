@@ -46,7 +46,7 @@
             <h1 class="max-w-5xl text-2xl font-bold leading-none tracking-tighter text-neutral-600 md:text-5xl lg:text-6xl lg:max-w-7xl m-3">
               Empower Your Communication with <span class="text-primary">i</span>nterconnect<span class="text-primary">T</span>hor Meetings!
             </h1>
-            <p class="max-w-xl font-bold mx-auto mt-8 text-base leading-relaxed text-center text-gray-500">Unite and Collaborate Seamlessly with InterconnectThor Meetings!</p>
+            <p class="max-w-xl font-bold mx-auto mt-8 text-base leading-relaxed text-center text-gray-500">Unite and Collaborate Seamlessly with <span class="text-primary">i</span>nterconnect<span class="text-primary">T</span>hor Meetings!</p>
           </div>
         </div>
       </section>
