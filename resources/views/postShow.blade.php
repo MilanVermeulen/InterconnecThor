@@ -34,8 +34,18 @@
                 </div>
             </div>
 
+            <!-- Comment Form -->
+            <form action="{{ route('posts.comments.create', ['id' => $post->id]) }}" method="POST">
+                @csrf
+
+                <div class="form-group">
+                    <label for="comment">Leave a comment:</label>
+                    <textarea id="comment" name="comment" class="form-control" rows="3"></textarea>
+                </div>
+
+                <button type="submit" class="btn btn-primary">Submit</button>
+            </form>
+
         </div>
     </div>
 @endsection
-
-
