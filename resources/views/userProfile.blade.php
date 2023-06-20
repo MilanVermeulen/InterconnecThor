@@ -73,15 +73,36 @@
                 </div>
                 <div class="col-md-4">
                     @forelse ($user->posts()->latest()->get() as $post)
-                        <div class="card mb-3">
-                            <div class="card-header bg-primary text-light">
-                                <h5 class="m-0 fw-bold">{{ $post->title }}</h5>
+                        <div class="card d-flex flex-column mb-3">
+                            <div class="card-header bg-primary text-light text-shadow cursor-pointer" onclick="window.location.href='{{ route('viewProfile', ['id' => $post->user->id]) }}'">
+                                <div class="row">
+                                    <div class="col">
+                                        <h4 class="m-0">
+                                            @if ($post->user->first_name)
+                                                <span class="fw-bold">{{ $post->user->first_name }} {{ $post->user->last_name }}<br></span>
+                                            @endif
+                                            <span class="fs-6">{{ $post->user->name }}</span>
+                                        </h4>
+                                    </div>
+                                    <div class="col text-end">
+                                        <img src="{{ asset('storage/' . ($post->user->profile_picture ?: 'profile-pictures/default.jpg')) }}" alt="Profile Picture" class="img-fluid rounded-pill mb-2 border border-light border-2" style="max-height: 7vh; width: auto;">
+                                    </div>
+                                </div>
                             </div>
                             <div class="card-body">
-                                <p>{{ $post->description }}</p>
+                                <h5 class="mb-3 fw-bold">{{ $post->title }}</h5>
+                                <p class="mb-0" >{{ $post->description }}</p>
+                                @if(strlen($post->description) >= 255)
+                                    <a href="{{ route('post.show', $post->id) }}" class="text-decoration-none text-primary font-weight-bold">View more</a>
+                                @endif            
                             </div>
                             <div class="card-footer">
                                 <div class="row justify-content-center text-center">
+                                    <div class="col text-start">
+                                        <p class="m-0 text-muted cursor-pointer-comment" onclick="window.location.href='{{ route('post.show', $post->id) }}'">
+                                            <i class="fa-regular fa-comment"></i> {{ $post->comments->count() }}
+                                        </p>
+                                    </div>
                                     <div class="col text-end">
                                         <p class="m-0 text-muted">
                                             {{ $post->created_at->diffForHumans() }} at {{ $post->created_at->format('H:i') }}
@@ -91,7 +112,7 @@
                             </div>
                         </div>
                     @empty
-                        <p class="mt-5 text-center">No posts found.</p>
+                        <p class="mt-5">No posts found.</p>
                     @endforelse
                 </div>
                 <div class="col-md-4">
