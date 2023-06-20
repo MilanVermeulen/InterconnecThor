@@ -70,7 +70,7 @@ Route::post('/contactemail', [EmailController::class, 'contactEmail'])->name('co
 // middleware to check if user is logged in
 Route::group(['middleware' => 'auth'], function () {
     // user profile
-    Route::get('your-profile', [UserController::class, 'showYourProfile'])->name('your-profile');
+    Route::get('userProfile', [UserController::class, 'showUserProfile'])->name('userProfile');
     // non-user profile
     Route::get('/profile/{id}', [UserController::class, 'viewProfile'])->name('viewProfile');
     // post form
@@ -94,7 +94,7 @@ Route::group(['middleware' => 'auth'], function () {
     // connections list
     Route::get('user/{id}/connections', [FollowController::class, 'connections'])->name('user.connections');
     // followed posts
-    Route::get('/followed-posts', [App\Http\Controllers\PostController::class, 'getFollowedUsersPosts'])->name('followed-posts');
+    Route::get('/followedPosts', [App\Http\Controllers\PostController::class, 'getFollowedUsersPosts'])->name('followedPosts');
     // meeting routes
     Route::get('/meet', function () {
         return view('meet');
