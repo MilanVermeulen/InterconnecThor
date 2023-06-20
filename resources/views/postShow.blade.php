@@ -29,10 +29,48 @@
                                     {{ $post->created_at->diffForHumans() }} at {{ $post->created_at->format('H:i') }}
                                 </p>
                             </div>
+                            <div class="col text-start">
+                                <p class="m-0 text-muted">
+                                    {{ $post->comments->count() }} comment(s)
+                                </p>
+                            </div>
                         </div>
+                        <div class="card">
+                            <div class="card-body">
+                                @forelse($comments as $comment)
+                                    <div class="row justify-content-center text-center">
+                                        <div class="col text-end">
+                                            <p class="m-0 text-muted">
+                                                {{ $comment->created_at->diffForHumans() }} at {{ $comment->created_at->format('H:i') }}
+                                            </p>
+                                        </div>
+                                        <div class="col text-start">
+                                            <p class="m-0 text-muted">
+                                                {{ $comment->user->name }}
+                                            </p>
+                                        </div>
+                                    </div>
+                                    <div class="row justify-content-center text-center">
+                                        <div class="col text-end">
+                                            <p class="m-0 text-muted">
+                                                {{ $comment->comment }}
+                                            </p>
+                                        </div>
+                                    </div>
+                                @empty
+                                    <div class="row justify-content-center text-center">
+                                        <div class="col text-end">
+                                            <p class="m-0 text-muted">
+                                                No comments yet
+                                            </p>
+                                        </div>
+                                    </div>
+                                @endforelse
+                            </div>
+                        </div>
+
                     </div>
                 </div>
-            </div>
 
             <!-- Comment Form -->
             <form action="{{ route('posts.comments.create', ['id' => $post->id]) }}" method="POST">
