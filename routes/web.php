@@ -116,5 +116,6 @@ Route::group(['middleware' => 'auth'], function () {
 
 Route::get('/post/{id}', [PostController::class, 'show'])->name('post.show');
 Route::post('/posts/{id}/comments', [PostController::class, 'createComment'])->name('posts.comments.create');
+Route::delete('/comments/{id}', [PostController::class, 'deleteComment'])->name('comments.delete');
 
 
