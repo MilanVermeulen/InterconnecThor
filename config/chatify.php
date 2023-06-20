@@ -116,6 +116,6 @@ return [
     'sounds' => [
         'enabled' => true,
         'public_path' => 'sounds/chatify',
-        'new_message' => 'new-message-sound.mp3',
+        'new_message' => 'mixkit-long-pop-2358.wav',
     ]
 ];
