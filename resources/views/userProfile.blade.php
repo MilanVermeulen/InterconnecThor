@@ -110,6 +110,13 @@
                                     </div>
                                 </div>
                             </div>
+                            <div class="card-footer text-start">
+                                <form action="{{ route('post.delete', $post->id) }}" method="POST" onsubmit="return confirm('Are you sure?');">
+                                    @csrf
+                                    @method('DELETE')
+                                    <button type="submit" class="btn btn-outline-danger"><i class="fa-solid fa-trash-can"></i></button>
+                                </form>
+                            </div>
                         </div>
                     @empty
                         <p class="mt-5">No posts found.</p>
