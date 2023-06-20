@@ -53,6 +53,13 @@
                         <div class="card-body">
                             <h5 class="mb-3 fw-bold">{{ $post->title }}</h5>
                             <p>{{ $post->description }}</p>
+                            @if($post->user_id === Auth::id())
+                                <form action="{{ route('post.delete', $post->id) }}" method="POST" onsubmit="return confirm('Are you sure?');">
+                                    @csrf
+                                    @method('DELETE')
+                                    <button type="submit" class="btn btn-danger">Delete</button>
+                                </form>
+                            @endif
                         </div>
                         <div class="card-footer">
                             <div class="row justify-content-center text-center">

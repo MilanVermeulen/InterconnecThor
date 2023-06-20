@@ -72,7 +72,7 @@
                     </p>
                 </div>
                 <div class="col-md-4">
-                    @forelse ($user->posts()->latest()->get() as $post)
+                    @forelse ($posts as $post)
                         <div class="card d-flex flex-column mb-3">
                             <div class="card-header bg-primary text-light text-shadow cursor-pointer" onclick="window.location.href='{{ route('viewProfile', ['id' => $post->user->id]) }}'">
                                 <div class="row">
@@ -91,6 +91,7 @@
                             </div>
                             <div class="card-body">
                                 <h5 class="mb-3 fw-bold">{{ $post->title }}</h5>
+                                
                                 <p class="mb-0" >{{ $post->description }}</p>
                                 @if(strlen($post->description) >= 255)
                                     <a href="{{ route('post.show', $post->id) }}" class="text-decoration-none text-primary font-weight-bold">View more</a>
@@ -114,6 +115,11 @@
                     @empty
                         <p class="mt-5">No posts found.</p>
                     @endforelse
+
+                    {{-- pagination --}}
+                    <div class="d-flex justify-content-center">
+                        {{ $posts->links('pagination::bootstrap-4') }}
+                    </div>
                 </div>
                 <div class="col-md-4">
                     @include('postForm')

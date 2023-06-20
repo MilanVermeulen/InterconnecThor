@@ -39,8 +39,6 @@ class PostController extends Controller
         return redirect(route('home'))->with('success', 'Successfully created post!');
     }
 
-
-
     //show all posts
     public function home()
     {
@@ -52,7 +50,6 @@ class PostController extends Controller
         // Truncate the content of each post to a maximum of 255 characters
         foreach ($posts as $post) {
             $post->description = Str::limit($post->description, 255);
-            $post->showButton = strlen($post->description) < strlen($post->original_content);
         }
 
         // Pass the modified posts data to the home view
@@ -75,6 +72,11 @@ class PostController extends Controller
             ->orderBy('created_at', 'desc')
             ->paginate(5); // Adjust the number of posts per page as desired
 
+        // Truncate the content of each post to a maximum of 255 characters
+        foreach ($posts as $post) {
+            $post->description = Str::limit($post->description, 255);
+        }
+
         // Return a view with the paginated posts
         return view('home', compact('posts'));
     }
@@ -84,7 +86,7 @@ class PostController extends Controller
     {
         // Get the search value from the request
         $search = $request->input('search');
-
+    
         // Search in the title and description columns from the posts table
         // Search in the name, first_name and last_name columns from the users table
         $posts = Post::query()
@@ -95,11 +97,16 @@ class PostController extends Controller
                     ->orWhere('first_name', 'LIKE', "%{$search}%")
                     ->orWhere('last_name', 'LIKE', "%{$search}%");
             })
-            ->get();
+            ->paginate(5);
 
-        // Return the home view with the resuls compacted
+        // Truncate the content of each post to a maximum of 255 characters
+        foreach ($posts as $post) {
+            $post->description = Str::limit($post->description, 255);
+        }
+    
+        // Return the home view with the results compacted
         return view('home', compact('posts'));
-    }
+    }    
 
     public function show($id)
     {
@@ -140,5 +147,18 @@ class PostController extends Controller
         return redirect()->back()->with('success', 'Comment deleted successfully!');
     }
 
+    public function deletePost($id)
+    {
+        $post = Post::findOrFail($id);
+
+        // Check if the authenticated user is authorized to delete the post
+        if ($post->user_id !== Auth::id()) {
+            return redirect()->back()->with('error', 'You are not authorized to delete this post.');
+        }
+
+        $post->delete();
+
+        return redirect()->back()->with('success', 'Post deleted successfully!');
+    }
 
 }
