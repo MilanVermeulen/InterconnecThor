@@ -63,13 +63,13 @@
                         @endif
                     @endauth
 
-                    <p class="mb-0 cursor-pointer"
+                    <p class="mb-0 cursor-pointer-comment"
                         onclick="window.location.href='{{ route('user.following', $user->id) }}'">Following: <span
                             class="text-primary fw-bold">{{ $user->following_count }}</span></p>
-                    <p class="mb-0 cursor-pointer"
+                    <p class="mb-0 cursor-pointer-comment"
                         onclick="window.location.href='{{ route('user.followers', $user->id) }}'">Followers: <span
                             class="text-primary fw-bold">{{ $user->followers()->count() }}</span></p>
-                    <p class="mb-5 cursor-pointer"
+                    <p class="mb-5 cursor-pointer-comment"
                         onclick="window.location.href='{{ route('user.connections', $user->id) }}'">Connections: <span
                             class="text-primary fw-bold">{{ $user->connections()->count() }}</span></p>
 
