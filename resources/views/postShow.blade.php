@@ -62,7 +62,7 @@
                                         <form method="POST" action="{{ route('unlikePost', $post->id) }}">
                                             @csrf
                                             @method('DELETE')
-                                            <button type="submit" class="btn btn-outline-danger">
+                                            <button type="submit" class="btn btn-outline-success">
                                                 <i class="fa-regular fa-thumbs-up"></i> {{ $post->likes->count() }}
                                             </button>
                                         </form>
@@ -70,7 +70,7 @@
                                         <!-- Like Button -->
                                         <form method="POST" action="{{ route('likePost', $post->id) }}">
                                             @csrf
-                                            <button type="submit" class="btn btn-outline-success">
+                                            <button type="submit" class="btn btn-outline-primary">
                                                 <i class="fa-regular fa-thumbs-up"></i> {{ $post->likes->count() }}
                                             </button>
                                         </form>
@@ -126,16 +126,16 @@
                                                     <form method="POST" action="{{ route('unlikeComment', $comment->id) }}">
                                                         @csrf
                                                         @method('DELETE')
-                                                        <button type="submit" class="btn btn-outline-danger">
-                                                            <i class="fa-regular fa-thumbs-up"></i>
+                                                        <button type="submit" class="btn btn-outline-success">
+                                                            <i class="fa-regular fa-thumbs-up"></i> {{ $comment->likes->count() }}
                                                         </button>
                                                     </form>
                                                 @else
                                                     <!-- Like Button -->
                                                     <form method="POST" action="{{ route('likeComment', $comment->id) }}">
                                                         @csrf
-                                                        <button type="submit" class="btn btn-outline-success">
-                                                            <i class="fa-regular fa-thumbs-up"></i>
+                                                        <button type="submit" class="btn btn-outline-primary">
+                                                            <i class="fa-regular fa-thumbs-up"></i> {{ $comment->likes->count() }}
                                                         </button>
                                                     </form>
                                                 @endif
