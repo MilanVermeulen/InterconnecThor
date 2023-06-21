@@ -161,4 +161,19 @@ class PostController extends Controller
         return redirect()->back()->with('success', 'Post deleted successfully!');
     }
 
+    // likes
+    public function likePost($id)
+    {
+        $post = Post::findOrFail($id);
+        $post->likes()->attach(Auth::id());
+        return redirect()->back()->with('success', 'Post liked successfully!');
+    }
+
+    public function unlikePost($id)
+    {
+        $post = Post::findOrFail($id);
+        $post->likes()->detach(Auth::id());
+        return redirect()->back()->with('success', 'Post unliked successfully!');
+    }
+
 }

@@ -98,24 +98,44 @@
                             </div>
                             <div class="card-footer">
                                 <div class="row justify-content-center text-center">
-                                    <div class="col text-start">
-                                        <p class="m-0 text-muted cursor-pointer-comment" onclick="window.location.href='{{ route('post.show', $post->id) }}'">
+                                    <div class="col-auto text-start">
+                                        @if ($post->likes->contains(Auth::user()))
+                                            <!-- Unlike Button -->
+                                            <form method="POST" action="{{ route('unlikePost', $post->id) }}">
+                                                @csrf
+                                                @method('DELETE')
+                                                <button type="submit" class="btn btn-outline-danger">
+                                                    <i class="fa-regular fa-thumbs-up"></i> {{ $post->likes->count() }}
+                                                </button>
+                                            </form>
+                                        @else
+                                            <!-- Like Button -->
+                                            <form method="POST" action="{{ route('likePost', $post->id) }}">
+                                                @csrf
+                                                <button type="submit" class="btn btn-outline-success">
+                                                    <i class="fa-regular fa-thumbs-up"></i> {{ $post->likes->count() }}
+                                                </button>
+                                            </form>
+                                        @endif
+                                    </div>    
+                                    <div class="col-auto text-start">
+                                        <button class="btn btn-outline-primary" onclick="window.location.href='{{ route('post.show', $post->id) }}'">
                                             <i class="fa-regular fa-comment"></i> {{ $post->comments->count() }}
-                                        </p>
-                                    </div>
+                                        </button>
+                                    </div>   
+                                    <div class="col-auto text-start">
+                                        <form action="{{ route('post.delete', $post->id) }}" method="POST" onsubmit="return confirm('Are you sure?');">
+                                            @csrf
+                                            @method('DELETE')
+                                            <button type="submit" class="btn btn-outline-danger"><i class="fa-solid fa-trash-can"></i></button>
+                                        </form>
+                                    </div>                                                                                                     
                                     <div class="col text-end">
                                         <p class="m-0 text-muted">
                                             {{ $post->created_at->diffForHumans() }} at {{ $post->created_at->format('H:i') }}
                                         </p>
                                     </div>
                                 </div>
-                            </div>
-                            <div class="card-footer text-start">
-                                <form action="{{ route('post.delete', $post->id) }}" method="POST" onsubmit="return confirm('Are you sure?');">
-                                    @csrf
-                                    @method('DELETE')
-                                    <button type="submit" class="btn btn-outline-danger"><i class="fa-solid fa-trash-can"></i></button>
-                                </form>
                             </div>
                         </div>
                     @empty
