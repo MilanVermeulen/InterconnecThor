@@ -5,6 +5,13 @@
     <div class="row justify-content-center mt-5">
         <div class="col-md-10 p-5 bg-light rounded">
 
+            {{-- title --}}
+            <div class="row justify-content-center mb-5">
+                <div class="col-md-10">
+                    <h2 class="text-center text-primary fw-bold">Liked Posts</h2>
+                </div>
+            </div>
+
             {{-- success message --}}
             @if (session('success'))
                 <div class="row justify-content-center mb-5">
