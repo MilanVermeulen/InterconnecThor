@@ -83,6 +83,14 @@ Route::group(['middleware' => 'auth'], function () {
     Route::delete('/user/{user}', [UserController::class, 'deleteUser'])->name('user.deleteUser');
     // search posts
     Route::post('/search-posts',[PostController::class, 'search'])->name('search-posts');
+    // show post
+    Route::get('/post/{id}', [PostController::class, 'show'])->name('post.show');
+    // create comment
+    Route::post('/posts/{id}/comments', [PostController::class, 'createComment'])->name('posts.comments.create');
+    // delete comment
+    Route::delete('/comments/{id}', [PostController::class, 'deleteComment'])->name('comments.delete');
+    // delete post
+    Route::delete('/post/{id}', [App\Http\Controllers\PostController::class, 'deletePost'])->name('post.delete');
     // follow
     Route::post('follow/{user}', [FollowController::class, 'follow'])->name('follow');
     // unfollow
@@ -114,8 +122,6 @@ Route::group(['middleware' => 'auth'], function () {
     });
 });
 
-Route::get('/post/{id}', [PostController::class, 'show'])->name('post.show');
-Route::post('/posts/{id}/comments', [PostController::class, 'createComment'])->name('posts.comments.create');
-Route::delete('/comments/{id}', [PostController::class, 'deleteComment'])->name('comments.delete');
+
 
 

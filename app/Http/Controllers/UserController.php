@@ -245,9 +245,15 @@ class UserController extends Controller
     {
         // Retrieve the currently authenticated user
         $user = auth()->user();
+        $posts = $user->posts()->latest()->paginate(5); // Use the paginate method to show 5 posts per page
+
+        // Truncate the content of each post to a maximum of 255 characters
+        foreach ($posts as $post) {
+            $post->description = Str::limit($post->description, 255);
+        }
 
         // Pass the user data to the view
-        return view('userProfile', compact('user'));
+        return view('userProfile', compact('user', 'posts'));
     }
 
     public function viewProfile($id)
@@ -260,8 +266,16 @@ class UserController extends Controller
             abort(404);
         }
 
-        // Pass the user data to the profile view
-        return view('searchProfile', ['user' => $user]);
+        // Retrieve the user's posts, with 5 posts per page
+        $posts = $user->posts()->latest()->paginate(5); 
+
+        // Truncate the content of each post to a maximum of 255 characters
+        foreach ($posts as $post) {
+            $post->description = Str::limit($post->description, 255);
+        }
+
+        // Pass the user data and truncated posts to the profile view
+        return view('searchProfile', compact('user', 'posts'));
     }
 
     public function showUpdateProfile()
