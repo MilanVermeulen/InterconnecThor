@@ -176,4 +176,18 @@ class PostController extends Controller
         return redirect()->back()->with('success', 'Post unliked successfully!');
     }
 
+    public function likeComment($id)
+    {
+        $comment = Comment::findOrFail($id);
+        $comment->likes()->attach(Auth::id());
+        return redirect()->back()->with('success', 'Comment liked successfully!');
+    }
+
+    public function unlikeComment($id)
+    {
+        $comment = Comment::findOrFail($id);
+        $comment->likes()->detach(Auth::id());
+        return redirect()->back()->with('success', 'Comment unliked successfully!');
+    }
+
 }

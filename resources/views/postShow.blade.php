@@ -120,8 +120,28 @@
                                     </div>
                                     <div class="card-footer">
                                         <div class="row justify-content-center text-center">
+                                            <div class="col-auto text-start">
+                                                @if ($comment->likes->contains(Auth::user()))
+                                                    <!-- Unlike Button -->
+                                                    <form method="POST" action="{{ route('unlikeComment', $comment->id) }}">
+                                                        @csrf
+                                                        @method('DELETE')
+                                                        <button type="submit" class="btn btn-outline-danger">
+                                                            <i class="fa-regular fa-thumbs-up"></i>
+                                                        </button>
+                                                    </form>
+                                                @else
+                                                    <!-- Like Button -->
+                                                    <form method="POST" action="{{ route('likeComment', $comment->id) }}">
+                                                        @csrf
+                                                        <button type="submit" class="btn btn-outline-success">
+                                                            <i class="fa-regular fa-thumbs-up"></i>
+                                                        </button>
+                                                    </form>
+                                                @endif
+                                            </div>
                                             @if($comment->user_id === Auth::id())
-                                                <div class="col text-start">
+                                                <div class="col-auto text-start">
                                                     <form action="{{ route('comments.delete', ['id' => $comment->id]) }}" method="POST" onsubmit="return confirm('Are you sure?');">
                                                         @csrf
                                                         @method('DELETE')

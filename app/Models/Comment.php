@@ -21,4 +21,9 @@ class Comment extends Model
         return $this->belongsTo('App\Models\Post', 'post_id');
     }
 
+    public function likes()
+    {
+        return $this->belongsToMany(User::class, 'comment_likes');
+    }
+
 }
