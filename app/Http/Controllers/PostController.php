@@ -190,4 +190,20 @@ class PostController extends Controller
         return redirect()->back()->with('success', 'Comment unliked successfully!');
     }
 
+    public function showLikedPosts()
+    {
+        $user = Auth::user();
+
+        $likedPosts = $user->likedPosts()
+            ->orderBy('created_at', 'desc')
+            ->paginate(5); // adjust this number to change the number of posts shown per page
+
+        // Truncate the content of each post to a maximum of 255 characters
+        foreach ($likedPosts as $post) {
+            $post->description = Str::limit($post->description, 255);
+        }
+
+        return view('likedPosts', compact('likedPosts', 'user'));
+    }
+
 }

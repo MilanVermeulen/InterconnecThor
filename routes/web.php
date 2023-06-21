@@ -108,6 +108,7 @@ Route::group(['middleware' => 'auth'], function () {
     Route::delete('/post/{id}/like', [App\Http\Controllers\PostController::class, 'unlikePost'])->name('unlikePost');
     Route::post('/comment/{id}/like', [App\Http\Controllers\PostController::class, 'likeComment'])->name('likeComment');
     Route::delete('/comment/{id}/like', [App\Http\Controllers\PostController::class, 'unlikeComment'])->name('unlikeComment');
+    Route::get('/liked-posts', [App\Http\Controllers\PostController::class, 'showLikedPosts'])->name('likedPosts');
     // meeting routes
     Route::get('/meet', function () {
         return view('meet');
