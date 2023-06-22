@@ -137,4 +137,20 @@ class User extends \TCG\Voyager\Models\User
     {
         return $this->hasMany(Comment::class);
     }
+
+    public function likes()
+    {
+        return $this->belongsToMany(Post::class, 'likes');
+    }
+
+    public function commentLikes()
+    {
+        return $this->belongsToMany(Comment::class, 'comment_likes');
+    }
+
+    public function likedPosts()
+    {
+        return $this->belongsToMany(Post::class, 'likes', 'user_id', 'post_id');
+    }    
+
 }

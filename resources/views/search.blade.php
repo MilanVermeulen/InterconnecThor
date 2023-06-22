@@ -101,7 +101,7 @@
                                             @endif
                                         </div>
                                         <div class="col-md-4">
-                                            <a href="{{ route('chat', $user->id) }}" class="btn btn-outline-primary m-1">Message</a>
+                                            <a href="{{ url('chat/' . $user->id) }}" class="btn btn-outline-primary m-1">Message</a>
                                         </div>
                                         <div class="col-md-4">
                                             <a href="{{ route('viewProfile', ['id' => $user->id]) }}" class="btn btn-primary m-1">Profile</a>

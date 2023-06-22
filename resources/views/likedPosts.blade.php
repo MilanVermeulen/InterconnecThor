@@ -5,6 +5,13 @@
     <div class="row justify-content-center mt-5">
         <div class="col-md-10 p-5 bg-light rounded">
 
+            {{-- title --}}
+            <div class="row justify-content-center mb-5">
+                <div class="col-md-10">
+                    <h2 class="text-center text-primary fw-bold">Liked Posts</h2>
+                </div>
+            </div>
+
             {{-- success message --}}
             @if (session('success'))
                 <div class="row justify-content-center mb-5">
@@ -73,6 +80,8 @@
                         onclick="window.location.href='{{ route('user.connections', $user->id) }}'">Connections: <span
                             class="text-primary fw-bold">{{ $user->connections()->count() }}</span></p>
 
+                    <p class="mb-5 cursor-pointer-comment" onclick="window.location.href='{{ route('likedPosts') }}'">Liked Posts: <span class="text-primary fw-bold">{{ $user->likedPosts()->count() }}</span></p>
+
                     <h5 class="fw-bold text-primary mb-1">Categories</h5>
                     <ul class="list-group list-group-flush mb-1">
                         @forelse ($user->categories->unique() as $category)
@@ -94,7 +103,7 @@
                     </ul>
                 </div>
                 <div class="col-md-6">
-                    @forelse ($posts as $post)
+                    @forelse ($likedPosts as $post)
                         <div class="card d-flex flex-column mb-3">
                             <div class="card-header bg-primary text-light text-shadow cursor-pointer" onclick="window.location.href='{{ route('viewProfile', ['id' => $post->user->id]) }}'">
                                 <div class="row">
@@ -159,7 +168,7 @@
 
                     {{-- pagination --}}
                     <div class="d-flex justify-content-center">
-                        {{ $posts->links('pagination::bootstrap-4') }}
+                        {{ $likedPosts->links('pagination::bootstrap-4') }}
                     </div>
                 </div>
                 <div class="col-md-4">

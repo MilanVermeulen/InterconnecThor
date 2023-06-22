@@ -46,10 +46,12 @@
                     <h5 class="mb-3">{{ $user->name }}</h5>
                     <h5 class="mb-5">{{ $user->city }}</h5>
 
-                    <p class="mb-0 cursor-pointer" onclick="window.location.href='{{ route('user.following', $user->id) }}'">Following: <span class="text-primary fw-bold">{{ $user->following_count }}</span></p>
-                    <p class="mb-0 cursor-pointer" onclick="window.location.href='{{ route('user.followers', $user->id) }}'">Followers: <span class="text-primary fw-bold">{{ $user->followers()->count() }}</span></p>
-                    <p class="mb-5 cursor-pointer" onclick="window.location.href='{{ route('user.connections', $user->id) }}'">Connections: <span class="text-primary fw-bold">{{ $user->connections()->count() }}</span></p>
+                    <p class="mb-0 cursor-pointer-comment" onclick="window.location.href='{{ route('user.following', $user->id) }}'">Following: <span class="text-primary fw-bold">{{ $user->following_count }}</span></p>
+                    <p class="mb-0 cursor-pointer-comment" onclick="window.location.href='{{ route('user.followers', $user->id) }}'">Followers: <span class="text-primary fw-bold">{{ $user->followers()->count() }}</span></p>
+                    <p class="mb-5 cursor-pointer-comment" onclick="window.location.href='{{ route('user.connections', $user->id) }}'">Connections: <span class="text-primary fw-bold">{{ $user->connections()->count() }}</span></p>
 
+                    <p class="mb-5 cursor-pointer-comment" onclick="window.location.href='{{ route('likedPosts') }}'">Liked Posts: <span class="text-primary fw-bold">{{ $user->likedPosts()->count() }}</span></p>
+                    
                     <p>
                         <h5 class="fw-bold text-primary mb-1">Categories</h5>
                         <ul class="list-group list-group-flush mb-3">
@@ -98,24 +100,44 @@
                             </div>
                             <div class="card-footer">
                                 <div class="row justify-content-center text-center">
-                                    <div class="col text-start">
-                                        <p class="m-0 text-muted cursor-pointer-comment" onclick="window.location.href='{{ route('post.show', $post->id) }}'">
+                                    <div class="col-auto text-start">
+                                        @if ($post->likes->contains(Auth::user()))
+                                            <!-- Unlike Button -->
+                                            <form method="POST" action="{{ route('unlikePost', $post->id) }}">
+                                                @csrf
+                                                @method('DELETE')
+                                                <button type="submit" class="btn btn-outline-success">
+                                                    <i class="fa-regular fa-thumbs-up"></i> {{ $post->likes->count() }}
+                                                </button>
+                                            </form>
+                                        @else
+                                            <!-- Like Button -->
+                                            <form method="POST" action="{{ route('likePost', $post->id) }}">
+                                                @csrf
+                                                <button type="submit" class="btn btn-outline-primary">
+                                                    <i class="fa-regular fa-thumbs-up"></i> {{ $post->likes->count() }}
+                                                </button>
+                                            </form>
+                                        @endif
+                                    </div>    
+                                    <div class="col-auto text-start">
+                                        <button class="btn btn-outline-primary" onclick="window.location.href='{{ route('post.show', $post->id) }}'">
                                             <i class="fa-regular fa-comment"></i> {{ $post->comments->count() }}
-                                        </p>
-                                    </div>
+                                        </button>
+                                    </div>   
+                                    <div class="col-auto text-start">
+                                        <form action="{{ route('post.delete', $post->id) }}" method="POST" onsubmit="return confirm('Are you sure?');">
+                                            @csrf
+                                            @method('DELETE')
+                                            <button type="submit" class="btn btn-outline-danger"><i class="fa-solid fa-trash-can"></i></button>
+                                        </form>
+                                    </div>                                                                                                     
                                     <div class="col text-end">
                                         <p class="m-0 text-muted">
                                             {{ $post->created_at->diffForHumans() }} at {{ $post->created_at->format('H:i') }}
                                         </p>
                                     </div>
                                 </div>
-                            </div>
-                            <div class="card-footer text-start">
-                                <form action="{{ route('post.delete', $post->id) }}" method="POST" onsubmit="return confirm('Are you sure?');">
-                                    @csrf
-                                    @method('DELETE')
-                                    <button type="submit" class="btn btn-outline-danger"><i class="fa-solid fa-trash-can"></i></button>
-                                </form>
                             </div>
                         </div>
                     @empty

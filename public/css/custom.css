@@ -78,6 +78,10 @@
     color: blue !important;
 }
 
+.no-cursor:hover {
+    cursor: default;
+}
+
 /* Set the scrollbar width and color for Google Chrome and Safari */
 ::-webkit-scrollbar {
     width: 10px;

@@ -161,4 +161,49 @@ class PostController extends Controller
         return redirect()->back()->with('success', 'Post deleted successfully!');
     }
 
+    // likes
+    public function likePost($id)
+    {
+        $post = Post::findOrFail($id);
+        $post->likes()->attach(Auth::id());
+        return redirect()->back()->with('success', 'Post liked successfully!');
+    }
+
+    public function unlikePost($id)
+    {
+        $post = Post::findOrFail($id);
+        $post->likes()->detach(Auth::id());
+        return redirect()->back()->with('success', 'Post unliked successfully!');
+    }
+
+    public function likeComment($id)
+    {
+        $comment = Comment::findOrFail($id);
+        $comment->likes()->attach(Auth::id());
+        return redirect()->back()->with('success', 'Comment liked successfully!');
+    }
+
+    public function unlikeComment($id)
+    {
+        $comment = Comment::findOrFail($id);
+        $comment->likes()->detach(Auth::id());
+        return redirect()->back()->with('success', 'Comment unliked successfully!');
+    }
+
+    public function showLikedPosts()
+    {
+        $user = Auth::user();
+
+        $likedPosts = $user->likedPosts()
+            ->orderBy('created_at', 'desc')
+            ->paginate(5); // adjust this number to change the number of posts shown per page
+
+        // Truncate the content of each post to a maximum of 255 characters
+        foreach ($likedPosts as $post) {
+            $post->description = Str::limit($post->description, 255);
+        }
+
+        return view('likedPosts', compact('likedPosts', 'user'));
+    }
+
 }

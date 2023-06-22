@@ -52,13 +52,19 @@ class UserController extends Controller
         // Handle the profile picture upload
         if ($request->hasFile('profile_picture')) {
             $file = $request->file('profile_picture');
-
+        
             if ($file->isValid()) {
                 $filename = time() . '_' . Str::random(10) . '.' . $file->getClientOriginalExtension();
                 $path = $file->storeAs('profile-pictures', $filename, 'public');
-
-                // Save the file path or filename to the "profile_picture" column in the "students" table
+        
+                // Save the file path or filename to the "profile_picture" column in the "users" table
                 $profilePicturePath = $path;
+        
+                // Also save the file in the 'users-avatar' directory
+                $avatarPath = $file->storeAs('users-avatar', $filename, 'public');
+
+                // Save the file path or filename to the "avatar" column in the "users" table
+                $avatarPicturePath = $avatarPath;
             } else {
                 return redirect()->back()->withErrors(['profile_picture' => 'The profile picture upload failed.']);
             }
@@ -83,6 +89,12 @@ class UserController extends Controller
             $user->profile_picture = $profilePicturePath;
         } else {
             $user->profile_picture = 'profile-pictures/default.png';
+        }
+        
+        if (isset($avatarPicturePath)) {
+            $user->avatar = $avatarPicturePath;
+        } else {
+            $user->avatar = 'users-avatar/default.png';
         }
 
         $user->save();

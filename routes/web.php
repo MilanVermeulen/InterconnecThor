@@ -103,6 +103,12 @@ Route::group(['middleware' => 'auth'], function () {
     Route::get('user/{id}/connections', [FollowController::class, 'connections'])->name('user.connections');
     // followed posts
     Route::get('/followedPosts', [App\Http\Controllers\PostController::class, 'getFollowedUsersPosts'])->name('followedPosts');
+    // likes
+    Route::post('/post/{id}/like', [App\Http\Controllers\PostController::class, 'likePost'])->name('likePost');
+    Route::delete('/post/{id}/like', [App\Http\Controllers\PostController::class, 'unlikePost'])->name('unlikePost');
+    Route::post('/comment/{id}/like', [App\Http\Controllers\PostController::class, 'likeComment'])->name('likeComment');
+    Route::delete('/comment/{id}/like', [App\Http\Controllers\PostController::class, 'unlikeComment'])->name('unlikeComment');
+    Route::get('/liked-posts', [App\Http\Controllers\PostController::class, 'showLikedPosts'])->name('likedPosts');
     // meeting routes
     Route::get('/meet', function () {
         return view('meet');
