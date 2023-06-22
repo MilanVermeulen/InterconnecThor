@@ -52,14 +52,14 @@ class UserController extends Controller
         // Handle the profile picture upload
         if ($request->hasFile('profile_picture')) {
             $file = $request->file('profile_picture');
-        
+
             if ($file->isValid()) {
                 $filename = time() . '_' . Str::random(10) . '.' . $file->getClientOriginalExtension();
                 $path = $file->storeAs('profile-pictures', $filename, 'public');
-        
+
                 // Save the file path or filename to the "profile_picture" column in the "users" table
                 $profilePicturePath = $path;
-        
+
                 // Also save the file in the 'users-avatar' directory
                 $avatarPath = $file->storeAs('users-avatar', $filename, 'public');
 
@@ -90,7 +90,7 @@ class UserController extends Controller
         } else {
             $user->profile_picture = 'profile-pictures/default.png';
         }
-        
+
         if (isset($avatarPicturePath)) {
             $user->avatar = $avatarPicturePath;
         } else {
@@ -128,10 +128,10 @@ class UserController extends Controller
             'identifier' => 'required',
             'password' => 'required',
         ]);
-    
+
         // Identify the field type
         $field = $this->identifyFieldType($request->input('identifier'));
-    
+
         // Perform authentication logic here (e.g., check credentials against the database)
         $credentials = [
             $field => $request->input('identifier'),
@@ -139,7 +139,7 @@ class UserController extends Controller
             'role_id' => 2, // Check if the role_id of the user is 2
             'approved' => 1 // Check if the user is approved
         ];
-    
+
         if (Auth::attempt($credentials)) {
             // Authentication successful
             return redirect()->route('home')->with('success', 'Logged in successfully!');
@@ -148,7 +148,7 @@ class UserController extends Controller
             return redirect()->back()->withErrors([$field => 'Invalid ' . $field . ' or password.']);
         }
     }
-    
+
     /**
      * Identify if the field is an email or a username.
      *
@@ -158,7 +158,7 @@ class UserController extends Controller
     private function identifyFieldType(string $identifier)
     {
         return Validator::make(compact('identifier'), ['identifier' => 'email'])->fails() ? 'name' : 'email';
-    }    
+    }
 
     // Handle the logout request
     public function logout(Request $request)
@@ -279,7 +279,7 @@ class UserController extends Controller
         }
 
         // Retrieve the user's posts, with 5 posts per page
-        $posts = $user->posts()->latest()->paginate(5); 
+        $posts = $user->posts()->latest()->paginate(5);
 
         // Truncate the content of each post to a maximum of 255 characters
         foreach ($posts as $post) {
@@ -293,10 +293,10 @@ class UserController extends Controller
     public function showUpdateProfile()
     {
         $user = auth()->user();
-    
+
         return view('edit-profile', compact('user'));
     }
-    
+
     // Update profile
     public function updateProfile(Request $request)
     {
@@ -312,24 +312,44 @@ class UserController extends Controller
             'city' => 'required|string|max:255',
             'country' => 'required|string|max:255',
         ];
-    
+
         // Validate the form data
         $validatedData = $request->validate($rules);
-    
+
+        // Check if username or email already exist in the database
+        $existingUser = User::where('id', '!=', auth()->user()->id)
+            ->where(function ($query) use ($validatedData) {
+                $query->where('name', $validatedData['name'])
+                    ->orWhere('email', $validatedData['email']);
+            })
+            ->first();
+
+        if ($existingUser) {
+            return redirect()->back()->withInput()->withErrors(['name' => 'Username or email already exists.']);
+        }
+
         // Update the user's profile data
         $user = auth()->user();
-        $user->update($validatedData);
-    
+        $user->fill($validatedData);
+
         // Handle profile picture upload if provided
         if ($request->hasFile('profile_picture')) {
-            $profilePicture = $request->file('profile_picture');
-            $profilePicturePath = $profilePicture->store('profile-pictures', 'public');
-            $user->profile_picture = $profilePicturePath;
-            $user->save();
+            $file = $request->file('profile_picture');
+
+            if ($file->isValid()) {
+                $filename = time() . '_' . Str::random(10) . '.' . $file->getClientOriginalExtension();
+                $path = $file->storeAs('profile-pictures', $filename, 'public');
+                $user->profile_picture = $path;
+            } else {
+                return redirect()->back()->withErrors(['profile_picture' => 'The profile picture upload failed.']);
+            }
         }
-    
+
+        $user->save();
+
         return redirect()->route('userProfile')->with('success', 'Profile updated successfully.');
-    }    
+    }
+
 
     // delete profile/account
     public function deleteUser(User $user)
@@ -338,10 +358,10 @@ class UserController extends Controller
         if (Auth::user()->id != $user->id) {
             return redirect()->route('home')->with('error', 'Unauthorized action.');
         }
-            
+
         $user->delete();
-    
+
         return redirect()->route('home')->with('success', 'User deleted successfully!');
     }
-    
+
 }
