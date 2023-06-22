@@ -2,16 +2,14 @@
 
 namespace App\Http\Controllers;
 
-use Illuminate\Http\Request;
-use App\Models\User;
 use App\Models\Course;
+use App\Models\User;
+use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
-use Illuminate\Support\Facades\Storage;
-use Illuminate\Support\Str;
-use Illuminate\Validation\Rules\File;
 use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Hash;
 use Illuminate\Support\Facades\Validator;
+use Illuminate\Support\Str;
 
 class UserController extends Controller
 {
@@ -39,9 +37,9 @@ class UserController extends Controller
             'courses' => 'required|array|min:1', // validates that at least 1 course is selected
             'courses.*' => 'exists:courses,id', // validates that every value in the courses array exists as a course id
             'start_years' => 'required|array|min:1', // validates that at least 1 start year is provided
-            'start_years.*' => 'required|integer|min:1900|max:'.(date('Y') + 2), // validates that every start year is an integer and is required and within the specified range
+            'start_years.*' => 'required|integer|min:1900|max:' . (date('Y') + 2), // validates that every start year is an integer and is required and within the specified range
             'end_years' => 'required|array|min:1', // validates that at least 1 end year is provided
-            'end_years.*' => 'required|integer|min:1900|max:'.(date('Y') + 4).'|gte:start_years.*', // validates that every end year is an integer and is required and within the specified range and at least the corresponding start year
+            'end_years.*' => 'required|integer|min:1900|max:' . (date('Y') + 4) . '|gte:start_years.*', // validates that every end year is an integer and is required and within the specified range and at least the corresponding start year
             // 'profile_picture' => [
             //     File::types(['png', 'jpg', 'jpeg', 'gif'])->max(5120), // validates that the file is a png, jpg, jpeg, or gif and is smaller than 5120 kilobytes (5 megabytes)
             // ],
@@ -152,7 +150,7 @@ class UserController extends Controller
     /**
      * Identify if the field is an email or a username.
      *
-     * @param  string  $identifier
+     * @param string $identifier
      * @return string
      */
     private function identifyFieldType(string $identifier)
@@ -219,7 +217,7 @@ class UserController extends Controller
     }
 
 
-   // Search
+    // Search
     public function search(Request $request)
     {
         $request->validate([

@@ -18,5 +18,5 @@ class Follow extends Model
     {
         return $this->morphTo();
     }
-    
+
 }

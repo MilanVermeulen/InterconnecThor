@@ -4,30 +4,30 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Http;
-use Illuminate\Support\Facades\Log;
-
-
 
 
 class MeetingController extends Controller
 {
     // create meeting
-    public function createMeeting(Request $request) {
-        
+    public function createMeeting(Request $request)
+    {
+
         $METERED_DOMAIN = env('METERED_DOMAIN');
         $METERED_SECRET_KEY = env('METERED_SECRET_KEY');
-    
+
         // Contain the logic to create a new meeting
         $response = Http::post("https://{$METERED_DOMAIN}/api/v1/room?secretKey={$METERED_SECRET_KEY}", [
             'autoJoin' => true
         ]);
 
         $roomName = $response->json("roomName");
-        
+
         return redirect("/meeting/{$roomName}")->with('roomName', $roomName);
     }
+
     // validate meeting
-    public function validateMeeting(Request $request) {
+    public function validateMeeting(Request $request)
+    {
         $METERED_DOMAIN = env('METERED_DOMAIN');
         $METERED_SECRET_KEY = env('METERED_SECRET_KEY');
 
@@ -38,7 +38,7 @@ class MeetingController extends Controller
 
         $roomName = $response->json("roomName");
 
-        if ($response->status() === 200)  {
+        if ($response->status() === 200) {
             return redirect("/meeting/{$roomName}")->with('roomName', $roomName);
         } else {
             return redirect("/?error=Invalid Meeting ID");

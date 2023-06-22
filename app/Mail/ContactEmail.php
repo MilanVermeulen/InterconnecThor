@@ -3,7 +3,6 @@
 namespace App\Mail;
 
 use Illuminate\Bus\Queueable;
-use Illuminate\Contracts\Queue\ShouldQueue;
 use Illuminate\Mail\Mailable;
 use Illuminate\Mail\Mailables\Content;
 use Illuminate\Mail\Mailables\Envelope;
@@ -18,7 +17,7 @@ class ContactEmail extends Mailable
     /**
      * Create a new message instance.
      *
-     * @param  array  $data
+     * @param array $data
      * @return void
      */
     public function __construct($data)
@@ -29,7 +28,7 @@ class ContactEmail extends Mailable
     /**
      * Get the message envelope.
      *
-     * @return \Illuminate\Mail\Mailables\Envelope
+     * @return Envelope
      */
     public function envelope()
     {
@@ -41,7 +40,7 @@ class ContactEmail extends Mailable
     /**
      * Get the message content definition.
      *
-     * @return \Illuminate\Mail\Mailables\Content
+     * @return Content
      */
     public function content()
     {
@@ -68,12 +67,12 @@ class ContactEmail extends Mailable
     public function build()
     {
         return $this->view('emails.contact')
-                    ->with([
-                        'firstName' => $this->data['first_name'],
-                        'lastName' => $this->data['last_name'],
-                        'email' => $this->data['email'],
-                        'subject' => $this->data['subject'],
-                        'messageText' => $this->data['message'],
-                    ]);
+            ->with([
+                'firstName' => $this->data['first_name'],
+                'lastName' => $this->data['last_name'],
+                'email' => $this->data['email'],
+                'subject' => $this->data['subject'],
+                'messageText' => $this->data['message'],
+            ]);
     }
 }

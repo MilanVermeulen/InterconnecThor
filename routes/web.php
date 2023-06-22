@@ -65,7 +65,7 @@ Route::get('/contact', function () {
 })->name('contact');
 
 // send contact mail
-Route::post('/contactemail', [EmailController::class, 'contactEmail'])->name('contactemail');
+Route::post('/contactemail', [EmailController::class, 'contactEmail'])->name('contactEmail');
 
 // middleware to check if user is logged in
 Route::group(['middleware' => 'auth'], function () {
@@ -74,7 +74,7 @@ Route::group(['middleware' => 'auth'], function () {
     // non-user profile
     Route::get('/profile/{id}', [UserController::class, 'viewProfile'])->name('viewProfile');
     // post form
-    Route::post('/postform',[PostController::class, 'create'])->name('postform');
+    Route::post('/postform', [PostController::class, 'create'])->name('postForm');
     // Show edit profile view
     Route::get('/edit-profile', [UserController::class, 'showUpdateProfile'])->name('user.showUpdateProfile');
     // Update profile
@@ -82,7 +82,7 @@ Route::group(['middleware' => 'auth'], function () {
     // delete user
     Route::delete('/user/{user}', [UserController::class, 'deleteUser'])->name('user.deleteUser');
     // search posts
-    Route::post('/search-posts',[PostController::class, 'search'])->name('search-posts');
+    Route::post('/search-posts', [PostController::class, 'search'])->name('search-posts');
     // show post
     Route::get('/post/{id}', [PostController::class, 'show'])->name('post.show');
     // create comment
@@ -90,7 +90,7 @@ Route::group(['middleware' => 'auth'], function () {
     // delete comment
     Route::delete('/comments/{id}', [PostController::class, 'deleteComment'])->name('comments.delete');
     // delete post
-    Route::delete('/post/{id}', [App\Http\Controllers\PostController::class, 'deletePost'])->name('post.delete');
+    Route::delete('/post/{id}', [PostController::class, 'deletePost'])->name('post.delete');
     // follow
     Route::post('follow/{user}', [FollowController::class, 'follow'])->name('follow');
     // unfollow
@@ -102,13 +102,13 @@ Route::group(['middleware' => 'auth'], function () {
     // connections list
     Route::get('user/{id}/connections', [FollowController::class, 'connections'])->name('user.connections');
     // followed posts
-    Route::get('/followedPosts', [App\Http\Controllers\PostController::class, 'getFollowedUsersPosts'])->name('followedPosts');
+    Route::get('/followedPosts', [PostController::class, 'getFollowedUsersPosts'])->name('followedPosts');
     // likes
-    Route::post('/post/{id}/like', [App\Http\Controllers\PostController::class, 'likePost'])->name('likePost');
-    Route::delete('/post/{id}/like', [App\Http\Controllers\PostController::class, 'unlikePost'])->name('unlikePost');
-    Route::post('/comment/{id}/like', [App\Http\Controllers\PostController::class, 'likeComment'])->name('likeComment');
-    Route::delete('/comment/{id}/like', [App\Http\Controllers\PostController::class, 'unlikeComment'])->name('unlikeComment');
-    Route::get('/liked-posts', [App\Http\Controllers\PostController::class, 'showLikedPosts'])->name('likedPosts');
+    Route::post('/post/{id}/like', [PostController::class, 'likePost'])->name('likePost');
+    Route::delete('/post/{id}/like', [PostController::class, 'unlikePost'])->name('unlikePost');
+    Route::post('/comment/{id}/like', [PostController::class, 'likeComment'])->name('likeComment');
+    Route::delete('/comment/{id}/like', [PostController::class, 'unlikeComment'])->name('unlikeComment');
+    Route::get('/liked-posts', [PostController::class, 'showLikedPosts'])->name('likedPosts');
     // meeting routes
     Route::get('/meet', function () {
         return view('meet');

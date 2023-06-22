@@ -2,12 +2,11 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\Comment;
 use App\Models\Post;
-use App\Models\User;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Str;
-use App\Models\Comment;
 
 
 class PostController extends Controller
@@ -86,13 +85,13 @@ class PostController extends Controller
     {
         // Get the search value from the request
         $search = $request->input('search');
-    
+
         // Search in the title and description columns from the posts table
         // Search in the name, first_name and last_name columns from the users table
         $posts = Post::query()
             ->where('title', 'LIKE', "%{$search}%")
             ->orWhere('description', 'LIKE', "%{$search}%")
-            ->orWhereHas('user', function($query) use ($search) {
+            ->orWhereHas('user', function ($query) use ($search) {
                 $query->where('name', 'LIKE', "%{$search}%")
                     ->orWhere('first_name', 'LIKE', "%{$search}%")
                     ->orWhere('last_name', 'LIKE', "%{$search}%");
@@ -103,10 +102,10 @@ class PostController extends Controller
         foreach ($posts as $post) {
             $post->description = Str::limit($post->description, 255);
         }
-    
+
         // Return the home view with the results compacted
         return view('home', compact('posts'));
-    }    
+    }
 
     public function show($id)
     {

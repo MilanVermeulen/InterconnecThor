@@ -1,5 +1,5 @@
 <h4 class="mb-3 fw-bold">Create a New Post</h4>
-<form method="post" action="{{ route('postform') }}" class="border rounded p-3 mb-5">
+<form method="post" action="{{ route('postForm') }}" class="border rounded p-3 mb-5">
     @csrf <!-- Include CSRF token for form protection -->
 
     @if(Request::is('profile/*'))
@@ -20,7 +20,7 @@
         <label for="description" class="mb-1 text-primary fw-bold">Description</label>
         <textarea class="form-control" id="description" name="description" aria-label="Description"></textarea>
     </div>
-    
+
     <button type="submit" class="btn btn-outline-primary">Post!</button>
 </form>
 <h4 class="mb-3 fw-bold">Search Existing Posts</h4>
