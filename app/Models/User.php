@@ -2,12 +2,9 @@
 
 namespace App\Models;
 
-use Illuminate\Contracts\Auth\MustVerifyEmail;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
-use Illuminate\Foundation\Auth\User as Authenticatable;
 use Illuminate\Notifications\Notifiable;
 use Laravel\Sanctum\HasApiTokens;
-use Illuminate\Database\Eloquent\Relations\BelongsToMany;
 
 class User extends \TCG\Voyager\Models\User
 {
@@ -68,16 +65,21 @@ class User extends \TCG\Voyager\Models\User
         return $this->hasMany(Post::class);
     }
 
-    public function follows()
-    {
-        return $this->morphedByMany(User::class, 'followable', 'follows');
-    }
-
     public function follow(User $user)
     {
         if (!$this->isFollowing($user)) {
             return $this->follows()->save($user);
         }
+    }
+
+    public function isFollowing(User $user)
+    {
+        return $this->follows->contains($user);
+    }
+
+    public function follows()
+    {
+        return $this->morphedByMany(User::class, 'followable', 'follows');
     }
 
     public function unfollow(User $user)
@@ -87,14 +89,14 @@ class User extends \TCG\Voyager\Models\User
         }
     }
 
-    public function isFollowing(User $user)
-    {
-        return $this->follows->contains($user);
-    }
-
     public function isConnectedWith(User $user)
     {
         return $this->isFollowing($user) && $user->isFollowing($this);
+    }
+
+    public function getFollowerCountAttribute()
+    {
+        return $this->followers()->count();
     }
 
     public function followers()
@@ -103,9 +105,9 @@ class User extends \TCG\Voyager\Models\User
             ->where('followable_type', User::class);
     }
 
-    public function getFollowerCountAttribute()
+    public function getConnectionsCountAttribute()
     {
-        return $this->followers()->count();
+        return $this->connections()->count();
     }
 
     public function connections()
@@ -117,20 +119,15 @@ class User extends \TCG\Voyager\Models\User
             })->get();
     }
 
-    public function getConnectionsCountAttribute()
+    public function getFollowingCountAttribute()
     {
-        return $this->connections()->count();
+        return $this->following()->count();
     }
 
     public function following()
     {
         return $this->belongsToMany(User::class, 'follows', 'user_id', 'followable_id')
             ->where('followable_type', User::class);
-    }
-
-    public function getFollowingCountAttribute()
-    {
-        return $this->following()->count();
     }
 
     public function comments()
@@ -151,6 +148,6 @@ class User extends \TCG\Voyager\Models\User
     public function likedPosts()
     {
         return $this->belongsToMany(Post::class, 'likes', 'user_id', 'post_id');
-    }    
+    }
 
 }

@@ -3,7 +3,6 @@
 namespace App\Mail;
 
 use Illuminate\Bus\Queueable;
-use Illuminate\Contracts\Queue\ShouldQueue;
 use Illuminate\Mail\Mailable;
 use Illuminate\Mail\Mailables\Content;
 use Illuminate\Mail\Mailables\Envelope;
@@ -18,7 +17,7 @@ class ForgotPasswordEmail extends Mailable
     /**
      * Create a new message instance.
      *
-     * @param  array  $data
+     * @param array $data
      * @return void
      */
     public function __construct(array $data)
@@ -29,7 +28,7 @@ class ForgotPasswordEmail extends Mailable
     /**
      * Get the message envelope.
      *
-     * @return \Illuminate\Mail\Mailables\Envelope
+     * @return Envelope
      */
     public function envelope()
     {
@@ -41,7 +40,7 @@ class ForgotPasswordEmail extends Mailable
     /**
      * Get the message content definition.
      *
-     * @return \Illuminate\Mail\Mailables\Content
+     * @return Content
      */
     public function content()
     {
@@ -68,9 +67,9 @@ class ForgotPasswordEmail extends Mailable
     public function build()
     {
         return $this->view('emails.forgot-password')
-                    ->with([
-                        'email' => $this->data['email'],
-                        'token' => $this->data['token'],
-                    ]);
+            ->with([
+                'email' => $this->data['email'],
+                'token' => $this->data['token'],
+            ]);
     }
 }
