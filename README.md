@@ -23,9 +23,9 @@ interconnecThor, a nod to our geographical roots and a symbol of connection, is 
 - Personalized profiles: Create your unique profile and start connecting with your peers.
 - Posts: Share your thoughts, ideas and interact with the posts made by others.
 - Connection system: Connect with other users and get connected.
-- Likes and shares: Like the posts that resonate with you and share them for wider reach.
-- Chat: Directly chat with your connections.
-- Virtual meetings: Start a meeting and collaborate with your connnections on innovative ideas.
+- Likes: Like the posts that resonate with you and comment on them for wider reach.
+- Chat: Realtime chat with your connections, send text messages, stickers, GIFs & Images, view user status online / offline / last seen and notifications on new message.
+- Virtual meetings: Start a groupmeeting and collaborate with your connnections on innovative ideas.
 - Screen sharing: Share your screen during meetings, enhancing the collaboration experience.
 
 ## FAQ
@@ -52,3 +52,73 @@ For any queries, issues, or support, you can reach out to us via the contact for
 ## Contributing
 
 We welcome contributions from the SyntraPXL student community. Feel free to fork the repository and submit a pull request. For major changes, please open an issue first to discuss what you would like to change.
+
+## Instructions
+
+To set up the project, follow these steps:
+
+1. Clone the repository:
+   ```
+   git clone [repository URL]
+   ```
+
+2. Create a `.env` file in the project root and configure it with your environment settings.
+
+3. Create and connect a database to the project.
+
+4. Install the project dependencies using Composer:
+   ```
+   composer install
+   ```
+
+5. Generate an application key:
+   ```
+   php artisan key:generate
+   ```
+
+6. Run the database migrations to set up the required tables:
+   ```
+   php artisan migrate
+   ```
+
+7. Create a symbolic link to make the storage directory accessible:
+   ```
+   php artisan storage:link
+   ```
+
+8. Start the development server:
+   ```
+   php artisan serve
+   ```
+
+### Chat Configuration
+
+To enable chat functionality, you need to set up a free Pusher account:
+
+1. Create a Pusher account at [https://dashboard.pusher.com](https://dashboard.pusher.com).
+
+2. Go to "App Keys" and add the obtained credentials to your `.env` file:
+   ```
+   PUSHER_APP_ID=[your Pusher app ID]
+   PUSHER_APP_KEY=[your Pusher app key]
+   PUSHER_APP_SECRET=[your Pusher app secret]
+   PUSHER_APP_CLUSTER=[your Pusher app cluster]
+   ```
+
+### Meet Configuration
+
+To enable meet functionality, you need to set up a free Metered account:
+
+1. Create a Metered account at [https://dashboard.metered.ca/signup](https://dashboard.metered.ca/signup).
+
+2. Go to "Developers" and copy your Metered domain and secret key.
+
+3. Replace the placeholders in the `.env` file with your Metered domain and secret key:
+   ```
+   METERED_DOMAIN="[your Metered domain]"
+   METERED_SECRET_KEY="[your Metered secret key]"
+   ```
+
+Make sure to add the `METERED_DOMAIN` and `METERED_SECRET_KEY` variables to your `.env` file.
+
+Now you should have the necessary configurations in place to run the project successfully.
