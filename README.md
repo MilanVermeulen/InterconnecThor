@@ -122,3 +122,53 @@ To enable meet functionality, you need to set up a free Metered account:
 Make sure to add the `METERED_DOMAIN` and `METERED_SECRET_KEY` variables to your `.env` file.
 
 Now you should have the necessary configurations in place to run the project successfully.
+
+## Instructions for Admin Setup
+
+To set up an admin user using Laravel Voyager, follow these steps:
+
+1. Open your command line or terminal.
+
+2. Run the following command to install Laravel Voyager:
+   ```
+   php artisan voyager:install
+   ```
+
+   This command will publish the Voyager assets, configurations, and create necessary database tables.
+
+3. After installing Voyager, run the following command to create an admin user:
+   ```
+   php artisan voyager:admin your_email@example.com --create
+   ```
+
+   Replace `your_email@example.com` with the desired email address for the admin user.
+
+4. You will be prompted to enter the admin user's name and password. Provide the necessary details and press Enter.
+
+5. Laravel Voyager will create the admin user with the specified email address and credentials.
+
+Now you can use the admin credentials to log in to your Laravel Voyager dashboard and manage your application.
+
+## Important Note: User Approval
+
+Please note that user approval is required for users to be able to log in to the system. By default, newly created users have an approval status of 0, which means they are not approved.
+
+To approve a user and allow them to log in, follow one of the following methods:
+
+### Method 1: Database Approval
+
+1. In the `users` table of your database, locate the user you want to approve.
+2. Set the `approved` column value for that user to 1.
+3. Save the changes.
+
+### Method 2: Admin Approval
+
+1. Log in to the admin section of your application using your admin account.
+2. Go to the user management section or user list.
+3. Find the user you want to approve.
+4. Edit the user details and set the approval status to approved.
+5. Save the changes.
+
+Once a user is approved, they will be able to log in using their credentials. It is important to ensure that users are approved to prevent unauthorized access to the system.
+
+Please make sure to follow the appropriate approval method to grant access to new users.
