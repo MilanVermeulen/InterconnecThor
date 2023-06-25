@@ -11,6 +11,13 @@
 - [FAQ](#faq)
 - [Support](#support)
 - [Contributing](#contributing)
+- [Instructions](#instructions)
+  - [Chat Configuration](#chat-configuration)
+  - [Meet Configuration](#meet-configuration)
+- [Instructions for Admin Setup](#instructions-for-admin-setup)
+- [Important Note: User Approval](#important-note-user-approval)
+  - [Method 1: Database Approval](#method-1-database-approval)
+  - [Method 2: Admin Approval](#method-2-admin-approval)
 
 ## About Us
 
