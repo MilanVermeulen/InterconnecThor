@@ -42,7 +42,7 @@
                 <div class="col-md-6 p-5 text-center border rounded bg-light">
                     <div class="row justify-content-center">
                         <div class="col-md-6">
-                            <img src="{{ asset('storage/' . ($user->profile_picture ?: 'profile-pictures/default.jpg')) }}"
+                            <img src="{{ asset('storage/' . ($user->profile_picture ?: 'profile-pictures/default.png')) }}"
                                 alt="Profile Picture"
                                 class="img-fluid rounded-pill mb-2 border border-light border-2 me-2 mt-1"
                                 style="max-height: 50vh; width: auto;">
@@ -116,7 +116,7 @@
                                         </h4>
                                     </div>
                                     <div class="col text-end">
-                                        <img src="{{ asset('storage/' . ($post->user->profile_picture ?: 'profile-pictures/default.jpg')) }}" alt="Profile Picture" class="img-fluid rounded-pill mb-2 border border-light border-2" style="max-height: 7vh; width: auto;">
+                                        <img src="{{ asset('storage/' . ($post->user->profile_picture ?: 'profile-pictures/default.png')) }}" alt="Profile Picture" class="img-fluid rounded-pill mb-2 border border-light border-2" style="max-height: 7vh; width: auto;">
                                     </div>
                                 </div>
                             </div>

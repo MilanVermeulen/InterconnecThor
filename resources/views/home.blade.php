@@ -80,7 +80,7 @@
                                                             </h4>
                                                         </div>
                                                         <div class="col text-end">
-                                                            <img src="{{ asset('storage/' . ($post->user->profile_picture ?: 'profile-pictures/default.jpg')) }}" alt="Profile Picture" class="img-fluid rounded-pill mb-2 border border-light border-2" style="max-height: 7vh; width: auto;">
+                                                            <img src="{{ asset('storage/' . ($post->user->profile_picture ?: 'profile-pictures/default.png')) }}" alt="Profile Picture" class="img-fluid rounded-pill mb-2 border border-light border-2" style="max-height: 7vh; width: auto;">
                                                         </div>
                                                     </div>
                                                 </div>

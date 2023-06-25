@@ -53,7 +53,7 @@
                                     </div>
                                     <div class="col text-end">
                                         <img
-                                            src="{{ asset('storage/' . ($user->profile_picture ?: 'profile-pictures/default.jpg')) }}"
+                                            src="{{ asset('storage/' . ($user->profile_picture ?: 'profile-pictures/default.png')) }}"
                                             alt="Profile Picture"
                                             class="img-fluid rounded-pill mb-2 border border-light border-2"
                                             style="max-height: 10vh; width: auto;">

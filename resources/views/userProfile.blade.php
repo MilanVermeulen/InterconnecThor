@@ -36,7 +36,7 @@
 
                     <div class="row justify-content-center">
                         <div class="col-md-6">
-                            <img src="{{ asset('storage/' . ($user->profile_picture ?: 'profile-pictures/default.jpg')) }}" alt="Profile Picture"
+                            <img src="{{ asset('storage/' . ($user->profile_picture ?: 'profile-pictures/default.png')) }}" alt="Profile Picture"
                                  class="img-fluid rounded-pill mb-2 border border-light border-2 me-2 mt-1"
                                  style="max-height: 50vh; width: auto;">
                         </div>
@@ -141,7 +141,7 @@
                             </div>
                         </div>
                     @empty
-                        <p class="mt-5">No posts found.</p>
+                        <p class="mt-5 text-center">No posts found.</p>
                     @endforelse
 
                     {{-- pagination --}}
