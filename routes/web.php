@@ -26,12 +26,11 @@ Route::group(['prefix' => 'admin'], function () {
     Voyager::routes();
 });
 
-// register students
-Route::get('/register', [UserController::class, 'showRegisterForm'])->name('register');
-Route::post('/register', [UserController::class, 'register']);
-
 // restrict logged in users with middleware
 Route::group(['middleware' => 'guest'], function () {
+    // register students
+    Route::get('/register', [UserController::class, 'showRegisterForm'])->name('register');
+    Route::post('/register', [UserController::class, 'register']);
     // login users
     Route::get('/login', [UserController::class, 'showLoginForm'])->name('login');
     Route::post('/login', [UserController::class, 'login']);
@@ -44,9 +43,6 @@ Route::group(['middleware' => 'guest'], function () {
     // Reset password
     Route::post('/password/update', [UserController::class, 'updatePassword'])->name('password.update');
 });
-
-// logout students
-Route::post('/logout', [UserController::class, 'logout'])->name('logout');
 
 // search students
 Route::get('/search', [UserController::class, 'search'])->name('search');
@@ -69,6 +65,8 @@ Route::post('/contactemail', [EmailController::class, 'contactEmail'])->name('co
 
 // middleware to check if user is logged in
 Route::group(['middleware' => 'auth'], function () {
+    // logout students
+    Route::post('/logout', [UserController::class, 'logout'])->name('logout');
     // user profile
     Route::get('userProfile', [UserController::class, 'showUserProfile'])->name('userProfile');
     // non-user profile
@@ -103,7 +101,7 @@ Route::group(['middleware' => 'auth'], function () {
     Route::get('user/{id}/connections', [FollowController::class, 'connections'])->name('user.connections');
     // followed posts
     Route::get('/followedPosts', [PostController::class, 'getFollowedUsersPosts'])->name('followedPosts');
-    // likes
+    // like routes
     Route::post('/post/{id}/like', [PostController::class, 'likePost'])->name('likePost');
     Route::delete('/post/{id}/like', [PostController::class, 'unlikePost'])->name('unlikePost');
     Route::post('/comment/{id}/like', [PostController::class, 'likeComment'])->name('likeComment');
@@ -127,7 +125,3 @@ Route::group(['middleware' => 'auth'], function () {
         ]);
     });
 });
-
-
-
-

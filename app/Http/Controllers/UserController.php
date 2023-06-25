@@ -217,7 +217,7 @@ class UserController extends Controller
     }
 
 
-    // Search
+    // Search students
     public function search(Request $request)
     {
         $request->validate([
@@ -251,6 +251,7 @@ class UserController extends Controller
         return view('search', compact('users'));
     }
 
+    // Show the logged in user's profile
     public function showUserProfile()
     {
         // Retrieve the currently authenticated user
@@ -266,6 +267,7 @@ class UserController extends Controller
         return view('userProfile', compact('user', 'posts'));
     }
 
+    // Show the profile of the user with the provided ID
     public function viewProfile($id)
     {
         // Retrieve user data based on the provided ID
@@ -288,6 +290,7 @@ class UserController extends Controller
         return view('searchProfile', compact('user', 'posts'));
     }
 
+    // Show the edit profile form view
     public function showUpdateProfile()
     {
         $user = auth()->user();
@@ -295,7 +298,7 @@ class UserController extends Controller
         return view('edit-profile', compact('user'));
     }
 
-    // Update profile
+    // Update the user's profile
     public function updateProfile(Request $request)
     {
         // Validation rules for the form fields

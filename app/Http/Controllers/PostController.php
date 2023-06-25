@@ -107,6 +107,7 @@ class PostController extends Controller
         return view('home', compact('posts'));
     }
 
+    // show post view
     public function show($id)
     {
         $post = Post::findOrFail($id);
@@ -115,6 +116,7 @@ class PostController extends Controller
         return view('postShow', compact('post', 'comments'));
     }
 
+    // create comment
     public function createComment(Request $request, $id)
     {
         $request->validate([
@@ -132,6 +134,7 @@ class PostController extends Controller
         return redirect()->back()->with('success', 'Comment added successfully!');
     }
 
+    // delete comment
     public function deleteComment($id)
     {
         $comment = Comment::findOrFail($id);
@@ -146,6 +149,7 @@ class PostController extends Controller
         return redirect()->back()->with('success', 'Comment deleted successfully!');
     }
 
+    // delete post
     public function deletePost($id)
     {
         $post = Post::findOrFail($id);
@@ -160,7 +164,7 @@ class PostController extends Controller
         return redirect()->back()->with('success', 'Post deleted successfully!');
     }
 
-    // likes
+    // like post
     public function likePost($id)
     {
         $post = Post::findOrFail($id);
@@ -168,6 +172,7 @@ class PostController extends Controller
         return redirect()->back()->with('success', 'Post liked successfully!');
     }
 
+    // unlike post
     public function unlikePost($id)
     {
         $post = Post::findOrFail($id);
@@ -175,6 +180,7 @@ class PostController extends Controller
         return redirect()->back()->with('success', 'Post unliked successfully!');
     }
 
+    // like comment
     public function likeComment($id)
     {
         $comment = Comment::findOrFail($id);
@@ -182,6 +188,7 @@ class PostController extends Controller
         return redirect()->back()->with('success', 'Comment liked successfully!');
     }
 
+    // unlike comment
     public function unlikeComment($id)
     {
         $comment = Comment::findOrFail($id);
@@ -189,6 +196,7 @@ class PostController extends Controller
         return redirect()->back()->with('success', 'Comment unliked successfully!');
     }
 
+    // show liked posts for logged in user
     public function showLikedPosts()
     {
         $user = Auth::user();
