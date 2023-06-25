@@ -9,7 +9,8 @@
             @php
                 $roomName = session('roomName');
             @endphp
-            <p>Room name: {{ $roomName }}</p>
+            <p>Room name: <span id="roomName">{{ $roomName }}</span></p>
+            <button id="copyRoomNameBtn" data-clipboard-target="#roomName" class="btn btn-primary mt-2">Copy Room Name</button>
         </div>
         <div class="flex items-center justify-center">
             <div class="max-w-2xl  flex flex-col space-y-4">     
@@ -91,6 +92,20 @@
         </h1>
     </a>
 </div>
+    {{-- clipboard --}}
+    <script src="https://cdn.jsdelivr.net/npm/clipboard@2.0.8/dist/clipboard.min.js"></script>
+    <script>
+        var clipboard = new ClipboardJS('#copyRoomNameBtn');
+
+        clipboard.on('success', function (e) {
+            alert('Room Name copied to clipboard!');
+            e.clearSelection();
+        });
+
+        clipboard.on('error', function (e) {
+            alert('Failed to copy Room Name to clipboard.');
+        });
+    </script>
 
     {{-- metered video --}}
 	<script src="https://cdn.metered.ca/sdk/video/1.4.5/sdk.min.js"></script>
