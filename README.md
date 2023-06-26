@@ -112,6 +112,14 @@ To enable chat functionality, you need to set up a free Pusher account:
    PUSHER_APP_CLUSTER=[your Pusher app cluster]
    ```
 
+Change `BROADCAST_DRIVER=log` to `BROADCAST_DRIVER=pusher` in the `.env` file:
+
+The `BROADCAST_DRIVER` configuration determines the driver used for broadcasting events in your Laravel application. By changing this setting to `pusher`, you can utilize the Pusher service for real-time communication. Make sure you have the required Pusher configuration details set in the `.env` file, such as the Pusher app ID, key, and secret.
+
+Refer to the Laravel and Pusher documentation for more information on configuring real-time communication with Pusher.
+
+
+
 ### Meet Configuration
 
 To enable meet functionality, you need to set up a free Metered account:
